@@ -1,0 +1,1977 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>INTWIWA • Powered by PRASHANT YADAV</title>
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Outfit:wght@500;600;700;800;900&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+  <!-- Font Awesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+            display: ['"Outfit"', 'sans-serif'],
+            mono: ['"JetBrains Mono"', 'monospace'],
+          },
+          colors: {
+            canvas: '#070a10',
+            surface: '#0d121f',
+            liquid: {
+              card: 'rgba(15, 23, 42, 0.65)',
+              border: 'rgba(255, 255, 255, 0.12)',
+              primary: '#a855f7',
+              accent: '#ec4899',
+              cyan: '#06b6d4',
+              emerald: '#10b981'
+            }
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    /* Liquid Glass Aesthetic Engine */
+    body {
+      background-color: #070a10;
+      color: #f1f5f9;
+      overflow-x: hidden;
+      touch-action: manipulation;
+    }
+
+    .liquid-glass {
+      background: rgba(15, 23, 42, 0.68);
+      backdrop-filter: blur(28px) saturate(190%);
+      -webkit-backdrop-filter: blur(28px) saturate(190%);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      box-shadow: 0 20px 45px -12px rgba(0, 0, 0, 0.65), inset 0 1px 1px rgba(255, 255, 255, 0.2);
+    }
+
+    .liquid-subtle {
+      background: rgba(255, 255, 255, 0.04);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      transition: all 0.25s ease;
+    }
+    .liquid-subtle:hover {
+      background: rgba(255, 255, 255, 0.08);
+      border-color: rgba(255, 255, 255, 0.22);
+    }
+
+    /* Ambient animated mesh orbs */
+    .ambient-bg {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: -1;
+      overflow: hidden;
+    }
+    .mesh-orb {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(120px);
+      opacity: 0.35;
+      animation: floatMesh 22s infinite alternate ease-in-out;
+    }
+    .orb-1 {
+      width: 550px; height: 550px;
+      background: radial-gradient(circle, #a855f7 0%, #ec4899 75%);
+      top: -12%; left: 8%;
+    }
+    .orb-2 {
+      width: 600px; height: 600px;
+      background: radial-gradient(circle, #06b6d4 0%, #3b82f6 80%);
+      bottom: -15%; right: 4%;
+      animation-duration: 26s; animation-delay: -6s;
+    }
+    @keyframes floatMesh {
+      0% { transform: translate(0, 0) scale(1); }
+      100% { transform: translate(50px, 70px) scale(1.15); }
+    }
+
+    /* Moments (Story) Gradient Ring */
+    .moment-ring-live {
+      background: linear-gradient(45deg, #f59e0b, #ec4899, #a855f7, #06b6d4);
+      background-size: 200% 200%;
+      animation: ringShift 5s ease infinite;
+    }
+    @keyframes ringShift {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    /* Double-Tap Heart Burst Animation */
+    @keyframes heartPop {
+      0% { transform: translate(-50%, -50%) scale(0); opacity: 0; }
+      45% { transform: translate(-50%, -50%) scale(1.3); opacity: 1; filter: drop-shadow(0 0 30px #ec4899); }
+      75% { transform: translate(-50%, -50%) scale(1.05); opacity: 0.95; }
+      100% { transform: translate(-50%, -50%) scale(0.9) translateY(-25px); opacity: 0; }
+    }
+    .heart-burst-anim {
+      animation: heartPop 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    }
+
+    /* Story timer bar */
+    @keyframes storyTimer {
+      0% { width: 0%; }
+      100% { width: 100%; }
+    }
+    .story-running {
+      animation: storyTimer 5s linear forwards;
+    }
+
+    /* Motion disc spin */
+    @keyframes vinylSpin {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+    .motion-vinyl {
+      animation: vinylSpin 4.5s linear infinite;
+    }
+
+    /* Audio wave animation */
+    @keyframes pulseWave {
+      0%, 100% { height: 4px; }
+      50% { height: 18px; }
+    }
+    .wave-bar {
+      animation: pulseWave 1.2s ease-in-out infinite;
+    }
+
+    /* Hide scrollbars */
+    ::-webkit-scrollbar { width: 6px; height: 6px; }
+    ::-webkit-scrollbar-track { background: transparent; }
+    ::-webkit-scrollbar-thumb { background: rgba(255, 255, 255, 0.15); border-radius: 999px; }
+    ::-webkit-scrollbar-thumb:hover { background: rgba(168, 85, 247, 0.4); }
+    .no-scrollbar::-webkit-scrollbar { display: none; }
+    .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+  </style>
+</head>
+
+<body class="selection:bg-pink-500 selection:text-white">
+
+  <!-- Ambient Light Orbs -->
+  <div class="ambient-bg">
+    <div class="mesh-orb orb-1"></div>
+    <div class="mesh-orb orb-2"></div>
+  </div>
+
+  <!-- ==============================================================
+       1. AUTH / LOGIN & SIGN UP PORTAL (Instagram-Inspired Flow)
+       ============================================================== -->
+  <div id="authOverlay" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-canvas/90 backdrop-blur-2xl overflow-y-auto">
+    <div class="w-full max-w-md my-auto liquid-glass rounded-3xl p-7 border border-white/15 shadow-2xl relative">
+      
+      <!-- Logo Branding Header -->
+      <div class="text-center mb-6">
+        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-2xl liquid-subtle mb-3">
+          <div class="w-6 h-6 rounded-lg bg-gradient-to-tr from-violet-500 via-pink-500 to-cyan-400 flex items-center justify-center text-white text-[10px] shadow">
+            <i class="fa-solid fa-bolt"></i>
+          </div>
+          <span class="text-[11px] font-mono tracking-wider text-cyan-300 font-bold uppercase">Identity Access</span>
+        </div>
+        <h1 class="text-3xl sm:text-4xl font-display font-black tracking-tight bg-gradient-to-r from-white via-violet-200 to-pink-300 bg-clip-text text-transparent">INTWIWA</h1>
+        <p class="text-xs text-slate-400 mt-1">Liquid glass social connection network</p>
+      </div>
+
+      <!-- Tab Switcher -->
+      <div class="flex items-center p-1 rounded-2xl bg-black/45 border border-white/10 mb-6">
+        <button id="authTabLogin" onclick="switchAuthMode('login')" class="flex-1 py-2 rounded-xl text-xs font-bold transition-all text-white bg-gradient-to-r from-violet-600 to-pink-600 shadow-lg shadow-pink-500/20">
+          Log In
+        </button>
+        <button id="authTabSignup" onclick="switchAuthMode('signup')" class="flex-1 py-2 rounded-xl text-xs font-bold transition-all text-slate-400 hover:text-white">
+          Sign Up
+        </button>
+      </div>
+
+      <!-- LOGIN FORM -->
+      <div id="authLoginForm" class="space-y-4">
+        <div>
+          <label class="block text-[11px] font-mono uppercase tracking-wider text-slate-300 font-bold mb-1">Username or Email</label>
+          <div class="relative">
+            <i class="fa-solid fa-at absolute left-3.5 top-3 text-xs text-slate-400"></i>
+            <input type="text" id="loginUsername" placeholder="phone, username, or email" value="ariadesigns" class="w-full text-xs pl-9 pr-3.5 py-2.5 rounded-xl bg-black/40 border border-white/10 text-white focus:outline-none focus:border-pink-500 transition-colors">
+          </div>
+        </div>
+
+        <div>
+          <label class="block text-[11px] font-mono uppercase tracking-wider text-slate-300 font-bold mb-1">Password</label>
+          <div class="relative">
+            <i class="fa-solid fa-lock absolute left-3.5 top-3 text-xs text-slate-400"></i>
+            <input type="password" id="loginPassword" placeholder="••••••••" value="intwiwa2026" class="w-full text-xs pl-9 pr-3.5 py-2.5 rounded-xl bg-black/40 border border-white/10 text-white focus:outline-none focus:border-pink-500 transition-colors">
+          </div>
+        </div>
+
+        <button onclick="executeLogin()" class="w-full py-3 rounded-2xl bg-gradient-to-r from-violet-600 via-pink-600 to-cyan-500 hover:opacity-95 text-white font-bold text-xs tracking-wide shadow-lg shadow-pink-500/25 transition-all flex items-center justify-center gap-2">
+          <span>Log In</span>
+          <i class="fa-solid fa-arrow-right-to-bracket text-xs"></i>
+        </button>
+
+        <div class="relative my-4 flex items-center justify-center">
+          <div class="border-t border-white/10 w-full"></div>
+          <span class="bg-surface px-3 text-[10px] text-slate-400 font-mono uppercase tracking-wider absolute">OR QUICK ACCESS</span>
+        </div>
+
+        <div class="grid grid-cols-2 gap-2">
+          <button type="button" onclick="quickFillAccount('PRASHANT YADAV', 'prashant_dev', 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=200&auto=format&fit=crop&q=80', 'Architect & Creator of INTWIWA ⚡')" class="p-2 rounded-xl bg-black/40 border border-white/10 flex items-center gap-2 hover:border-violet-500 text-left transition-colors">
+            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=80&auto=format&fit=crop&q=80" class="w-8 h-8 rounded-lg object-cover">
+            <div class="truncate text-[10px]">
+              <p class="font-bold text-white truncate">Prashant Yadav</p>
+              <p class="text-violet-400 font-mono">@prashant_dev</p>
+            </div>
+          </button>
+          <button type="button" onclick="quickFillAccount('Aria Montgomery', 'ariadesigns', 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=200&auto=format&fit=crop&q=80', 'Digital creator & aesthetic explorer ✨')" class="p-2 rounded-xl bg-black/40 border border-white/10 flex items-center gap-2 hover:border-pink-500 text-left transition-colors">
+            <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=80&auto=format&fit=crop&q=80" class="w-8 h-8 rounded-lg object-cover">
+            <div class="truncate text-[10px]">
+              <p class="font-bold text-white truncate">Aria Montgomery</p>
+              <p class="text-pink-400 font-mono">@ariadesigns</p>
+            </div>
+          </button>
+        </div>
+      </div>
+
+      <!-- SIGN UP FORM -->
+      <div id="authSignupForm" class="hidden space-y-4">
+        <!-- Avatar Selector -->
+        <div>
+          <label class="block text-[11px] font-mono uppercase tracking-wider text-slate-300 font-bold mb-2">Profile Avatar</label>
+          <div class="flex items-center gap-3">
+            <div class="w-14 h-14 rounded-2xl p-0.5 bg-gradient-to-tr from-violet-500 to-pink-500 flex-shrink-0">
+              <img id="signupAvatarPreview" src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=200&auto=format&fit=crop&q=80" class="w-full h-full rounded-2xl object-cover">
+            </div>
+            <div class="flex items-center gap-2 overflow-x-auto no-scrollbar py-1">
+              <button type="button" onclick="setSignupAvatar('https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=200&auto=format&fit=crop&q=80')" class="w-9 h-9 rounded-xl overflow-hidden ring-2 ring-white/20 hover:ring-pink-500 flex-shrink-0">
+                <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=100&auto=format&fit=crop&q=80" class="w-full h-full object-cover">
+              </button>
+              <button type="button" onclick="setSignupAvatar('https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=200&auto=format&fit=crop&q=80')" class="w-9 h-9 rounded-xl overflow-hidden ring-2 ring-white/20 hover:ring-pink-500 flex-shrink-0">
+                <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&auto=format&fit=crop&q=80" class="w-full h-full object-cover">
+              </button>
+              <button type="button" onclick="setSignupAvatar('https://images.unsplash.com/photo-1517841905240-472988babdf9?w=200&auto=format&fit=crop&q=80')" class="w-9 h-9 rounded-xl overflow-hidden ring-2 ring-white/20 hover:ring-pink-500 flex-shrink-0">
+                <img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?w=100&auto=format&fit=crop&q=80" class="w-full h-full object-cover">
+              </button>
+              <label class="w-9 h-9 rounded-xl liquid-subtle flex items-center justify-center cursor-pointer hover:border-pink-500 text-slate-300 hover:text-white flex-shrink-0" title="Upload custom photo">
+                <i class="fa-solid fa-camera text-xs"></i>
+                <input type="file" accept="image/*" class="hidden" onchange="uploadSignupAvatar(event)">
+              </label>
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <label class="block text-[11px] font-mono uppercase tracking-wider text-slate-300 font-bold mb-1">Full Name</label>
+          <input type="text" id="signupFullName" placeholder="e.g. Alex Rivera" value="Alex Rivera" class="w-full text-xs px-3.5 py-2.5 rounded-xl bg-black/40 border border-white/10 text-white focus:outline-none focus:border-pink-500">
+        </div>
+
+        <div>
+          <label class="block text-[11px] font-mono uppercase tracking-wider text-slate-300 font-bold mb-1">Username (@handle)</label>
+          <div class="relative">
+            <span class="absolute left-3.5 top-2.5 text-xs text-slate-400 font-mono">@</span>
+            <input type="text" id="signupHandle" placeholder="username" value="alex_liquid" oninput="cleanHandleInput(this)" class="w-full text-xs pl-8 pr-3.5 py-2.5 rounded-xl bg-black/40 border border-white/10 text-white focus:outline-none focus:border-pink-500 font-mono">
+          </div>
+        </div>
+
+        <div>
+          <label class="block text-[11px] font-mono uppercase tracking-wider text-slate-300 font-bold mb-1">Bio</label>
+          <input type="text" id="signupBio" placeholder="Design • Code • Aesthetics" value="Exploring the liquid digital universe ✨" class="w-full text-xs px-3.5 py-2.5 rounded-xl bg-black/40 border border-white/10 text-white focus:outline-none focus:border-pink-500">
+        </div>
+
+        <button onclick="executeSignup()" class="w-full py-3 rounded-2xl bg-gradient-to-r from-violet-600 via-pink-600 to-cyan-500 hover:opacity-95 text-white font-bold text-xs tracking-wide shadow-lg shadow-pink-500/25 transition-all flex items-center justify-center gap-2">
+          <span>Create Account & Enter</span>
+          <i class="fa-solid fa-user-plus text-xs"></i>
+        </button>
+      </div>
+
+      <!-- Auth Modal Mandatory Footer Branding -->
+      <div class="mt-6 pt-4 border-t border-white/10 flex items-center justify-between">
+        <span class="text-[10px] text-slate-400 font-mono">INTWIWA v3.0</span>
+        <div class="px-3 py-1 rounded-xl bg-gradient-to-r from-violet-500/20 via-pink-500/20 to-cyan-500/20 border border-white/15 text-white font-extrabold text-[11px] flex items-center gap-1.5 shadow-sm">
+          <i class="fa-solid fa-bolt text-yellow-300 text-[10px]"></i>
+          <span>Powered by PRASHANT YADAV</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+
+  <!-- ==============================================================
+       2. MAIN APPLICATION SHELL
+       ============================================================== -->
+  <div id="mainApp" class="min-h-screen flex flex-col opacity-0 pointer-events-none transition-opacity duration-500 pb-20 md:pb-6">
+
+    <!-- Top Sticky Header -->
+    <header class="sticky top-0 z-40 liquid-glass border-b border-white/10 px-4 sm:px-6 py-2.5">
+      <div class="max-w-5xl mx-auto flex items-center justify-between">
+        
+        <!-- INTWIWA + Powered by PRASHANT YADAV -->
+        <div class="flex items-center gap-3 cursor-pointer select-none" onclick="navigateTo('feed')">
+          <div class="w-10 h-10 rounded-2xl p-0.5 bg-gradient-to-tr from-violet-500 via-pink-500 to-cyan-400 shadow-md shadow-pink-500/20">
+            <div class="w-full h-full bg-canvas rounded-2xl flex items-center justify-center">
+              <i class="fa-solid fa-bolt text-transparent bg-clip-text bg-gradient-to-r from-violet-400 via-pink-400 to-cyan-400 text-lg"></i>
+            </div>
+          </div>
+          <div class="flex flex-col">
+            <div class="flex items-center gap-1.5">
+              <span class="text-xl sm:text-2xl font-display font-black tracking-tight bg-gradient-to-r from-white via-slate-100 to-pink-200 bg-clip-text text-transparent">INTWIWA</span>
+              <i class="fa-solid fa-circle-check text-cyan-400 text-xs" title="Verified Network"></i>
+            </div>
+            <div class="flex items-center gap-1 text-[10px] sm:text-[11px] font-semibold text-slate-400">
+              <span>Powered by</span>
+              <span class="text-white font-extrabold px-1.5 py-0.2 rounded bg-white/10 text-[10px]">PRASHANT YADAV</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Center Tabs (Desktop) -->
+        <nav class="hidden md:flex items-center gap-1 liquid-subtle p-1 rounded-2xl border border-white/10">
+          <button id="navItemFeed" onclick="navigateTo('feed')" class="px-3.5 py-1.5 rounded-xl text-xs font-bold text-white bg-gradient-to-r from-violet-600 to-pink-600 transition-all flex items-center gap-1.5 shadow-sm">
+            <i class="fa-solid fa-house"></i>
+            <span>Echoes</span>
+          </button>
+          <button id="navItemMotion" onclick="navigateTo('motion')" class="px-3.5 py-1.5 rounded-xl text-xs font-bold text-slate-300 hover:text-white transition-all flex items-center gap-1.5">
+            <i class="fa-solid fa-clapperboard text-pink-400"></i>
+            <span>Motion</span>
+          </button>
+          <button id="navItemWhisper" onclick="navigateTo('whisper')" class="px-3.5 py-1.5 rounded-xl text-xs font-bold text-slate-300 hover:text-white transition-all flex items-center gap-1.5 relative">
+            <i class="fa-solid fa-paper-plane text-cyan-400"></i>
+            <span>Whisper</span>
+            <span class="w-1.5 h-1.5 rounded-full bg-cyan-400"></span>
+          </button>
+          <button id="navItemProfile" onclick="navigateTo('profile')" class="px-3.5 py-1.5 rounded-xl text-xs font-bold text-slate-300 hover:text-white transition-all flex items-center gap-1.5">
+            <i class="fa-solid fa-user"></i>
+            <span>Profile</span>
+          </button>
+        </nav>
+
+        <!-- Right Header Actions -->
+        <div class="flex items-center gap-2.5">
+          <button onclick="openCreateModal()" class="flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-gradient-to-r from-violet-600 via-pink-600 to-cyan-500 hover:opacity-95 text-white text-xs font-bold shadow-md transition-all">
+            <i class="fa-solid fa-plus text-sm"></i>
+            <span class="hidden sm:inline">New Echo</span>
+          </button>
+
+          <button onclick="navigateTo('whisper')" class="md:hidden relative w-9 h-9 rounded-xl liquid-subtle flex items-center justify-center text-slate-200">
+            <i class="fa-solid fa-paper-plane text-sm text-cyan-400"></i>
+            <span class="absolute top-1.5 right-1.5 w-2 h-2 rounded-full bg-cyan-400"></span>
+          </button>
+
+          <!-- Current User Avatar Profile Toggle -->
+          <button onclick="navigateTo('profile')" class="w-9 h-9 rounded-xl overflow-hidden ring-2 ring-pink-500/70 p-0.5">
+            <img id="headerUserAvatar" src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=100&auto=format&fit=crop&q=80" alt="Avatar" class="w-full h-full rounded-xl object-cover">
+          </button>
+        </div>
+
+      </div>
+    </header>
+
+    <!-- ==============================================================
+         MAIN TAB CONTENT CONTAINER
+         ============================================================== -->
+    <main class="flex-1 max-w-5xl mx-auto w-full px-3 sm:px-6 pt-4">
+
+      <!-- ================= TAB 1: FEED / ECHOES ================= -->
+      <section id="tabFeed" class="block">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+
+          <!-- Left Main Stream (8 cols) -->
+          <div class="lg:col-span-8 space-y-4">
+            
+            <!-- MOMENTS TRAY (Stories) -->
+            <div class="liquid-glass rounded-3xl p-3.5 border border-white/10">
+              <div class="flex items-center gap-3.5 overflow-x-auto no-scrollbar py-1">
+                
+                <!-- My Moment -->
+                <div onclick="playAudio('pop'); triggerToast('Story creation ready!')" class="flex flex-col items-center flex-shrink-0 cursor-pointer select-none group">
+                  <div class="relative w-16 h-16 rounded-full p-[2px] border-2 border-dashed border-violet-400 flex items-center justify-center">
+                    <img id="trayMyAvatar" src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150&auto=format&fit=crop&q=80" class="w-full h-full rounded-full object-cover">
+                    <div class="absolute bottom-0 right-0 w-4 h-4 rounded-full bg-pink-500 text-white flex items-center justify-center text-[10px] ring-2 ring-canvas">
+                      <i class="fa-solid fa-plus"></i>
+                    </div>
+                  </div>
+                  <span class="text-[11px] font-medium text-slate-300 mt-1.5">My Moment</span>
+                </div>
+
+                <!-- Story 1: PRASHANT YADAV (Platform Architect) -->
+                <div onclick="launchStory('PRASHANT YADAV', 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&auto=format&fit=crop&q=80', 'https://images.unsplash.com/photo-1518770660439-4636190af475?w=900&auto=format&fit=crop&q=80', 'Architecting INTWIWA with liquid glass & Instagram follow dynamics ⚡')" class="flex flex-col items-center flex-shrink-0 cursor-pointer select-none group">
+                  <div class="w-16 h-16 rounded-full p-[2.5px] moment-ring-live transition-transform group-hover:scale-105">
+                    <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&auto=format&fit=crop&q=80" class="w-full h-full rounded-full object-cover border-2 border-canvas">
+                  </div>
+                  <span class="text-[11px] font-bold text-slate-200 mt-1.5 truncate max-w-[68px]">Prashant ⚡</span>
+                </div>
+
+                <!-- Story 2: Sophia Carter -->
+                <div onclick="launchStory('Sophia Carter', 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=150&auto=format&fit=crop&q=80', 'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=900&auto=format&fit=crop&q=80', 'Golden hour moments and crystal vibes 🌊')" class="flex flex-col items-center flex-shrink-0 cursor-pointer select-none group">
+                  <div class="w-16 h-16 rounded-full p-[2.5px] moment-ring-live transition-transform group-hover:scale-105">
+                    <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=150&auto=format&fit=crop&q=80" class="w-full h-full rounded-full object-cover border-2 border-canvas">
+                  </div>
+                  <span class="text-[11px] font-bold text-slate-200 mt-1.5 truncate max-w-[68px]">Sophia</span>
+                </div>
+
+                <!-- Story 3: Marcus Vance -->
+                <div onclick="launchStory('Marcus Vance', 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=150&auto=format&fit=crop&q=80', 'https://images.unsplash.com/photo-1519681393784-d120267933ba?w=900&auto=format&fit=crop&q=80', 'Tokyo night streets with anamorphic lens 🗼')" class="flex flex-col items-center flex-shrink-0 cursor-pointer select-none group">
+                  <div class="w-16 h-16 rounded-full p-[2.5px] moment-ring-live transition-transform group-hover:scale-105">
+                    <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=150&auto=format&fit=crop&q=80" class="w-full h-full rounded-full object-cover border-2 border-canvas">
+                  </div>
+                  <span class="text-[11px] font-bold text-slate-200 mt-1.5 truncate max-w-[68px]">Marcus</span>
+                </div>
+
+                <!-- Story 4: Liam Davis -->
+                <div onclick="launchStory('Liam Davis', 'https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?w=150&auto=format&fit=crop&q=80', 'https://images.unsplash.com/photo-1511447333015-45b65e60f6d5?w=900&auto=format&fit=crop&q=80', 'Neon wave synth rhythms tonight 🎧')" class="flex flex-col items-center flex-shrink-0 cursor-pointer select-none group">
+                  <div class="w-16 h-16 rounded-full p-[2.5px] moment-ring-live transition-transform group-hover:scale-105">
+                    <img src="https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?w=150&auto=format&fit=crop&q=80" class="w-full h-full rounded-full object-cover border-2 border-canvas">
+                  </div>
+                  <span class="text-[11px] font-bold text-slate-200 mt-1.5 truncate max-w-[68px]">Liam</span>
+                </div>
+
+              </div>
+            </div>
+
+            <!-- FEED CONTAINER -->
+            <div id="postsStream" class="space-y-5">
+              <!-- Dynamically injected posts -->
+            </div>
+
+          </div>
+
+          <!-- Right Sidebar (4 cols) -->
+          <div class="hidden lg:block lg:col-span-4 space-y-4">
+            
+            <!-- Current User Mini Card with Switch Profile Action -->
+            <div class="liquid-glass rounded-3xl p-4 border border-white/10 flex items-center justify-between">
+              <div class="flex items-center gap-3">
+                <img id="sidebarUserAvatar" src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150&auto=format&fit=crop&q=80" class="w-12 h-12 rounded-2xl object-cover ring-2 ring-pink-500/70">
+                <div class="truncate">
+                  <h4 id="sidebarUserName" class="text-xs font-bold text-white truncate">Aria Montgomery</h4>
+                  <p id="sidebarUserHandle" class="text-[11px] text-slate-400 font-mono">@ariadesigns</p>
+                </div>
+              </div>
+              <button onclick="promptSwitchAccount()" class="text-xs font-bold text-pink-400 hover:text-pink-300">Switch</button>
+            </div>
+
+            <!-- Spotlight: Creator & Platform Architect (Prashant Yadav) -->
+            <div class="liquid-glass rounded-3xl p-4 border border-violet-500/30 relative overflow-hidden">
+              <div class="flex items-center justify-between mb-2">
+                <span class="text-[10px] font-mono uppercase tracking-wider text-cyan-300 font-bold flex items-center gap-1">
+                  <i class="fa-solid fa-bolt text-yellow-300"></i> Platform Architect
+                </span>
+                <span class="px-2 py-0.5 rounded-full text-[9px] font-bold bg-violet-500/20 text-violet-300 border border-violet-500/30">Verified</span>
+              </div>
+
+              <div class="flex items-center gap-3 mt-2">
+                <div class="w-11 h-11 rounded-2xl p-0.5 bg-gradient-to-tr from-violet-500 via-pink-500 to-cyan-400">
+                  <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&auto=format&fit=crop&q=80" class="w-full h-full rounded-2xl object-cover">
+                </div>
+                <div class="truncate">
+                  <h4 class="text-xs font-bold text-white">PRASHANT YADAV</h4>
+                  <p class="text-[10px] text-slate-300 font-mono">@prashant_dev</p>
+                </div>
+              </div>
+
+              <p class="text-[11px] text-slate-300 mt-2.5 leading-relaxed">
+                Architect of INTWIWA. Follow to stay connected with future liquid social updates ⚡
+              </p>
+
+              <button id="founderFollowBtn" onclick="toggleFollowAccount('prashant_dev')" class="w-full mt-3 py-2 rounded-xl text-xs font-bold transition-all shadow-md">
+                <!-- Dynamically updated -->
+              </button>
+            </div>
+
+            <!-- Suggested for you (Instagram inspired) -->
+            <div class="liquid-glass rounded-3xl p-4 border border-white/10 space-y-3">
+              <div class="flex items-center justify-between">
+                <span class="text-xs font-bold text-slate-200">Suggested for you</span>
+                <button onclick="openConnectionsModal('suggested')" class="text-[11px] font-bold text-pink-400 hover:underline">See All</button>
+              </div>
+
+              <div id="suggestedAccountsList" class="space-y-3 pt-1">
+                <!-- Dynamically rendered -->
+              </div>
+            </div>
+
+            <!-- Persistent Aesthetic Footer -->
+            <div class="p-4 rounded-3xl liquid-subtle text-center text-[11px] text-slate-400 space-y-1.5 border border-white/10">
+              <p class="font-bold text-slate-200 tracking-wider">INTWIWA LIQUID SOCIAL</p>
+              <div class="inline-flex items-center justify-center gap-1.5 px-3 py-1 rounded-xl bg-gradient-to-r from-violet-500/20 via-pink-500/20 to-cyan-500/20 border border-white/15 text-white font-extrabold text-[11px]">
+                <i class="fa-solid fa-bolt text-yellow-300 text-[10px]"></i>
+                <span>Powered by PRASHANT YADAV</span>
+              </div>
+              <p class="text-[10px] text-slate-400 font-mono mt-1">Standalone Production Release</p>
+            </div>
+
+          </div>
+
+        </div>
+      </section>
+
+      <!-- ================= TAB 2: MOTION (Reels) ================= -->
+      <section id="tabMotion" class="hidden">
+        <div class="max-w-sm mx-auto relative rounded-3xl overflow-hidden border border-white/20 shadow-2xl bg-black min-h-[580px] sm:min-h-[640px]">
+          
+          <div class="relative w-full h-[580px] sm:h-[640px] flex items-center justify-center select-none">
+            <img id="motionVisual" src="https://images.unsplash.com/photo-1518709268805-4e9042af9f23?w=800&auto=format&fit=crop&q=80" class="w-full h-full object-cover">
+
+            <div class="absolute top-4 left-4 z-20 flex items-center gap-2">
+              <span class="liquid-glass px-3 py-1 rounded-full text-xs font-bold text-white flex items-center gap-1.5 shadow">
+                <i class="fa-solid fa-clapperboard text-pink-400"></i> Motion
+              </span>
+            </div>
+
+            <button onclick="toggleMotionAudio()" class="absolute top-4 right-4 z-20 w-9 h-9 rounded-full liquid-glass text-white flex items-center justify-center">
+              <i id="motionAudioIcon" class="fa-solid fa-volume-high text-xs"></i>
+            </button>
+
+            <!-- Double-Tap Screen for Heart Burst -->
+            <div class="absolute inset-0 z-10 cursor-pointer" ondblclick="handleMotionDoubleTap(event)"></div>
+            <div id="motionHeartBurst" class="absolute top-1/2 left-1/2 pointer-events-none hidden">
+              <i class="fa-solid fa-heart text-7xl text-pink-500 drop-shadow-2xl"></i>
+            </div>
+
+            <!-- Right Vertical Rails -->
+            <div class="absolute right-3 bottom-16 z-20 flex flex-col items-center gap-4">
+              <button onclick="toggleMotionLike()" class="flex flex-col items-center group">
+                <div class="w-11 h-11 rounded-full liquid-glass flex items-center justify-center text-white group-hover:scale-110 transition-transform">
+                  <i id="motionLikeIcon" class="fa-regular fa-heart text-lg"></i>
+                </div>
+                <span id="motionLikeCount" class="text-[11px] font-bold text-white mt-1">42.8K</span>
+              </button>
+
+              <button onclick="triggerToast('Comments ready!')" class="flex flex-col items-center group">
+                <div class="w-11 h-11 rounded-full liquid-glass flex items-center justify-center text-white">
+                  <i class="fa-regular fa-comment text-lg"></i>
+                </div>
+                <span class="text-[11px] font-bold text-white mt-1">2.1K</span>
+              </button>
+
+              <button onclick="shareMotionToWhisper()" class="flex flex-col items-center group" title="Share to Whisper">
+                <div class="w-11 h-11 rounded-full bg-cyan-600/80 backdrop-blur-md flex items-center justify-center text-white shadow-lg">
+                  <i class="fa-solid fa-paper-plane text-base"></i>
+                </div>
+                <span class="text-[10px] font-bold text-cyan-300 mt-1">Share</span>
+              </button>
+
+              <button onclick="nextMotionClip()" class="flex flex-col items-center group" title="Next Motion">
+                <div class="w-11 h-11 rounded-full liquid-glass flex items-center justify-center text-pink-400">
+                  <i class="fa-solid fa-arrow-down text-base"></i>
+                </div>
+                <span class="text-[10px] font-bold text-slate-300 mt-1">Next</span>
+              </button>
+            </div>
+
+            <!-- Bottom Metadata -->
+            <div class="absolute bottom-4 left-4 right-16 z-20 pointer-events-none space-y-2">
+              <div class="flex items-center gap-2 pointer-events-auto">
+                <img id="motionAuthorAvatar" src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&auto=format&fit=crop&q=80" class="w-9 h-9 rounded-xl object-cover ring-2 ring-pink-500">
+                <span id="motionAuthorName" class="text-xs font-bold text-white">PRASHANT YADAV</span>
+                <i class="fa-solid fa-circle-check text-cyan-400 text-xs"></i>
+                <button onclick="toggleFollowAccount('prashant_dev')" id="motionAuthorFollowBtn" class="px-2.5 py-0.5 rounded-lg text-[10px] font-bold bg-white text-canvas ml-1">Follow</button>
+              </div>
+
+              <p id="motionCaption" class="text-xs text-white/90 line-clamp-2">
+                Liquid glass aesthetics on INTWIWA. Powered by PRASHANT YADAV ⚡
+              </p>
+
+              <div class="flex items-center gap-2 text-[11px] text-white/80 font-mono">
+                <div class="w-5 h-5 rounded-full bg-black/60 flex items-center justify-center motion-vinyl">
+                  <i class="fa-solid fa-compact-disc text-cyan-400 text-xs"></i>
+                </div>
+                <span id="motionAudioTitle" class="truncate">Prashant Yadav • Future Glass Audio</span>
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+      </section>
+
+      <!-- ================= TAB 3: WHISPER (Direct Messages) ================= -->
+      <section id="tabWhisper" class="hidden">
+        <div class="max-w-4xl mx-auto liquid-glass rounded-3xl border border-white/10 shadow-2xl overflow-hidden min-h-[580px] grid grid-cols-1 md:grid-cols-12">
+          
+          <!-- Chats list (5 cols) -->
+          <div class="md:col-span-5 border-r border-white/10 bg-black/30 flex flex-col">
+            <div class="p-3.5 border-b border-white/10 flex items-center justify-between">
+              <div class="flex items-center gap-2">
+                <span class="text-sm font-bold text-white">Whisper Hub</span>
+                <span class="px-1.5 py-0.2 rounded-full text-[10px] bg-cyan-500/20 text-cyan-400 font-mono">Encrypted</span>
+              </div>
+              <button onclick="triggerToast('Direct message channel opened')" class="text-slate-300 hover:text-white">
+                <i class="fa-solid fa-pen-to-square text-sm"></i>
+              </button>
+            </div>
+
+            <div class="flex-1 overflow-y-auto divide-y divide-white/5">
+              <!-- Prashant Yadav Thread -->
+              <div onclick="selectWhisperChat('PRASHANT YADAV', 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&auto=format&fit=crop&q=80', 'prashant_dev')" class="p-3.5 flex items-center gap-3 bg-white/10 cursor-pointer border-l-4 border-pink-500">
+                <div class="relative">
+                  <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&auto=format&fit=crop&q=80" class="w-11 h-11 rounded-2xl object-cover ring-2 ring-pink-500">
+                  <span class="absolute bottom-0 right-0 w-3 h-3 bg-emerald-400 rounded-full border-2 border-canvas"></span>
+                </div>
+                <div class="flex-1 min-w-0">
+                  <div class="flex items-center justify-between">
+                    <span class="text-xs font-bold text-white truncate flex items-center gap-1">
+                      PRASHANT YADAV <i class="fa-solid fa-circle-check text-cyan-400 text-[10px]"></i>
+                    </span>
+                    <span class="text-[9px] text-slate-400">Online</span>
+                  </div>
+                  <p class="text-[11px] text-slate-300 truncate mt-0.5">Welcome to INTWIWA! Check out the follow mechanics.</p>
+                </div>
+              </div>
+
+              <!-- Sophia Carter Thread -->
+              <div onclick="selectWhisperChat('Sophia Carter', 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100&auto=format&fit=crop&q=80', 'sophia_c')" class="p-3.5 flex items-center gap-3 hover:bg-white/5 cursor-pointer">
+                <div class="relative">
+                  <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100&auto=format&fit=crop&q=80" class="w-11 h-11 rounded-2xl object-cover">
+                </div>
+                <div class="flex-1 min-w-0">
+                  <div class="flex items-center justify-between">
+                    <span class="text-xs font-bold text-white truncate">Sophia Carter</span>
+                    <span class="text-[9px] text-slate-400">1h ago</span>
+                  </div>
+                  <p class="text-[11px] text-slate-400 truncate mt-0.5">That new liquid glass look is pure art! ✨</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Chat Conversation (7 cols) -->
+          <div class="md:col-span-7 bg-surface/80 flex flex-col justify-between">
+            <div class="p-3.5 border-b border-white/10 flex items-center justify-between bg-black/40">
+              <div class="flex items-center gap-3">
+                <img id="whisperActiveAvatar" src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&auto=format&fit=crop&q=80" class="w-9 h-9 rounded-xl object-cover">
+                <div>
+                  <h4 id="whisperActiveName" class="text-xs font-bold text-white flex items-center gap-1.5">
+                    PRASHANT YADAV <i class="fa-solid fa-circle-check text-cyan-400 text-[10px]"></i>
+                  </h4>
+                  <p class="text-[10px] text-emerald-400">Direct Connection Active</p>
+                </div>
+              </div>
+              <div class="flex items-center gap-3 text-slate-300">
+                <i class="fa-solid fa-phone hover:text-cyan-400 cursor-pointer" onclick="triggerToast('Audio call initiating...')"></i>
+                <i class="fa-solid fa-video hover:text-cyan-400 cursor-pointer" onclick="triggerToast('Video call initiating...')"></i>
+              </div>
+            </div>
+
+            <div id="whisperMessagesList" class="flex-1 p-4 overflow-y-auto space-y-3 max-h-[420px]">
+              <div class="flex items-end gap-2 max-w-[85%]">
+                <div class="p-3 rounded-2xl liquid-subtle text-xs text-slate-200 space-y-1">
+                  <span class="text-[10px] font-bold text-pink-400 block">PRASHANT YADAV</span>
+                  <p>Welcome to INTWIWA! You can like with double-taps, view stories, and follow/unfollow users seamlessly. ⚡</p>
+                  <div class="flex items-center justify-between text-[9px] text-slate-400 pt-1">
+                    <span>Just now</span>
+                    <i class="fa-solid fa-check-double text-cyan-400"></i>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Typing indicator -->
+            <div id="whisperTyping" class="hidden px-4 py-1 text-[10px] text-cyan-400 font-mono italic">
+              <i class="fa-solid fa-circle-notch animate-spin mr-1"></i> Typing reply...
+            </div>
+
+            <!-- Input Bar -->
+            <div class="p-3 border-t border-white/10 bg-black/40 flex items-center gap-2">
+              <input type="text" id="whisperInput" placeholder="Message..." class="flex-1 text-xs px-4 py-2.5 rounded-xl liquid-subtle text-white focus:outline-none focus:border-pink-500" onkeydown="if(event.key === 'Enter') sendWhisperMessage()">
+              <button onclick="sendWhisperMessage()" class="w-9 h-9 rounded-xl bg-gradient-to-r from-violet-600 to-pink-600 hover:opacity-95 text-white flex items-center justify-center font-bold">
+                <i class="fa-solid fa-paper-plane text-xs"></i>
+              </button>
+            </div>
+
+          </div>
+
+        </div>
+      </section>
+
+      <!-- ================= TAB 4: PROFILE (Instagram-Inspired) ================= -->
+      <section id="tabProfile" class="hidden">
+        <div class="max-w-3xl mx-auto space-y-6">
+          
+          <!-- Profile Card -->
+          <div class="liquid-glass rounded-3xl p-6 border border-white/10">
+            <div class="flex flex-col sm:flex-row items-center sm:items-start gap-6">
+              
+              <!-- Avatar with Ring -->
+              <div class="relative">
+                <div class="w-24 h-24 rounded-full p-1 bg-gradient-to-tr from-violet-500 via-pink-500 to-cyan-400 shadow-xl">
+                  <img id="profileAvatar" src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=300&auto=format&fit=crop&q=80" class="w-full h-full rounded-full object-cover border-2 border-canvas">
+                </div>
+              </div>
+
+              <!-- Stats & Bio -->
+              <div class="flex-1 text-center sm:text-left space-y-3">
+                <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+                  <div>
+                    <div class="flex items-center justify-center sm:justify-start gap-2">
+                      <h2 id="profileHandle" class="text-lg font-bold text-white font-mono">@ariadesigns</h2>
+                      <i class="fa-solid fa-circle-check text-cyan-400 text-sm"></i>
+                    </div>
+                    <p id="profileFullName" class="text-xs text-slate-300 font-semibold">Aria Montgomery</p>
+                  </div>
+
+                  <div class="flex items-center justify-center gap-2">
+                    <button onclick="openEditProfile()" class="px-3.5 py-1.5 rounded-xl liquid-subtle text-xs font-bold text-white hover:border-pink-500 transition-colors">
+                      Edit Profile
+                    </button>
+                    <button onclick="promptSwitchAccount()" class="px-3.5 py-1.5 rounded-xl bg-violet-600/20 text-violet-300 border border-violet-500/30 text-xs font-bold hover:bg-violet-600/30 transition-colors">
+                      Switch
+                    </button>
+                    <button onclick="executeLogout()" class="px-3.5 py-1.5 rounded-xl bg-red-500/20 text-red-300 border border-red-500/30 text-xs font-bold hover:bg-red-500/30 transition-colors">
+                      Log Out
+                    </button>
+                  </div>
+                </div>
+
+                <!-- Stats Count (Followers & Following clickable modals) -->
+                <div class="flex items-center justify-center sm:justify-start gap-6 pt-1 text-xs select-none">
+                  <div>
+                    <span id="profilePostCount" class="font-extrabold text-white">4</span>
+                    <span class="text-slate-400 ml-1">posts</span>
+                  </div>
+                  <button onclick="openConnectionsModal('followers')" class="hover:underline transition-all group">
+                    <span id="profileFollowersCount" class="font-extrabold text-white group-hover:text-pink-400">1,420</span>
+                    <span class="text-slate-400 ml-1">followers</span>
+                  </button>
+                  <button onclick="openConnectionsModal('following')" class="hover:underline transition-all group">
+                    <span id="profileFollowingCount" class="font-extrabold text-white group-hover:text-cyan-400">382</span>
+                    <span class="text-slate-400 ml-1">following</span>
+                  </button>
+                </div>
+
+                <p id="profileBio" class="text-xs text-slate-300 leading-relaxed max-w-lg">
+                  Digital creator & visual explorer on INTWIWA ✨⚡
+                </p>
+              </div>
+
+            </div>
+          </div>
+
+          <!-- Profile Posts Grid -->
+          <div class="liquid-glass rounded-3xl p-4 border border-white/10">
+            <div class="flex items-center justify-center gap-6 border-b border-white/10 pb-3 text-xs font-bold">
+              <span class="text-white border-b-2 border-pink-500 pb-2 flex items-center gap-1.5 cursor-pointer">
+                <i class="fa-solid fa-table-cells"></i> POSTS
+              </span>
+              <span class="text-slate-400 hover:text-white pb-2 flex items-center gap-1.5 cursor-pointer" onclick="triggerToast('Saved items folder')">
+                <i class="fa-regular fa-bookmark"></i> SAVED
+              </span>
+            </div>
+
+            <div id="profileGrid" class="grid grid-cols-3 gap-2 sm:gap-3 mt-4">
+              <!-- Grid items injected dynamically -->
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+    </main>
+
+    <!-- ==============================================================
+         BOTTOM NAVIGATION BAR (MOBILE)
+         ============================================================== -->
+    <nav class="md:hidden fixed bottom-0 left-0 right-0 z-40 liquid-glass border-t border-white/10 px-6 py-2.5 flex items-center justify-between">
+      <button onclick="navigateTo('feed')" id="mobNavFeed" class="flex flex-col items-center gap-0.5 text-pink-500 font-bold">
+        <i class="fa-solid fa-house text-lg"></i>
+        <span class="text-[9px]">Echoes</span>
+      </button>
+
+      <button onclick="navigateTo('motion')" id="mobNavMotion" class="flex flex-col items-center gap-0.5 text-slate-400">
+        <i class="fa-solid fa-clapperboard text-lg"></i>
+        <span class="text-[9px]">Motion</span>
+      </button>
+
+      <button onclick="openCreateModal()" class="w-10 h-10 rounded-2xl bg-gradient-to-tr from-violet-600 to-pink-600 text-white flex items-center justify-center shadow-lg -mt-3 ring-4 ring-canvas">
+        <i class="fa-solid fa-plus text-base"></i>
+      </button>
+
+      <button onclick="navigateTo('whisper')" id="mobNavWhisper" class="flex flex-col items-center gap-0.5 text-slate-400 relative">
+        <i class="fa-solid fa-paper-plane text-lg"></i>
+        <span class="text-[9px]">Whisper</span>
+      </button>
+
+      <button onclick="navigateTo('profile')" id="mobNavProfile" class="flex flex-col items-center gap-0.5 text-slate-400">
+        <i class="fa-solid fa-user text-lg"></i>
+        <span class="text-[9px]">Profile</span>
+      </button>
+    </nav>
+
+  </div>
+
+
+  <!-- ==============================================================
+       3. MODALS SYSTEM
+       ============================================================== -->
+
+  <!-- FOLLOWERS & FOLLOWING MODAL (Instagram Style) -->
+  <div id="connectionsModal" class="fixed inset-0 z-50 bg-black/80 backdrop-blur-md hidden flex items-center justify-center p-4">
+    <div class="w-full max-w-md liquid-glass rounded-3xl p-5 border border-white/15 shadow-2xl space-y-4">
+      
+      <div class="flex items-center justify-between pb-3 border-b border-white/10">
+        <div class="flex items-center gap-2">
+          <h3 id="connectionsModalTitle" class="text-sm font-bold text-white">Followers</h3>
+          <span id="connectionsModalBadge" class="text-[10px] font-mono px-2 py-0.5 rounded-full bg-pink-500/20 text-pink-300"></span>
+        </div>
+        <button onclick="closeConnectionsModal()" class="w-7 h-7 rounded-full liquid-subtle text-slate-300 hover:text-white flex items-center justify-center">
+          <i class="fa-solid fa-xmark text-xs"></i>
+        </button>
+      </div>
+
+      <div class="relative">
+        <i class="fa-solid fa-magnifying-glass absolute left-3 top-2.5 text-xs text-slate-400"></i>
+        <input type="text" id="connectionsSearchInput" oninput="filterConnectionsList(this.value)" placeholder="Search users..." class="w-full text-xs pl-8 pr-3.5 py-2 rounded-xl bg-black/40 border border-white/10 text-white focus:outline-none focus:border-pink-500">
+      </div>
+
+      <div id="connectionsList" class="space-y-2.5 max-h-80 overflow-y-auto pr-1">
+        <!-- Rendered list of users with toggle button -->
+      </div>
+    </div>
+  </div>
+
+  <!-- FULLSCREEN MOMENT (STORY) VIEWER -->
+  <div id="storyViewerModal" class="fixed inset-0 z-50 bg-black/95 backdrop-blur-2xl hidden flex items-center justify-center p-3">
+    <div class="relative w-full max-w-sm h-[600px] rounded-3xl overflow-hidden border border-white/20 shadow-2xl bg-canvas flex flex-col justify-between p-4">
+      
+      <!-- Progress Bar -->
+      <div class="flex items-center gap-1 w-full z-20">
+        <div class="flex-1 h-1 bg-white/20 rounded-full overflow-hidden">
+          <div id="storyProgressFill" class="h-full bg-white rounded-full"></div>
+        </div>
+      </div>
+
+      <!-- Header -->
+      <div class="flex items-center justify-between z-20 mt-3">
+        <div class="flex items-center gap-2.5">
+          <img id="storyAvatar" src="" class="w-8 h-8 rounded-full object-cover border border-white/30">
+          <div>
+            <h5 id="storyAuthor" class="text-xs font-bold text-white">Author</h5>
+            <span class="text-[9px] text-white/70">Moment • INTWIWA</span>
+          </div>
+        </div>
+
+        <button onclick="closeStory()" class="w-7 h-7 rounded-full bg-black/60 text-white flex items-center justify-center hover:bg-black">
+          <i class="fa-solid fa-xmark text-xs"></i>
+        </button>
+      </div>
+
+      <!-- Story Visual -->
+      <img id="storyMedia" src="" class="absolute inset-0 w-full h-full object-cover z-10 pointer-events-none">
+
+      <!-- Caption & Reaction Bar -->
+      <div class="z-20 space-y-2">
+        <p id="storyCaption" class="text-xs text-white drop-shadow bg-black/45 p-2 rounded-xl backdrop-blur-sm"></p>
+        <div class="flex items-center gap-2">
+          <input type="text" placeholder="Send a reaction..." class="flex-1 text-xs px-3 py-2 rounded-full bg-black/60 backdrop-blur-md text-white border border-white/20 focus:outline-none">
+          <button onclick="playAudio('pop'); triggerToast('Reaction sent! ❤️'); closeStory();" class="w-9 h-9 rounded-full bg-pink-600 text-white flex items-center justify-center">
+            <i class="fa-solid fa-heart text-xs"></i>
+          </button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- CREATE ECHO (POST) MODAL -->
+  <div id="createEchoModal" class="fixed inset-0 z-50 bg-black/85 backdrop-blur-md hidden flex items-center justify-center p-4">
+    <div class="w-full max-w-lg liquid-glass rounded-3xl p-6 border border-white/15 shadow-2xl space-y-4">
+      
+      <div class="flex items-center justify-between pb-3 border-b border-white/10">
+        <h3 class="text-sm font-bold text-white flex items-center gap-2">
+          <i class="fa-solid fa-square-plus text-pink-400"></i> New Echo Post
+        </h3>
+        <button onclick="closeCreateModal()" class="w-7 h-7 rounded-full liquid-subtle text-slate-300 hover:text-white flex items-center justify-center">
+          <i class="fa-solid fa-xmark text-xs"></i>
+        </button>
+      </div>
+
+      <div>
+        <label class="block text-[11px] font-mono uppercase tracking-wider text-slate-300 font-bold mb-1">Image URL or Preset</label>
+        <div class="flex gap-2 mb-2">
+          <input type="text" id="createPostImgInput" placeholder="https://images.unsplash.com/..." class="flex-1 text-xs px-3.5 py-2.5 rounded-xl bg-black/40 border border-white/10 text-white focus:outline-none focus:border-pink-500">
+          <button onclick="attachRandomArt()" class="px-3 py-2 rounded-xl liquid-subtle text-xs font-bold text-cyan-300 hover:text-white flex-shrink-0">
+            Aesthetic Sample
+          </button>
+        </div>
+        <div id="createPostPreviewWrap" class="hidden rounded-2xl overflow-hidden max-h-48 border border-white/10 mb-2">
+          <img id="createPostPreviewImg" src="" class="w-full h-full object-cover">
+        </div>
+      </div>
+
+      <div>
+        <label class="block text-[11px] font-mono uppercase tracking-wider text-slate-300 font-bold mb-1">Caption</label>
+        <textarea id="createPostCaptionInput" rows="3" placeholder="Share your perspective... #INTWIWA #PrashantYadav" class="w-full text-xs px-3.5 py-2.5 rounded-xl bg-black/40 border border-white/10 text-white focus:outline-none focus:border-pink-500 resize-none"></textarea>
+      </div>
+
+      <div class="flex items-center justify-between pt-2">
+        <div class="flex items-center gap-2 text-xs text-slate-400 font-mono">
+          <span class="cursor-pointer hover:text-pink-400" onclick="insertTag('#INTWIWA')">#INTWIWA</span>
+          <span class="cursor-pointer hover:text-cyan-400" onclick="insertTag('#PrashantYadav')">#PrashantYadav</span>
+        </div>
+        <button onclick="publishPost()" class="px-5 py-2.5 rounded-xl bg-gradient-to-r from-violet-600 to-pink-600 hover:opacity-95 text-white font-bold text-xs shadow-lg">
+          Publish Echo
+        </button>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- EDIT PROFILE MODAL -->
+  <div id="editProfileModal" class="fixed inset-0 z-50 bg-black/85 backdrop-blur-md hidden flex items-center justify-center p-4">
+    <div class="w-full max-w-md liquid-glass rounded-3xl p-6 border border-white/15 shadow-2xl space-y-4">
+      <div class="flex items-center justify-between pb-3 border-b border-white/10">
+        <h3 class="text-sm font-bold text-white">Edit Profile</h3>
+        <button onclick="closeEditProfile()" class="w-7 h-7 rounded-full liquid-subtle text-slate-300 hover:text-white flex items-center justify-center">
+          <i class="fa-solid fa-xmark text-xs"></i>
+        </button>
+      </div>
+
+      <div>
+        <label class="block text-[11px] font-mono uppercase text-slate-300 font-bold mb-1">Full Name</label>
+        <input type="text" id="editFullName" class="w-full text-xs px-3.5 py-2 rounded-xl bg-black/40 border border-white/10 text-white focus:outline-none">
+      </div>
+
+      <div>
+        <label class="block text-[11px] font-mono uppercase text-slate-300 font-bold mb-1">Bio</label>
+        <textarea id="editBio" rows="3" class="w-full text-xs px-3.5 py-2 rounded-xl bg-black/40 border border-white/10 text-white focus:outline-none resize-none"></textarea>
+      </div>
+
+      <button onclick="saveProfile()" class="w-full py-2.5 rounded-xl bg-gradient-to-r from-violet-600 to-pink-600 text-white font-bold text-xs">
+        Save Changes
+      </button>
+    </div>
+  </div>
+
+  <!-- TOAST NOTIFICATION -->
+  <div id="toast" class="fixed bottom-20 md:bottom-6 right-6 z-50 transform translate-y-24 opacity-0 transition-all duration-300 pointer-events-none">
+    <div class="liquid-glass text-white text-xs font-semibold px-4 py-2.5 rounded-2xl shadow-2xl flex items-center gap-2 border border-white/20">
+      <i class="fa-solid fa-bolt text-yellow-300 text-xs"></i>
+      <span id="toastMsg">Notification message</span>
+    </div>
+  </div>
+
+
+  <!-- ==============================================================
+       4. JAVASCRIPT LOGIC & ENGINE
+       ============================================================== -->
+  <script>
+    /* ================= Web Audio API Haptics ================= */
+    let audioCtx = null;
+    function playAudio(type = 'pop') {
+      try {
+        if (!audioCtx) audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+        if (audioCtx.state === 'suspended') audioCtx.resume();
+
+        const osc = audioCtx.createOscillator();
+        const gain = audioCtx.createGain();
+        osc.connect(gain);
+        gain.connect(audioCtx.destination);
+
+        const now = audioCtx.currentTime;
+        if (type === 'pop') {
+          osc.type = 'sine';
+          osc.frequency.setValueAtTime(440, now);
+          osc.frequency.exponentialRampToValueAtTime(880, now + 0.08);
+          gain.gain.setValueAtTime(0.12, now);
+          gain.gain.exponentialRampToValueAtTime(0.01, now + 0.08);
+          osc.start(now);
+          osc.stop(now + 0.08);
+        } else if (type === 'follow') {
+          osc.type = 'triangle';
+          osc.frequency.setValueAtTime(520, now);
+          osc.frequency.exponentialRampToValueAtTime(1040, now + 0.12);
+          gain.gain.setValueAtTime(0.15, now);
+          gain.gain.exponentialRampToValueAtTime(0.01, now + 0.12);
+          osc.start(now);
+          osc.stop(now + 0.12);
+        }
+      } catch (err) {}
+    }
+
+    /* ================= STORAGE KEYS & DATABASE ================= */
+    const STORAGE_AUTH = 'INTWIWA_AUTH_USER_V3';
+    const STORAGE_POSTS = 'INTWIWA_POSTS_V3';
+    const STORAGE_FOLLOWS = 'INTWIWA_FOLLOW_RELATIONS';
+
+    let currentUser = null;
+    let chosenSignupAvatar = 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=200&auto=format&fit=crop&q=80';
+
+    // Seeded Network of Users for realistic Follow/Following dynamics
+    let networkUsers = {
+      prashant_dev: {
+        handle: 'prashant_dev',
+        name: 'PRASHANT YADAV',
+        avatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&auto=format&fit=crop&q=80',
+        verified: true,
+        isFollowing: true, // We follow Prashant by default
+        followsBack: true,
+        mutual: 'Platform Creator'
+      },
+      sophia_c: {
+        handle: 'sophia_c',
+        name: 'Sophia Carter',
+        avatar: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=150&auto=format&fit=crop&q=80',
+        verified: false,
+        isFollowing: true,
+        followsBack: true,
+        mutual: 'Followed by prashant_dev + 3 others'
+      },
+      marcus_v: {
+        handle: 'marcus_v',
+        name: 'Marcus Vance',
+        avatar: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=150&auto=format&fit=crop&q=80',
+        verified: false,
+        isFollowing: false,
+        followsBack: false,
+        mutual: 'Followed by sophia_c'
+      },
+      liam_d: {
+        handle: 'liam_d',
+        name: 'Liam Davis',
+        avatar: 'https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?w=150&auto=format&fit=crop&q=80',
+        verified: false,
+        isFollowing: false,
+        followsBack: false,
+        mutual: 'Suggested for you'
+      },
+      elena_art: {
+        handle: 'elena_art',
+        name: 'Elena Rostova',
+        avatar: 'https://images.unsplash.com/photo-1517841905240-472988babdf9?w=150&auto=format&fit=crop&q=80',
+        verified: false,
+        isFollowing: false,
+        followsBack: true,
+        mutual: 'Follows you'
+      }
+    };
+
+    // Initial Posts Database
+    const initialPosts = [
+      {
+        id: 101,
+        authorName: 'PRASHANT YADAV',
+        authorHandle: 'prashant_dev',
+        avatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&auto=format&fit=crop&q=80',
+        verified: true,
+        image: 'https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=900&auto=format&fit=crop&q=80',
+        caption: 'Building INTWIWA with liquid glass aesthetics & real-time follow dynamics ⚡ Designed and architected with high fidelity. #INTWIWA #PrashantYadav #ModernSocial',
+        likes: 12480,
+        liked: false,
+        bookmarked: false,
+        time: '2h ago',
+        comments: [
+          { user: 'sophia_c', text: 'The liquid glass design and follow transitions are gorgeous!' },
+          { user: 'marcus_v', text: 'Super crisp and responsive.' }
+        ]
+      },
+      {
+        id: 102,
+        authorName: 'Sophia Carter',
+        authorHandle: 'sophia_c',
+        avatar: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=150&auto=format&fit=crop&q=80',
+        verified: false,
+        image: 'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=900&auto=format&fit=crop&q=80',
+        caption: 'Sunset hues & peaceful ocean waves 🌊 Summer vibrations on INTWIWA. #GoldenHour #OceanView',
+        likes: 3420,
+        liked: false,
+        bookmarked: false,
+        time: '5h ago',
+        comments: [
+          { user: 'ariadesigns', text: 'Breathtaking light refraction!' }
+        ]
+      }
+    ];
+
+    let posts = [];
+
+    /* ================= 1. AUTH / LOGIN FLOW ================= */
+    function checkUserSession() {
+      const stored = localStorage.getItem(STORAGE_AUTH);
+      if (stored) {
+        try {
+          currentUser = JSON.parse(stored);
+          launchApp();
+          return;
+        } catch (e) {}
+      }
+      showAuth();
+    }
+
+    function showAuth() {
+      document.getElementById('authOverlay').classList.remove('hidden');
+      document.getElementById('mainApp').classList.add('opacity-0', 'pointer-events-none');
+    }
+
+    function switchAuthMode(mode) {
+      playAudio('pop');
+      const tabL = document.getElementById('authTabLogin');
+      const tabS = document.getElementById('authTabSignup');
+      const formL = document.getElementById('authLoginForm');
+      const formS = document.getElementById('authSignupForm');
+
+      if (mode === 'login') {
+        tabL.className = 'flex-1 py-2 rounded-xl text-xs font-bold transition-all text-white bg-gradient-to-r from-violet-600 to-pink-600 shadow-lg shadow-pink-500/20';
+        tabS.className = 'flex-1 py-2 rounded-xl text-xs font-bold transition-all text-slate-400 hover:text-white';
+        formL.classList.remove('hidden');
+        formS.classList.add('hidden');
+      } else {
+        tabS.className = 'flex-1 py-2 rounded-xl text-xs font-bold transition-all text-white bg-gradient-to-r from-violet-600 to-pink-600 shadow-lg shadow-pink-500/20';
+        tabL.className = 'flex-1 py-2 rounded-xl text-xs font-bold transition-all text-slate-400 hover:text-white';
+        formS.classList.remove('hidden');
+        formL.classList.add('hidden');
+      }
+    }
+
+    function setSignupAvatar(url) {
+      chosenSignupAvatar = url;
+      document.getElementById('signupAvatarPreview').src = url;
+      playAudio('pop');
+    }
+
+    function uploadSignupAvatar(e) {
+      const file = e.target.files[0];
+      if (file) {
+        const reader = new FileReader();
+        reader.onload = (evt) => {
+          setSignupAvatar(evt.target.result);
+          triggerToast('Avatar updated!');
+        };
+        reader.readAsDataURL(file);
+      }
+    }
+
+    function cleanHandleInput(el) {
+      el.value = el.value.replace(/[^a-zA-Z0-9_]/g, '').toLowerCase();
+    }
+
+    function quickFillAccount(name, handle, avatar, bio) {
+      const user = {
+        name,
+        handle: handle.replace('@', ''),
+        avatar,
+        bio,
+        followersCount: 1420,
+        followingCount: calculateFollowingCount()
+      };
+      saveCurrentUser(user);
+    }
+
+    function executeLogin() {
+      const identifier = document.getElementById('loginUsername').value.trim() || 'ariadesigns';
+      const cleanHandle = identifier.replace('@', '');
+
+      let user = {
+        name: cleanHandle === 'prashant_dev' ? 'PRASHANT YADAV' : 'Aria Montgomery',
+        handle: cleanHandle,
+        avatar: cleanHandle === 'prashant_dev' 
+          ? 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=200&auto=format&fit=crop&q=80'
+          : 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=200&auto=format&fit=crop&q=80',
+        bio: 'Digital creator & visual explorer on INTWIWA ✨⚡',
+        followersCount: 1420,
+        followingCount: calculateFollowingCount()
+      };
+
+      saveCurrentUser(user);
+    }
+
+    function executeSignup() {
+      const name = document.getElementById('signupFullName').value.trim() || 'New Explorer';
+      const handle = (document.getElementById('signupHandle').value.trim() || 'explorer').replace('@', '');
+      const bio = document.getElementById('signupBio').value.trim() || 'Welcome to my INTWIWA universe ✨';
+
+      const user = {
+        name,
+        handle,
+        avatar: chosenSignupAvatar,
+        bio,
+        followersCount: 0,
+        followingCount: calculateFollowingCount()
+      };
+
+      saveCurrentUser(user);
+    }
+
+    function saveCurrentUser(user) {
+      currentUser = user;
+      localStorage.setItem(STORAGE_AUTH, JSON.stringify(currentUser));
+      playAudio('follow');
+      triggerToast(`Logged in as @${currentUser.handle}`);
+      launchApp();
+    }
+
+    function executeLogout() {
+      playAudio('pop');
+      localStorage.removeItem(STORAGE_AUTH);
+      currentUser = null;
+      triggerToast('Logged out of INTWIWA');
+      showAuth();
+    }
+
+    function promptSwitchAccount() {
+      executeLogout();
+    }
+
+    function calculateFollowingCount() {
+      return Object.values(networkUsers).filter(u => u.isFollowing).length;
+    }
+
+    /* ================= 2. LAUNCH & RENDER ================= */
+    function launchApp() {
+      document.getElementById('authOverlay').classList.add('hidden');
+      const app = document.getElementById('mainApp');
+      app.classList.remove('opacity-0', 'pointer-events-none');
+
+      // Update Nav Avatars & Identifiers
+      document.getElementById('headerUserAvatar').src = currentUser.avatar;
+      document.getElementById('trayMyAvatar').src = currentUser.avatar;
+      document.getElementById('sidebarUserAvatar').src = currentUser.avatar;
+      document.getElementById('sidebarUserName').innerText = currentUser.name;
+      document.getElementById('sidebarUserHandle').innerText = '@' + currentUser.handle;
+
+      // Profile Page Info
+      document.getElementById('profileAvatar').src = currentUser.avatar;
+      document.getElementById('profileFullName').innerText = currentUser.name;
+      document.getElementById('profileHandle').innerText = '@' + currentUser.handle;
+      document.getElementById('profileBio').innerText = currentUser.bio;
+      document.getElementById('profileFollowersCount').innerText = (currentUser.followersCount || 1420).toLocaleString();
+      document.getElementById('profileFollowingCount').innerText = calculateFollowingCount().toLocaleString();
+
+      loadStoredFollows();
+      loadPosts();
+      renderFeed();
+      renderSidebarSuggestions();
+      renderFounderCard();
+      renderProfileGrid();
+    }
+
+    /* ================= 3. INSTAGRAM-INSPIRED FOLLOW SYSTEM ================= */
+    function loadStoredFollows() {
+      const stored = localStorage.getItem(STORAGE_FOLLOWS);
+      if (stored) {
+        try {
+          const map = JSON.parse(stored);
+          Object.keys(map).forEach(h => {
+            if (networkUsers[h]) networkUsers[h].isFollowing = map[h];
+          });
+        } catch(e) {}
+      }
+    }
+
+    function saveStoredFollows() {
+      const map = {};
+      Object.keys(networkUsers).forEach(h => {
+        map[h] = networkUsers[h].isFollowing;
+      });
+      localStorage.setItem(STORAGE_FOLLOWS, JSON.stringify(map));
+    }
+
+    function toggleFollowAccount(handle) {
+      playAudio('follow');
+      if (!networkUsers[handle]) {
+        networkUsers[handle] = {
+          handle: handle,
+          name: handle.toUpperCase(),
+          avatar: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150&auto=format&fit=crop&q=80',
+          verified: false,
+          isFollowing: false,
+          followsBack: false,
+          mutual: 'New member'
+        };
+      }
+
+      const user = networkUsers[handle];
+      user.isFollowing = !user.isFollowing;
+
+      saveStoredFollows();
+
+      // Recalculate following count
+      const newFollowingCount = calculateFollowingCount();
+      currentUser.followingCount = newFollowingCount;
+      localStorage.setItem(STORAGE_AUTH, JSON.stringify(currentUser));
+      document.getElementById('profileFollowingCount').innerText = newFollowingCount.toLocaleString();
+
+      // Toast feedback
+      if (user.isFollowing) {
+        triggerToast(`Following @${handle} ✨`);
+      } else {
+        triggerToast(`Unfollowed @${handle}`);
+      }
+
+      // Refresh relevant UI sections
+      renderFeed();
+      renderSidebarSuggestions();
+      renderFounderCard();
+      
+      // If modal is open, refresh it as well
+      const modal = document.getElementById('connectionsModal');
+      if (!modal.classList.contains('hidden')) {
+        renderConnectionsModalList(lastConnectionsType || 'following');
+      }
+    }
+
+    function renderFounderCard() {
+      const btn = document.getElementById('founderFollowBtn');
+      const isF = networkUsers['prashant_dev']?.isFollowing;
+      if (isF) {
+        btn.className = 'w-full mt-3 py-2 rounded-xl liquid-subtle text-slate-300 hover:text-red-400 hover:border-red-500/40 text-xs font-bold transition-all';
+        btn.innerHTML = '<i class="fa-solid fa-check text-cyan-400 mr-1.5"></i> Following';
+      } else {
+        btn.className = 'w-full mt-3 py-2 rounded-xl bg-gradient-to-r from-violet-600 to-pink-600 hover:opacity-95 text-white text-xs font-bold transition-all shadow-md';
+        btn.innerHTML = '<i class="fa-solid fa-user-plus mr-1.5"></i> Follow';
+      }
+
+      // Also update motion reel author follow btn if visible
+      const motionBtn = document.getElementById('motionAuthorFollowBtn');
+      if (motionBtn) {
+        if (isF) {
+          motionBtn.innerText = 'Following';
+          motionBtn.className = 'px-2.5 py-0.5 rounded-lg text-[10px] font-bold bg-white/20 text-white ml-1';
+        } else {
+          motionBtn.innerText = 'Follow';
+          motionBtn.className = 'px-2.5 py-0.5 rounded-lg text-[10px] font-bold bg-white text-canvas ml-1';
+        }
+      }
+    }
+
+    function renderSidebarSuggestions() {
+      const container = document.getElementById('suggestedAccountsList');
+      if (!container) return;
+      container.innerHTML = '';
+
+      Object.values(networkUsers).forEach(u => {
+        if (u.handle === 'prashant_dev') return; // Handled in spotlight
+        const div = document.createElement('div');
+        div.className = 'flex items-center justify-between';
+        div.innerHTML = `
+          <div class="flex items-center gap-2.5">
+            <img src="${u.avatar}" class="w-8 h-8 rounded-xl object-cover">
+            <div class="truncate">
+              <h5 class="text-xs font-bold text-white truncate">${u.name}</h5>
+              <p class="text-[10px] text-slate-400 font-mono">@${u.handle}</p>
+            </div>
+          </div>
+          <button onclick="toggleFollowAccount('${u.handle}')" class="text-[11px] font-bold transition-colors ${
+            u.isFollowing ? 'text-slate-400 hover:text-red-400' : 'text-pink-400 hover:text-pink-300'
+          }">
+            ${u.isFollowing ? 'Following' : 'Follow'}
+          </button>
+        `;
+        container.appendChild(div);
+      });
+    }
+
+    /* ================= 4. FOLLOWERS & FOLLOWING MODAL ================= */
+    let lastConnectionsType = 'followers';
+
+    function openConnectionsModal(type) {
+      playAudio('pop');
+      lastConnectionsType = type;
+      const modal = document.getElementById('connectionsModal');
+      const title = document.getElementById('connectionsModalTitle');
+      const badge = document.getElementById('connectionsModalBadge');
+
+      if (type === 'followers') {
+        title.innerText = 'Followers';
+        badge.innerText = '1,420 accounts';
+      } else if (type === 'following') {
+        title.innerText = 'Following';
+        badge.innerText = `${calculateFollowingCount()} accounts`;
+      } else {
+        title.innerText = 'Suggested Connections';
+        badge.innerText = 'Explore';
+      }
+
+      document.getElementById('connectionsSearchInput').value = '';
+      renderConnectionsModalList(type);
+      modal.classList.remove('hidden');
+    }
+
+    function closeConnectionsModal() {
+      playAudio('pop');
+      document.getElementById('connectionsModal').classList.add('hidden');
+    }
+
+    function renderConnectionsModalList(type, filterText = '') {
+      const container = document.getElementById('connectionsList');
+      container.innerHTML = '';
+
+      let list = Object.values(networkUsers);
+      if (type === 'following') {
+        list = list.filter(u => u.isFollowing);
+      }
+
+      if (filterText) {
+        const q = filterText.toLowerCase();
+        list = list.filter(u => u.name.toLowerCase().includes(q) || u.handle.toLowerCase().includes(q));
+      }
+
+      if (list.length === 0) {
+        container.innerHTML = `<div class="p-4 text-center text-xs text-slate-400 font-mono">No accounts found</div>`;
+        return;
+      }
+
+      list.forEach(u => {
+        const row = document.createElement('div');
+        row.className = 'flex items-center justify-between p-2.5 rounded-2xl liquid-subtle';
+        row.innerHTML = `
+          <div class="flex items-center gap-3">
+            <img src="${u.avatar}" class="w-10 h-10 rounded-2xl object-cover">
+            <div>
+              <p class="text-xs font-bold text-white flex items-center gap-1">
+                ${u.name} ${u.verified ? '<i class="fa-solid fa-circle-check text-cyan-400 text-[10px]"></i>' : ''}
+              </p>
+              <p class="text-[10px] text-slate-400 font-mono">@${u.handle}</p>
+              <p class="text-[9px] text-slate-500">${u.mutual}</p>
+            </div>
+          </div>
+          <button onclick="toggleFollowAccount('${u.handle}')" class="px-3.5 py-1.5 rounded-xl text-xs font-bold transition-all ${
+            u.isFollowing 
+              ? 'liquid-subtle text-slate-300 hover:text-red-400 border border-white/10' 
+              : 'bg-gradient-to-r from-violet-600 to-pink-600 text-white shadow'
+          }">
+            ${u.isFollowing ? 'Following' : 'Follow'}
+          </button>
+        `;
+        container.appendChild(row);
+      });
+    }
+
+    function filterConnectionsList(val) {
+      renderConnectionsModalList(lastConnectionsType, val);
+    }
+
+    /* ================= 5. POSTS & FEED LOGIC ================= */
+    function loadPosts() {
+      const stored = localStorage.getItem(STORAGE_POSTS);
+      if (stored) {
+        try { posts = JSON.parse(stored); } catch(e) { posts = initialPosts; }
+      } else {
+        posts = initialPosts;
+        savePosts();
+      }
+    }
+
+    function savePosts() {
+      localStorage.setItem(STORAGE_POSTS, JSON.stringify(posts));
+    }
+
+    function renderFeed() {
+      const container = document.getElementById('postsStream');
+      container.innerHTML = '';
+
+      posts.forEach(post => {
+        const isFollowed = networkUsers[post.authorHandle]?.isFollowing;
+        const card = document.createElement('article');
+        card.className = 'liquid-glass rounded-3xl overflow-hidden border border-white/10 shadow-xl';
+
+        let commentsHtml = '';
+        if (post.comments && post.comments.length > 0) {
+          commentsHtml = post.comments.map(c => `
+            <div class="text-xs text-slate-300">
+              <strong class="text-white font-mono">@${c.user}</strong> <span class="text-slate-300">${c.text}</span>
+            </div>
+          `).join('');
+        }
+
+        card.innerHTML = `
+          <!-- Header -->
+          <div class="p-3.5 flex items-center justify-between">
+            <div class="flex items-center gap-3">
+              <div class="relative w-10 h-10 rounded-full p-[2px] moment-ring-live">
+                <img src="${post.avatar}" class="w-full h-full rounded-full object-cover border-2 border-canvas">
+              </div>
+              <div>
+                <div class="flex items-center gap-1.5">
+                  <span class="text-xs font-bold text-white">${post.authorName}</span>
+                  ${post.verified ? '<i class="fa-solid fa-circle-check text-cyan-400 text-[10px]"></i>' : ''}
+                </div>
+                <div class="flex items-center gap-2">
+                  <span class="text-[10px] text-slate-400 font-mono">@${post.authorHandle}</span>
+                  <span class="text-[10px] text-slate-500">• ${post.time}</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Follow / Following button -->
+            <div class="flex items-center gap-2">
+              <button onclick="toggleFollowAccount('${post.authorHandle}')" class="px-3.5 py-1 rounded-xl text-[11px] font-bold transition-all ${
+                isFollowed 
+                  ? 'liquid-subtle text-slate-300 hover:text-red-400 border border-white/10' 
+                  : 'bg-gradient-to-r from-violet-600 to-pink-600 text-white shadow-md'
+              }">
+                ${isFollowed ? 'Following' : 'Follow'}
+              </button>
+              <button onclick="triggerToast('Post menu')" class="text-slate-400 hover:text-white px-1">
+                <i class="fa-solid fa-ellipsis"></i>
+              </button>
+            </div>
+          </div>
+
+          <!-- Media with Double-Tap Heart Burst -->
+          <div class="relative w-full aspect-square bg-black overflow-hidden select-none cursor-pointer" ondblclick="triggerPostDoubleTap(${post.id}, event)">
+            <img src="${post.image}" class="w-full h-full object-cover">
+            
+            <div id="heartPop-${post.id}" class="absolute top-1/2 left-1/2 pointer-events-none hidden">
+              <i class="fa-solid fa-heart text-6xl text-pink-500 drop-shadow-2xl"></i>
+            </div>
+          </div>
+
+          <!-- Actions -->
+          <div class="p-3.5 space-y-2.5">
+            <div class="flex items-center justify-between">
+              <div class="flex items-center gap-4 text-slate-200">
+                <button onclick="togglePostLike(${post.id})" class="text-xl hover:text-pink-500 transition-colors">
+                  <i class="fa-${post.liked ? 'solid' : 'regular'} fa-heart ${post.liked ? 'text-pink-500' : ''}"></i>
+                </button>
+                <button onclick="focusComment(${post.id})" class="text-xl hover:text-cyan-400 transition-colors">
+                  <i class="fa-regular fa-comment"></i>
+                </button>
+                <button onclick="sharePostToWhisper(${post.id})" class="text-xl hover:text-violet-400 transition-colors">
+                  <i class="fa-regular fa-paper-plane"></i>
+                </button>
+              </div>
+
+              <button onclick="togglePostBookmark(${post.id})" class="text-xl text-slate-200 hover:text-amber-400 transition-colors">
+                <i class="fa-${post.bookmarked ? 'solid' : 'regular'} fa-bookmark ${post.bookmarked ? 'text-amber-400' : ''}"></i>
+              </button>
+            </div>
+
+            <!-- Likes Count -->
+            <p class="text-xs font-bold text-white font-mono">${post.likes.toLocaleString()} likes</p>
+
+            <!-- Caption -->
+            <div class="text-xs leading-relaxed">
+              <span class="font-bold text-white mr-1.5 font-mono">@${post.authorHandle}</span>
+              <span class="text-slate-200">${post.caption}</span>
+            </div>
+
+            <!-- Comments Drawer -->
+            <div class="space-y-1 pt-1">
+              ${commentsHtml}
+            </div>
+
+            <!-- Comment Input -->
+            <div class="flex items-center gap-2 pt-2 border-t border-white/10">
+              <input type="text" id="postCommentInput-${post.id}" placeholder="Add a comment..." class="flex-1 text-xs bg-transparent text-white placeholder-slate-400 focus:outline-none" onkeydown="if(event.key === 'Enter') submitComment(${post.id})">
+              <button onclick="submitComment(${post.id})" class="text-xs font-bold text-pink-400 hover:text-pink-300">
+                Post
+              </button>
+            </div>
+          </div>
+        `;
+
+        container.appendChild(card);
+      });
+    }
+
+    function togglePostLike(id) {
+      playAudio('pop');
+      const p = posts.find(x => x.id === id);
+      if (!p) return;
+      p.liked = !p.liked;
+      p.likes += p.liked ? 1 : -1;
+      savePosts();
+      renderFeed();
+    }
+
+    function triggerPostDoubleTap(id, e) {
+      playAudio('pop');
+      const heart = document.getElementById(`heartPop-${id}`);
+      if (heart) {
+        heart.classList.remove('hidden');
+        heart.classList.add('heart-burst-anim');
+        setTimeout(() => {
+          heart.classList.add('hidden');
+          heart.classList.remove('heart-burst-anim');
+        }, 800);
+      }
+      const p = posts.find(x => x.id === id);
+      if (p && !p.liked) {
+        p.liked = true;
+        p.likes += 1;
+        savePosts();
+        renderFeed();
+      }
+      triggerToast('Liked post! ❤️');
+    }
+
+    function togglePostBookmark(id) {
+      playAudio('pop');
+      const p = posts.find(x => x.id === id);
+      if (!p) return;
+      p.bookmarked = !p.bookmarked;
+      savePosts();
+      renderFeed();
+      triggerToast(p.bookmarked ? 'Saved to collection' : 'Removed from collection');
+    }
+
+    function focusComment(id) {
+      const el = document.getElementById(`postCommentInput-${id}`);
+      if (el) el.focus();
+    }
+
+    function submitComment(id) {
+      playAudio('pop');
+      const el = document.getElementById(`postCommentInput-${id}`);
+      const text = el.value.trim();
+      if (!text) return;
+      const p = posts.find(x => x.id === id);
+      if (!p) return;
+      if (!p.comments) p.comments = [];
+      p.comments.push({ user: currentUser.handle, text });
+      savePosts();
+      el.value = '';
+      renderFeed();
+      triggerToast('Comment posted!');
+    }
+
+    function sharePostToWhisper(id) {
+      navigateTo('whisper');
+      const inp = document.getElementById('whisperInput');
+      inp.value = `Forwarded post #${id} from INTWIWA`;
+      inp.focus();
+      triggerToast('Staged post in Whisper Hub 🚀');
+    }
+
+    /* ================= 6. MOMENTS (STORIES) VIEWER ================= */
+    let storyTimerObj = null;
+
+    function launchStory(author, avatar, img, caption) {
+      playAudio('pop');
+      const modal = document.getElementById('storyViewerModal');
+      document.getElementById('storyAuthor').innerText = author;
+      document.getElementById('storyAvatar').src = avatar;
+      document.getElementById('storyMedia').src = img;
+      document.getElementById('storyCaption').innerText = caption;
+
+      modal.classList.remove('hidden');
+
+      const fill = document.getElementById('storyProgressFill');
+      fill.classList.remove('story-running');
+      void fill.offsetWidth;
+      fill.classList.add('story-running');
+
+      clearTimeout(storyTimerObj);
+      storyTimerObj = setTimeout(() => {
+        closeStory();
+      }, 5000);
+    }
+
+    function closeStory() {
+      clearTimeout(storyTimerObj);
+      document.getElementById('storyViewerModal').classList.add('hidden');
+    }
+
+    /* ================= 7. CREATE ECHO (POST) ================= */
+    function openCreateModal() {
+      playAudio('pop');
+      document.getElementById('createEchoModal').classList.remove('hidden');
+    }
+    function closeCreateModal() {
+      document.getElementById('createEchoModal').classList.add('hidden');
+    }
+
+    function attachRandomArt() {
+      const art = [
+        'https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=900&auto=format&fit=crop&q=80',
+        'https://images.unsplash.com/photo-1518770660439-4636190af475?w=900&auto=format&fit=crop&q=80',
+        'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=900&auto=format&fit=crop&q=80',
+        'https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=900&auto=format&fit=crop&q=80'
+      ];
+      const pick = art[Math.floor(Math.random() * art.length)];
+      document.getElementById('createPostImgInput').value = pick;
+      document.getElementById('createPostPreviewImg').src = pick;
+      document.getElementById('createPostPreviewWrap').classList.remove('hidden');
+      playAudio('pop');
+    }
+
+    function insertTag(tag) {
+      document.getElementById('createPostCaptionInput').value += ' ' + tag + ' ';
+    }
+
+    function publishPost() {
+      playAudio('follow');
+      const img = document.getElementById('createPostImgInput').value.trim() || 'https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=900&auto=format&fit=crop&q=80';
+      const caption = document.getElementById('createPostCaptionInput').value.trim() || 'Visual flow on INTWIWA ⚡ #INTWIWA';
+
+      const newPost = {
+        id: Date.now(),
+        authorName: currentUser.name,
+        authorHandle: currentUser.handle,
+        avatar: currentUser.avatar,
+        verified: true,
+        image: img,
+        caption: caption,
+        likes: 1,
+        liked: true,
+        bookmarked: false,
+        time: 'Just now',
+        comments: []
+      };
+
+      posts.unshift(newPost);
+      savePosts();
+      closeCreateModal();
+
+      document.getElementById('createPostImgInput').value = '';
+      document.getElementById('createPostCaptionInput').value = '';
+      document.getElementById('createPostPreviewWrap').classList.add('hidden');
+
+      renderFeed();
+      renderProfileGrid();
+      navigateTo('feed');
+      triggerToast('Echo published to INTWIWA feed! ⚡');
+    }
+
+    /* ================= 8. MOTION (REELS) ENGINE ================= */
+    const motionFeed = [
+      {
+        img: 'https://images.unsplash.com/photo-1518709268805-4e9042af9f23?w=800&auto=format&fit=crop&q=80',
+        author: 'PRASHANT YADAV',
+        avatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&auto=format&fit=crop&q=80',
+        caption: 'Liquid glass aesthetics on INTWIWA. Powered by PRASHANT YADAV ⚡',
+        audio: 'Prashant Yadav • Future Glass Audio',
+        likes: '42.8K'
+      },
+      {
+        img: 'https://images.unsplash.com/photo-1508739773434-c26b3d09e071?w=800&auto=format&fit=crop&q=80',
+        author: 'Sophia Carter',
+        avatar: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100&auto=format&fit=crop&q=80',
+        caption: 'Reflections & neon light refraction. The future of mobile social experience ✨',
+        audio: 'Sophia Carter • Ambient Soundscape',
+        likes: '31.4K'
+      }
+    ];
+
+    let motionIdx = 0;
+    let motionLiked = false;
+
+    function nextMotionClip() {
+      playAudio('pop');
+      motionIdx = (motionIdx + 1) % motionFeed.length;
+      const c = motionFeed[motionIdx];
+      document.getElementById('motionVisual').src = c.img;
+      document.getElementById('motionAuthorName').innerText = c.author;
+      document.getElementById('motionAuthorAvatar').src = c.avatar;
+      document.getElementById('motionCaption').innerText = c.caption;
+      document.getElementById('motionAudioTitle').innerText = c.audio;
+      document.getElementById('motionLikeCount').innerText = c.likes;
+      motionLiked = false;
+      document.getElementById('motionLikeIcon').className = 'fa-regular fa-heart text-lg';
+      triggerToast(`Loaded Motion by ${c.author}`);
+    }
+
+    function toggleMotionLike() {
+      playAudio('pop');
+      motionLiked = !motionLiked;
+      const icon = document.getElementById('motionLikeIcon');
+      if (motionLiked) {
+        icon.className = 'fa-solid fa-heart text-lg text-pink-500';
+        triggerToast('Liked Motion! ❤️');
+      } else {
+        icon.className = 'fa-regular fa-heart text-lg';
+      }
+    }
+
+    function handleMotionDoubleTap(e) {
+      playAudio('pop');
+      const burst = document.getElementById('motionHeartBurst');
+      burst.classList.remove('hidden');
+      burst.classList.add('heart-burst-anim');
+      setTimeout(() => {
+        burst.classList.add('hidden');
+        burst.classList.remove('heart-burst-anim');
+      }, 800);
+      if (!motionLiked) toggleMotionLike();
+    }
+
+    function toggleMotionAudio() {
+      playAudio('pop');
+      const icon = document.getElementById('motionAudioIcon');
+      if (icon.classList.contains('fa-volume-high')) {
+        icon.className = 'fa-solid fa-volume-xmark text-xs text-red-400';
+        triggerToast('Audio muted');
+      } else {
+        icon.className = 'fa-solid fa-volume-high text-xs';
+        triggerToast('Audio playing 🔊');
+      }
+    }
+
+    function shareMotionToWhisper() {
+      navigateTo('whisper');
+      const inp = document.getElementById('whisperInput');
+      inp.value = `Check out this Motion clip: "${motionFeed[motionIdx].caption.substring(0, 30)}..."`;
+      inp.focus();
+      triggerToast('Staged Motion in Whisper 🚀');
+    }
+
+    /* ================= 9. WHISPER (DIRECT MESSAGES) ================= */
+    function selectWhisperChat(name, avatar, handle) {
+      playAudio('pop');
+      document.getElementById('whisperActiveName').innerHTML = `${name} <i class="fa-solid fa-circle-check text-cyan-400 text-[10px]"></i>`;
+      document.getElementById('whisperActiveAvatar').src = avatar;
+      triggerToast(`Direct channel with ${name}`);
+    }
+
+    function sendWhisperMessage() {
+      const inp = document.getElementById('whisperInput');
+      const text = inp.value.trim();
+      if (!text) return;
+
+      playAudio('pop');
+      const list = document.getElementById('whisperMessagesList');
+      const out = document.createElement('div');
+      out.className = 'flex items-end justify-end gap-2';
+      out.innerHTML = `
+        <div class="p-3 rounded-2xl bg-gradient-to-r from-violet-600 to-pink-600 text-xs text-white max-w-[85%] space-y-1 shadow-md">
+          <p>${text}</p>
+          <div class="flex items-center justify-between text-[9px] text-white/80 pt-1">
+            <span>Just now</span>
+            <i class="fa-solid fa-check-double text-cyan-300"></i>
+          </div>
+        </div>
+      `;
+      list.appendChild(out);
+      inp.value = '';
+      list.scrollTop = list.scrollHeight;
+
+      // Simulated auto reply
+      const typing = document.getElementById('whisperTyping');
+      typing.classList.remove('hidden');
+
+      setTimeout(() => {
+        typing.classList.add('hidden');
+        playAudio('pop');
+        const reply = document.createElement('div');
+        reply.className = 'flex items-end gap-2 max-w-[85%]';
+        reply.innerHTML = `
+          <div class="p-3 rounded-2xl liquid-subtle text-xs text-slate-200 space-y-1">
+            <span class="text-[10px] font-bold text-pink-400 block">PRASHANT YADAV</span>
+            <p>Thanks for messaging on INTWIWA! The follow dynamics and liquid glass features are active. ⚡</p>
+            <div class="flex items-center justify-between text-[9px] text-slate-400 pt-1">
+              <span>Just now</span>
+              <i class="fa-solid fa-check-double text-cyan-400"></i>
+            </div>
+          </div>
+        `;
+        list.appendChild(reply);
+        list.scrollTop = list.scrollHeight;
+      }, 1000);
+    }
+
+    /* ================= 10. PROFILE & GRID ================= */
+    function renderProfileGrid() {
+      const grid = document.getElementById('profileGrid');
+      grid.innerHTML = '';
+
+      posts.forEach(p => {
+        const item = document.createElement('div');
+        item.className = 'aspect-square rounded-2xl overflow-hidden border border-white/10 relative group cursor-pointer';
+        item.innerHTML = `
+          <img src="${p.image}" class="w-full h-full object-cover group-hover:scale-105 transition-transform">
+          <div class="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center gap-3 text-white text-xs font-bold font-mono">
+            <span><i class="fa-solid fa-heart mr-1"></i>${p.likes}</span>
+            <span><i class="fa-solid fa-comment mr-1"></i>${p.comments ? p.comments.length : 0}</span>
+          </div>
+        `;
+        grid.appendChild(item);
+      });
+
+      document.getElementById('profilePostCount').innerText = posts.length;
+    }
+
+    function openEditProfile() {
+      playAudio('pop');
+      document.getElementById('editFullName').value = currentUser.name;
+      document.getElementById('editBio').value = currentUser.bio;
+      document.getElementById('editProfileModal').classList.remove('hidden');
+    }
+    function closeEditProfile() {
+      document.getElementById('editProfileModal').classList.add('hidden');
+    }
+
+    function saveProfile() {
+      playAudio('follow');
+      const name = document.getElementById('editFullName').value.trim() || currentUser.name;
+      const bio = document.getElementById('editBio').value.trim() || currentUser.bio;
+
+      currentUser.name = name;
+      currentUser.bio = bio;
+
+      localStorage.setItem(STORAGE_AUTH, JSON.stringify(currentUser));
+      document.getElementById('profileFullName').innerText = name;
+      document.getElementById('profileBio').innerText = bio;
+      document.getElementById('sidebarUserName').innerText = name;
+
+      closeEditProfile();
+      triggerToast('Profile updated!');
+    }
+
+    /* ================= 11. NAVIGATION CONTROLLER ================= */
+    function navigateTo(key) {
+      playAudio('pop');
+      const tabs = ['feed', 'motion', 'whisper', 'profile'];
+      tabs.forEach(t => {
+        const sec = document.getElementById('tab' + capitalize(t));
+        const navD = document.getElementById('navItem' + capitalize(t));
+        const navM = document.getElementById('mobNav' + capitalize(t));
+
+        if (t === key) {
+          sec.classList.remove('hidden');
+          if (navD) {
+            navD.className = 'px-3.5 py-1.5 rounded-xl text-xs font-bold text-white bg-gradient-to-r from-violet-600 to-pink-600 transition-all flex items-center gap-1.5 shadow-md';
+          }
+          if (navM) {
+            navM.className = 'flex flex-col items-center gap-0.5 text-pink-500 font-bold';
+          }
+        } else {
+          sec.classList.add('hidden');
+          if (navD) {
+            navD.className = 'px-3.5 py-1.5 rounded-xl text-xs font-bold text-slate-300 hover:text-white transition-all flex items-center gap-1.5';
+          }
+          if (navM) {
+            navM.className = 'flex flex-col items-center gap-0.5 text-slate-400';
+          }
+        }
+      });
+
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    function capitalize(s) {
+      return s.charAt(0).toUpperCase() + s.slice(1);
+    }
+
+    /* ================= 12. TOAST ENGINE ================= */
+    let toastTimeout = null;
+    function triggerToast(msg) {
+      const el = document.getElementById('toast');
+      document.getElementById('toastMsg').innerText = msg;
+      el.classList.remove('translate-y-24', 'opacity-0');
+      el.classList.add('translate-y-0', 'opacity-100');
+      clearTimeout(toastTimeout);
+      toastTimeout = setTimeout(() => {
+        el.classList.remove('translate-y-0', 'opacity-100');
+        el.classList.add('translate-y-24', 'opacity-0');
+      }, 2500);
+    }
+
+    /* ================= BOOTSTRAP ================= */
+    window.addEventListener('DOMContentLoaded', () => {
+      checkUserSession();
+    });
+  </script>
+
+</body>
+</html>
