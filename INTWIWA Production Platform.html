@@ -1,0 +1,2566 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>INTWIWA • Powered by PRASHANT YADAV</title>
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+  <!-- Font Awesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+            display: ['"Outfit"', 'sans-serif'],
+            mono: ['"JetBrains Mono"', 'monospace'],
+          },
+          colors: {
+            canvas: 'var(--color-canvas, #06090e)',
+            surface: 'var(--color-surface, #0b1019)',
+            liquid: {
+              card: 'var(--color-glass, rgba(13, 19, 32, 0.74))',
+              border: 'var(--color-border, rgba(255, 255, 255, 0.12))',
+              primary: 'var(--color-primary, #a855f7)',
+              accent: 'var(--color-accent, #ec4899)',
+              glow: 'var(--color-glow, #06b6d4)'
+            }
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    :root {
+      --color-canvas: #06090e;
+      --color-surface: #0b1019;
+      --color-glass: rgba(13, 19, 32, 0.76);
+      --color-subtle: rgba(255, 255, 255, 0.04);
+      --color-border: rgba(255, 255, 255, 0.12);
+      --color-primary: #a855f7;
+      --color-accent: #ec4899;
+      --color-glow: #06b6d4;
+      --orb1-start: #a855f7;
+      --orb1-end: #ec4899;
+      --orb2-start: #06b6d4;
+      --orb2-end: #3b82f6;
+      --blur-strength: 28px;
+    }
+
+    body.theme-cyber {
+      --color-canvas: #06090e;
+      --color-surface: #0b1019;
+      --color-glass: rgba(13, 19, 32, 0.76);
+      --color-primary: #a855f7;
+      --color-accent: #ec4899;
+      --color-glow: #06b6d4;
+      --orb1-start: #a855f7;
+      --orb1-end: #ec4899;
+      --orb2-start: #06b6d4;
+      --orb2-end: #3b82f6;
+    }
+    body.theme-ocean {
+      --color-canvas: #030d1a;
+      --color-surface: #08172c;
+      --color-glass: rgba(8, 23, 44, 0.78);
+      --color-primary: #0284c7;
+      --color-accent: #06b6d4;
+      --color-glow: #38bdf8;
+      --orb1-start: #0284c7;
+      --orb1-end: #0ea5e9;
+      --orb2-start: #06b6d4;
+      --orb2-end: #2563eb;
+    }
+    body.theme-emerald {
+      --color-canvas: #04120b;
+      --color-surface: #0a2016;
+      --color-glass: rgba(10, 32, 22, 0.78);
+      --color-primary: #059669;
+      --color-accent: #10b981;
+      --color-glow: #34d399;
+      --orb1-start: #059669;
+      --orb1-end: #10b981;
+      --orb2-start: #34d399;
+      --orb2-end: #047857;
+    }
+    body.theme-sunset {
+      --color-canvas: #16060c;
+      --color-surface: #240b15;
+      --color-glass: rgba(36, 11, 21, 0.78);
+      --color-primary: #f43f5e;
+      --color-accent: #fb923c;
+      --color-glow: #f59e0b;
+      --orb1-start: #f43f5e;
+      --orb1-end: #fb7185;
+      --orb2-start: #fb923c;
+      --orb2-end: #e11d48;
+    }
+    body.theme-obsidian {
+      --color-canvas: #020203;
+      --color-surface: #0a0a0c;
+      --color-glass: rgba(14, 14, 18, 0.86);
+      --color-primary: #6366f1;
+      --color-accent: #8b5cf6;
+      --color-glow: #a855f7;
+      --orb1-start: #4338ca;
+      --orb1-end: #6366f1;
+      --orb2-start: #1e1b4b;
+      --orb2-end: #312e81;
+    }
+    body.theme-prism {
+      --color-canvas: #0d1117;
+      --color-surface: #161b22;
+      --color-glass: rgba(255, 255, 255, 0.08);
+      --color-subtle: rgba(255, 255, 255, 0.06);
+      --color-border: rgba(255, 255, 255, 0.22);
+      --color-primary: #ffffff;
+      --color-accent: #e2e8f0;
+      --color-glow: #38bdf8;
+      --orb1-start: #e2e8f0;
+      --orb1-end: #94a3b8;
+      --orb2-start: #64748b;
+      --orb2-end: #475569;
+    }
+
+    body {
+      background-color: var(--color-canvas);
+      color: #f1f5f9;
+      overflow-x: hidden;
+      touch-action: manipulation;
+      user-select: none;
+      transition: background-color 0.4s ease;
+    }
+
+    .liquid-glass {
+      background: var(--color-glass);
+      backdrop-filter: blur(var(--blur-strength)) saturate(190%);
+      -webkit-backdrop-filter: blur(var(--blur-strength)) saturate(190%);
+      border: 1px solid var(--color-border);
+      box-shadow: 0 20px 50px -10px rgba(0, 0, 0, 0.7), inset 0 1px 1px rgba(255, 255, 255, 0.18);
+      transition: background 0.4s, border-color 0.4s;
+    }
+
+    .liquid-subtle {
+      background: var(--color-subtle);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border: 1px solid var(--color-border);
+      transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .liquid-subtle:hover {
+      background: rgba(255, 255, 255, 0.08);
+      border-color: rgba(255, 255, 255, 0.25);
+    }
+
+    /* Ambient animated mesh orbs */
+    .ambient-bg {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: -1;
+      overflow: hidden;
+    }
+    .mesh-orb {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(130px);
+      opacity: 0.36;
+      animation: floatMesh 24s infinite alternate ease-in-out;
+      transition: background 0.6s ease;
+    }
+    .orb-1 {
+      width: 550px; height: 550px;
+      background: radial-gradient(circle, var(--orb1-start) 0%, var(--orb1-end) 75%);
+      top: -12%; left: 5%;
+    }
+    .orb-2 {
+      width: 600px; height: 600px;
+      background: radial-gradient(circle, var(--orb2-start) 0%, var(--orb2-end) 80%);
+      bottom: -15%; right: 4%;
+      animation-duration: 28s; animation-delay: -6s;
+    }
+    @keyframes floatMesh {
+      0% { transform: translate(0, 0) scale(1); }
+      100% { transform: translate(50px, 80px) scale(1.15); }
+    }
+
+    /* Moments (Story) Gradient Ring */
+    .moment-ring-live {
+      background: linear-gradient(45deg, #f59e0b, var(--color-accent), var(--color-primary), var(--color-glow));
+      background-size: 200% 200%;
+      animation: ringShift 5s ease infinite;
+    }
+    @keyframes ringShift {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    @keyframes heartPop {
+      0% { transform: translate(-50%, -50%) scale(0); opacity: 0; }
+      45% { transform: translate(-50%, -50%) scale(1.35); opacity: 1; filter: drop-shadow(0 0 35px var(--color-accent)); }
+      75% { transform: translate(-50%, -50%) scale(1.05); opacity: 0.95; }
+      100% { transform: translate(-50%, -50%) scale(0.9) translateY(-30px); opacity: 0; }
+    }
+    .heart-burst-anim {
+      animation: heartPop 0.85s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    }
+
+    @keyframes storyTimer {
+      0% { width: 0%; }
+      100% { width: 100%; }
+    }
+    .story-running {
+      animation: storyTimer 5s linear forwards;
+    }
+
+    ::-webkit-scrollbar { width: 5px; height: 5px; }
+    ::-webkit-scrollbar-track { background: transparent; }
+    ::-webkit-scrollbar-thumb { background: rgba(255, 255, 255, 0.16); border-radius: 999px; }
+    .no-scrollbar::-webkit-scrollbar { display: none; }
+    .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+
+    .file-drop-glow {
+      border: 2px dashed rgba(255, 255, 255, 0.2);
+      transition: all 0.3s;
+    }
+    .file-drop-glow:hover {
+      border-color: var(--color-accent);
+      background: rgba(236, 72, 153, 0.06);
+    }
+
+    .switch-track {
+      width: 42px;
+      height: 24px;
+      background: rgba(255,255,255,0.15);
+      border-radius: 999px;
+      padding: 2px;
+      cursor: pointer;
+      transition: background 0.25s;
+      position: relative;
+    }
+    .switch-track.active {
+      background: linear-gradient(90deg, var(--color-primary), var(--color-accent));
+    }
+    .switch-thumb {
+      width: 20px;
+      height: 20px;
+      background: #ffffff;
+      border-radius: 50%;
+      transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+      box-shadow: 0 2px 4px rgba(0,0,0,0.4);
+    }
+    .switch-track.active .switch-thumb {
+      transform: translateX(18px);
+    }
+  </style>
+</head>
+
+<body class="selection:bg-pink-500 selection:text-white theme-cyber">
+
+  <!-- Ambient Light Orbs -->
+  <div class="ambient-bg">
+    <div class="mesh-orb orb-1"></div>
+    <div class="mesh-orb orb-2"></div>
+  </div>
+
+  <!-- ==============================================================
+       1. MANDATORY REAL AUTH GATEWAY (SEAMLESS SIGNUP / SIGNIN)
+       ============================================================== -->
+  <div id="authGate" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-canvas/95 backdrop-blur-3xl overflow-y-auto">
+    <div class="w-full max-w-md my-auto liquid-glass rounded-3xl p-6 sm:p-8 border border-white/15 shadow-2xl relative">
+      
+      <!-- Brand & Creator Top Plate -->
+      <div class="text-center mb-5">
+        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-2xl liquid-subtle mb-2.5">
+          <div class="w-6 h-6 rounded-lg bg-gradient-to-tr from-violet-500 via-pink-500 to-cyan-400 flex items-center justify-center text-white text-[10px] shadow">
+            <i class="fa-solid fa-bolt"></i>
+          </div>
+          <span class="text-[11px] font-mono tracking-wider text-cyan-300 font-bold uppercase">INTWIWA CLOUD ACCESS</span>
+        </div>
+        <h1 class="text-3xl sm:text-4xl font-display font-black tracking-tight bg-gradient-to-r from-white via-violet-200 to-pink-300 bg-clip-text text-transparent">INTWIWA</h1>
+        <div class="mt-1 flex items-center justify-center gap-1.5 text-xs text-slate-300">
+          <span>⚡ Powered by</span>
+          <span class="font-extrabold text-pink-400">PRASHANT YADAV</span>
+        </div>
+      </div>
+
+      <!-- Mode Switcher -->
+      <div class="flex items-center p-1 rounded-2xl bg-black/45 border border-white/10 mb-5">
+        <button id="authTabSignup" onclick="switchAuthMode('signup')" class="flex-1 py-2 rounded-xl text-xs font-bold transition-all text-white bg-gradient-to-r from-violet-600 to-pink-600 shadow-lg shadow-pink-500/20">
+          Create Account
+        </button>
+        <button id="authTabLogin" onclick="switchAuthMode('login')" class="flex-1 py-2 rounded-xl text-xs font-bold transition-all text-slate-400 hover:text-white">
+          Sign In
+        </button>
+      </div>
+
+      <!-- SIGN UP FORM (BULLETPROOF) -->
+      <form id="authSignupForm" onsubmit="handleSignupSubmit(event)" class="space-y-3.5">
+        
+        <!-- Gallery Photo Selection (Optional: Auto-Generates Gradient Avatar if empty) -->
+        <div>
+          <div class="flex items-center justify-between mb-1.5">
+            <label class="block text-[11px] font-mono uppercase tracking-wider text-slate-300 font-bold">Profile Photo</label>
+            <span class="text-[10px] text-cyan-400 font-mono">Gallery or Auto-Created</span>
+          </div>
+          <div class="flex items-center gap-3">
+            <div class="relative w-14 h-14 rounded-2xl p-0.5 bg-gradient-to-tr from-violet-500 via-pink-500 to-cyan-400 flex-shrink-0">
+              <img id="signupAvatarPreview" src="" class="hidden w-full h-full rounded-2xl object-cover bg-black">
+              <div id="signupAvatarPlaceholder" class="w-full h-full rounded-2xl bg-black/60 flex items-center justify-center text-slate-400 text-lg">
+                <i class="fa-solid fa-camera"></i>
+              </div>
+            </div>
+            <label class="flex-1 py-2 px-3 rounded-xl file-drop-glow liquid-subtle flex items-center justify-center gap-2 cursor-pointer text-xs font-semibold text-slate-200 hover:text-white">
+              <i class="fa-solid fa-folder-open text-pink-400"></i>
+              <span id="signupAvatarText">Select from Gallery</span>
+              <input type="file" id="signupAvatarFile" accept="image/*" class="hidden" onchange="previewAvatarFromGallery(event)">
+            </label>
+          </div>
+        </div>
+
+        <div>
+          <label class="block text-[11px] font-mono uppercase tracking-wider text-slate-300 font-bold mb-1">Full Name</label>
+          <input type="text" id="signupName" placeholder="e.g. Prashant Yadav" required class="w-full text-xs px-3.5 py-2.5 rounded-xl bg-black/40 border border-white/10 text-white focus:outline-none focus:border-pink-500">
+        </div>
+
+        <div>
+          <label class="block text-[11px] font-mono uppercase tracking-wider text-slate-300 font-bold mb-1">Username (@handle)</label>
+          <div class="relative">
+            <span class="absolute left-3.5 top-2.5 text-xs text-slate-400 font-mono">@</span>
+            <input type="text" id="signupHandle" placeholder="username" required oninput="cleanHandleInput(this)" class="w-full text-xs pl-8 pr-3.5 py-2.5 rounded-xl bg-black/40 border border-white/10 text-white focus:outline-none focus:border-pink-500 font-mono">
+          </div>
+        </div>
+
+        <div>
+          <label class="block text-[11px] font-mono uppercase tracking-wider text-slate-300 font-bold mb-1">Email or Phone</label>
+          <input type="text" id="signupContact" placeholder="you@domain.com or phone" required class="w-full text-xs px-3.5 py-2.5 rounded-xl bg-black/40 border border-white/10 text-white focus:outline-none focus:border-pink-500">
+        </div>
+
+        <div>
+          <label class="block text-[11px] font-mono uppercase tracking-wider text-slate-300 font-bold mb-1">Password</label>
+          <input type="password" id="signupPassword" placeholder="Minimum 4 characters" minlength="4" required class="w-full text-xs px-3.5 py-2.5 rounded-xl bg-black/40 border border-white/10 text-white focus:outline-none focus:border-pink-500">
+        </div>
+
+        <div>
+          <label class="block text-[11px] font-mono uppercase tracking-wider text-slate-300 font-bold mb-1">Bio</label>
+          <input type="text" id="signupBio" placeholder="Tell the world who you are ✨" class="w-full text-xs px-3.5 py-2.5 rounded-xl bg-black/40 border border-white/10 text-white focus:outline-none focus:border-pink-500">
+        </div>
+
+        <button type="submit" id="signupBtn" class="w-full py-3 rounded-2xl bg-gradient-to-r from-violet-600 via-pink-600 to-cyan-500 hover:opacity-95 text-white font-bold text-xs tracking-wide shadow-lg shadow-pink-500/25 transition-all flex items-center justify-center gap-2 mt-2">
+          <span>Create Account & Enter INTWIWA</span>
+          <i class="fa-solid fa-arrow-right-to-bracket text-xs"></i>
+        </button>
+      </form>
+
+      <!-- LOGIN FORM -->
+      <form id="authLoginForm" onsubmit="handleLoginSubmit(event)" class="hidden space-y-4">
+        <div>
+          <label class="block text-[11px] font-mono uppercase tracking-wider text-slate-300 font-bold mb-1">Username, Email, or Phone</label>
+          <div class="relative">
+            <i class="fa-solid fa-user absolute left-3.5 top-3 text-xs text-slate-400"></i>
+            <input type="text" id="loginIdentifier" placeholder="Username or Email" required class="w-full text-xs pl-9 pr-3.5 py-2.5 rounded-xl bg-black/40 border border-white/10 text-white focus:outline-none focus:border-pink-500">
+          </div>
+        </div>
+
+        <div>
+          <label class="block text-[11px] font-mono uppercase tracking-wider text-slate-300 font-bold mb-1">Password</label>
+          <div class="relative">
+            <i class="fa-solid fa-lock absolute left-3.5 top-3 text-xs text-slate-400"></i>
+            <input type="password" id="loginPassword" placeholder="••••••••" required class="w-full text-xs pl-9 pr-3.5 py-2.5 rounded-xl bg-black/40 border border-white/10 text-white focus:outline-none focus:border-pink-500">
+          </div>
+        </div>
+
+        <button type="submit" id="loginBtn" class="w-full py-3 rounded-2xl bg-gradient-to-r from-violet-600 via-pink-600 to-cyan-500 hover:opacity-95 text-white font-bold text-xs tracking-wide shadow-lg shadow-pink-500/25 transition-all flex items-center justify-center gap-2">
+          <span>Log In to INTWIWA</span>
+          <i class="fa-solid fa-arrow-right-to-bracket text-xs"></i>
+        </button>
+      </form>
+
+      <!-- Mandatory Creator Attribution Badge -->
+      <div class="mt-5 pt-3.5 border-t border-white/10 flex items-center justify-between">
+        <span class="text-[10px] text-slate-400 font-mono">Platform Identity</span>
+        <div class="px-3 py-1 rounded-xl bg-gradient-to-r from-violet-500/20 via-pink-500/20 to-cyan-500/20 border border-white/15 text-white font-extrabold text-[11px] flex items-center gap-1.5 shadow-sm">
+          <i class="fa-solid fa-bolt text-yellow-300 text-[10px]"></i>
+          <span>Powered by PRASHANT YADAV</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+
+  <!-- ==============================================================
+       2. MAIN APP SHELL (Revealed only upon real authentication)
+       ============================================================== -->
+  <div id="mainApp" class="min-h-screen flex flex-col hidden pb-20 md:pb-6">
+
+    <!-- Top Persistent Glass Header -->
+    <header class="sticky top-0 z-40 liquid-glass border-b border-white/10 px-4 sm:px-6 py-2.5">
+      <div class="max-w-5xl mx-auto flex items-center justify-between">
+        
+        <!-- INTWIWA + Powered by PRASHANT YADAV -->
+        <div class="flex items-center gap-3 cursor-pointer select-none" onclick="navigateTo('feed')">
+          <div class="w-10 h-10 rounded-2xl p-0.5 bg-gradient-to-tr from-violet-500 via-pink-500 to-cyan-400 shadow-md shadow-pink-500/20">
+            <div class="w-full h-full bg-canvas rounded-2xl flex items-center justify-center">
+              <i class="fa-solid fa-bolt text-transparent bg-clip-text bg-gradient-to-r from-violet-400 via-pink-400 to-cyan-400 text-lg"></i>
+            </div>
+          </div>
+          <div class="flex flex-col">
+            <div class="flex items-center gap-1.5">
+              <span class="text-xl sm:text-2xl font-display font-black tracking-tight bg-gradient-to-r from-white via-slate-100 to-pink-200 bg-clip-text text-transparent">INTWIWA</span>
+              <i class="fa-solid fa-circle-check text-cyan-400 text-xs" title="Verified Platform"></i>
+            </div>
+            <div class="flex items-center gap-1 text-[10px] sm:text-[11px] font-semibold text-slate-400">
+              <span>⚡ Powered by</span>
+              <span class="text-white font-extrabold px-1.5 py-0.2 rounded bg-white/10 text-[10px]">PRASHANT YADAV</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Desktop Navigation Tabs -->
+        <nav class="hidden md:flex items-center gap-1 liquid-subtle p-1 rounded-2xl border border-white/10">
+          <button id="navItemFeed" onclick="navigateTo('feed')" class="px-3.5 py-1.5 rounded-xl text-xs font-bold text-white bg-gradient-to-r from-violet-600 to-pink-600 transition-all flex items-center gap-1.5 shadow-sm">
+            <i class="fa-solid fa-house"></i>
+            <span>Echoes</span>
+          </button>
+          <button id="navItemMotion" onclick="navigateTo('motion')" class="px-3.5 py-1.5 rounded-xl text-xs font-bold text-slate-300 hover:text-white transition-all flex items-center gap-1.5">
+            <i class="fa-solid fa-clapperboard text-pink-400"></i>
+            <span>Motion Reels</span>
+          </button>
+          <button id="navItemWhisper" onclick="navigateTo('whisper')" class="px-3.5 py-1.5 rounded-xl text-xs font-bold text-slate-300 hover:text-white transition-all flex items-center gap-1.5 relative">
+            <i class="fa-solid fa-paper-plane text-cyan-400"></i>
+            <span>Whisper</span>
+            <span class="w-1.5 h-1.5 rounded-full bg-cyan-400 animate-pulse"></span>
+          </button>
+          <button id="navItemProfile" onclick="navigateTo('profile')" class="px-3.5 py-1.5 rounded-xl text-xs font-bold text-slate-300 hover:text-white transition-all flex items-center gap-1.5">
+            <i class="fa-solid fa-user"></i>
+            <span>Profile</span>
+          </button>
+        </nav>
+
+        <!-- Right Quick Controls -->
+        <div class="flex items-center gap-2.5">
+          <button onclick="openCreateModal()" class="flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-gradient-to-r from-violet-600 via-pink-600 to-cyan-500 hover:opacity-95 text-white text-xs font-bold shadow-md transition-all">
+            <i class="fa-solid fa-plus text-sm"></i>
+            <span class="hidden sm:inline">Post / Reel</span>
+          </button>
+
+          <!-- Settings Trigger -->
+          <button onclick="openSettingsModal()" title="Platform Settings & Liquid Themes" class="w-9 h-9 rounded-xl liquid-subtle flex items-center justify-center text-slate-200 hover:text-cyan-400 transition-colors">
+            <i class="fa-solid fa-gear text-sm"></i>
+          </button>
+
+          <!-- Current User Profile Avatar Toggle -->
+          <button onclick="navigateTo('profile')" class="w-9 h-9 rounded-xl overflow-hidden ring-2 ring-pink-500/70 p-0.5">
+            <img id="headerUserAvatar" src="" alt="Avatar" class="w-full h-full rounded-xl object-cover">
+          </button>
+        </div>
+
+      </div>
+    </header>
+
+    <!-- ================= MAIN TAB VIEWPORT ================= -->
+    <main class="flex-1 max-w-5xl mx-auto w-full px-3 sm:px-6 pt-4">
+
+      <!-- ================= TAB 1: FEED / ECHOES ================= -->
+      <section id="tabFeed" class="block">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+
+          <!-- Left Main Stream (8 cols) -->
+          <div class="lg:col-span-8 space-y-4">
+            
+            <!-- MOMENTS TRAY (Stories with Gallery Upload) -->
+            <div class="liquid-glass rounded-3xl p-3.5 border border-white/10">
+              <div class="flex items-center gap-3.5 overflow-x-auto no-scrollbar py-1">
+                
+                <!-- Add Real Story from Gallery -->
+                <label class="flex flex-col items-center flex-shrink-0 cursor-pointer select-none group">
+                  <div class="relative w-16 h-16 rounded-full p-[2px] border-2 border-dashed border-violet-400 flex items-center justify-center group-hover:border-pink-500 transition-colors">
+                    <img id="trayMyAvatar" src="" class="w-full h-full rounded-full object-cover">
+                    <div class="absolute bottom-0 right-0 w-4 h-4 rounded-full bg-pink-500 text-white flex items-center justify-center text-[10px] ring-2 ring-canvas">
+                      <i class="fa-solid fa-plus"></i>
+                    </div>
+                  </div>
+                  <span class="text-[11px] font-medium text-slate-300 mt-1.5">Your Story</span>
+                  <input type="file" id="storyFileInput" accept="image/*,video/*" class="hidden" onchange="uploadStoryFromGallery(event)">
+                </label>
+
+                <!-- Dynamic Stories Container -->
+                <div id="dynamicStoriesList" class="flex items-center gap-3.5">
+                  <!-- Populated dynamically -->
+                </div>
+
+              </div>
+            </div>
+
+            <!-- FEED CONTAINER (Posts & Reels Stream) -->
+            <div id="postsStream" class="space-y-5">
+              <!-- Dynamically populated -->
+            </div>
+
+          </div>
+
+          <!-- Right Sidebar (4 cols) -->
+          <div class="hidden lg:block lg:col-span-4 space-y-4">
+            
+            <!-- Current User Mini Card -->
+            <div class="liquid-glass rounded-3xl p-4 border border-white/10 flex items-center justify-between">
+              <div class="flex items-center gap-3">
+                <img id="sidebarUserAvatar" src="" class="w-12 h-12 rounded-2xl object-cover ring-2 ring-pink-500/70">
+                <div class="truncate">
+                  <h4 id="sidebarUserName" class="text-xs font-bold text-white truncate">User Name</h4>
+                  <p id="sidebarUserHandle" class="text-[11px] text-slate-400 font-mono">@user</p>
+                </div>
+              </div>
+              <div class="flex items-center gap-1.5">
+                <button onclick="openSettingsModal()" title="Settings" class="w-8 h-8 rounded-xl liquid-subtle flex items-center justify-center text-slate-300 hover:text-white">
+                  <i class="fa-solid fa-gear text-xs"></i>
+                </button>
+                <button onclick="handleLogout()" title="Sign Out" class="text-xs font-bold text-pink-400 hover:text-pink-300 ml-1">Sign Out</button>
+              </div>
+            </div>
+
+            <!-- Founder & Architect Spotlight -->
+            <div class="liquid-glass rounded-3xl p-4 border border-violet-500/30 relative overflow-hidden">
+              <div class="flex items-center justify-between mb-2">
+                <span class="text-[10px] font-mono uppercase tracking-wider text-cyan-300 font-bold flex items-center gap-1">
+                  <i class="fa-solid fa-bolt text-yellow-300"></i> Platform Architect
+                </span>
+                <span class="px-2 py-0.5 rounded-full text-[9px] font-bold bg-violet-500/20 text-violet-300 border border-violet-500/30">Verified</span>
+              </div>
+              <h4 class="text-xs font-bold text-white">PRASHANT YADAV</h4>
+              <p class="text-[11px] text-slate-300 mt-1 leading-relaxed">
+                INTWIWA ecosystem with real camera & gallery uploads, liquid glass refraction, and custom audio synthesizer.
+              </p>
+              <div class="mt-3 pt-2.5 border-t border-white/10 flex items-center justify-between text-xs">
+                <span class="text-slate-400 text-[10px] font-mono">Community Network</span>
+                <button onclick="openFollowersModal('following')" class="text-pink-400 font-bold text-[11px] hover:underline">
+                  View Connections
+                </button>
+              </div>
+            </div>
+
+            <!-- Quick Theme & Audio Trigger -->
+            <div class="p-3.5 rounded-3xl liquid-glass border border-white/10 flex items-center justify-between">
+              <div class="flex items-center gap-2.5">
+                <div class="w-8 h-8 rounded-xl bg-gradient-to-tr from-violet-600 to-pink-600 flex items-center justify-center text-white text-xs">
+                  <i class="fa-solid fa-palette"></i>
+                </div>
+                <div>
+                  <p class="text-xs font-bold text-white">Liquid Themes & SFX</p>
+                  <p class="text-[10px] text-slate-400">Glass styles & synthesizer</p>
+                </div>
+              </div>
+              <button onclick="openSettingsModal('themes')" class="px-2.5 py-1 rounded-xl liquid-subtle text-[11px] font-bold text-cyan-400 hover:text-white">
+                Customize
+              </button>
+            </div>
+
+            <!-- Persistent Aesthetic Footer -->
+            <div class="p-4 rounded-3xl liquid-subtle text-center text-[11px] text-slate-400 space-y-1.5 border border-white/10">
+              <p class="font-bold text-slate-200 tracking-wider">INTWIWA CLOUD NETWORK</p>
+              <div class="inline-flex items-center justify-center gap-1.5 px-3 py-1 rounded-xl bg-gradient-to-r from-violet-500/20 via-pink-500/20 to-cyan-500/20 border border-white/15 text-white font-extrabold text-[11px]">
+                <i class="fa-solid fa-bolt text-yellow-300 text-[10px]"></i>
+                <span>Powered by PRASHANT YADAV</span>
+              </div>
+              <p class="text-[10px] text-slate-400 font-mono mt-1">Live Fluid Architecture • 100% Real</p>
+            </div>
+
+          </div>
+
+        </div>
+      </section>
+
+      <!-- ================= TAB 2: MOTION (Reels Viewer) ================= -->
+      <section id="tabMotion" class="hidden">
+        <div class="max-w-sm mx-auto relative rounded-3xl overflow-hidden border border-white/20 shadow-2xl bg-black min-h-[580px] sm:min-h-[660px]">
+          
+          <div id="motionPlayerArea" class="relative w-full h-[580px] sm:h-[660px] flex items-center justify-center select-none bg-black">
+            
+            <video id="motionVideoElement" playsinline loop autoplay muted class="w-full h-full object-cover hidden"></video>
+
+            <!-- Blank state when no reel is uploaded yet -->
+            <div id="motionEmptyState" class="p-6 text-center space-y-4">
+              <div class="w-16 h-16 rounded-full liquid-glass mx-auto flex items-center justify-center text-pink-400 text-2xl">
+                <i class="fa-solid fa-clapperboard"></i>
+              </div>
+              <h3 class="text-sm font-bold text-white">No Reels Yet</h3>
+              <p class="text-xs text-slate-400">Upload a video directly from your phone or device gallery to start playing in full-screen Motion.</p>
+              <label class="inline-flex items-center gap-2 px-4 py-2.5 rounded-2xl bg-gradient-to-r from-violet-600 to-pink-600 text-white font-bold text-xs cursor-pointer shadow-lg hover:opacity-95">
+                <i class="fa-solid fa-video"></i>
+                <span>Select Video from Gallery</span>
+                <input type="file" accept="video/*" class="hidden" onchange="uploadDirectReelFromGallery(event)">
+              </label>
+            </div>
+
+            <!-- Top Overlay Badge -->
+            <div id="motionTopBar" class="absolute top-4 left-4 z-20 hidden items-center gap-2">
+              <span class="liquid-glass px-3 py-1 rounded-full text-xs font-bold text-white flex items-center gap-1.5 shadow">
+                <i class="fa-solid fa-clapperboard text-pink-400"></i> Motion Reel
+              </span>
+            </div>
+
+            <!-- Mute/Unmute toggle -->
+            <button id="motionAudioBtn" onclick="toggleMotionAudio()" class="absolute top-4 right-4 z-20 w-9 h-9 rounded-full liquid-glass text-white hidden items-center justify-center">
+              <i id="motionAudioIcon" class="fa-solid fa-volume-xmark text-xs"></i>
+            </button>
+
+            <!-- Double-Tap Screen for Heart Burst -->
+            <div id="motionDblTapArea" class="absolute inset-0 z-10 cursor-pointer hidden" ondblclick="handleMotionDoubleTap(event)"></div>
+            <div id="motionHeartBurst" class="absolute top-1/2 left-1/2 pointer-events-none hidden">
+              <i class="fa-solid fa-heart text-7xl text-pink-500 drop-shadow-2xl"></i>
+            </div>
+
+            <!-- Right Action Rail -->
+            <div id="motionSideRail" class="absolute right-3 bottom-16 z-20 hidden flex-col items-center gap-4">
+              <button onclick="toggleMotionLike()" class="flex flex-col items-center group">
+                <div class="w-11 h-11 rounded-full liquid-glass flex items-center justify-center text-white group-hover:scale-110 transition-transform">
+                  <i id="motionLikeIcon" class="fa-regular fa-heart text-lg"></i>
+                </div>
+                <span id="motionLikeCount" class="text-[11px] font-bold text-white mt-1">0</span>
+              </button>
+
+              <label class="flex flex-col items-center group cursor-pointer" title="Upload Another Reel">
+                <div class="w-11 h-11 rounded-full bg-gradient-to-tr from-violet-600 to-pink-600 flex items-center justify-center text-white shadow-lg">
+                  <i class="fa-solid fa-plus text-base"></i>
+                </div>
+                <span class="text-[10px] font-bold text-pink-300 mt-1">New</span>
+                <input type="file" accept="video/*" class="hidden" onchange="uploadDirectReelFromGallery(event)">
+              </label>
+
+              <button onclick="nextMotionClip()" class="flex flex-col items-center group" title="Next Reel">
+                <div class="w-11 h-11 rounded-full liquid-glass flex items-center justify-center text-pink-400">
+                  <i class="fa-solid fa-arrow-down text-base"></i>
+                </div>
+                <span class="text-[10px] font-bold text-slate-300 mt-1">Next</span>
+              </button>
+            </div>
+
+            <!-- Bottom Metadata -->
+            <div id="motionMetaArea" class="absolute bottom-4 left-4 right-16 z-20 pointer-events-none hidden space-y-2">
+              <div class="flex items-center gap-2 pointer-events-auto">
+                <img id="motionAuthorAvatar" src="" class="w-9 h-9 rounded-xl object-cover ring-2 ring-pink-500">
+                <span id="motionAuthorName" class="text-xs font-bold text-white">Author</span>
+                <i class="fa-solid fa-circle-check text-cyan-400 text-xs"></i>
+              </div>
+
+              <p id="motionCaption" class="text-xs text-white/90 line-clamp-2">
+                Caption
+              </p>
+
+              <div class="flex items-center gap-2 text-[11px] text-white/80 font-mono">
+                <i class="fa-solid fa-music text-cyan-400 text-xs"></i>
+                <span class="truncate">Original Audio • INTWIWA</span>
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+      </section>
+
+      <!-- ================= TAB 3: WHISPER (Direct Messaging Hub) ================= -->
+      <section id="tabWhisper" class="hidden">
+        <div class="max-w-4xl mx-auto liquid-glass rounded-3xl border border-white/10 shadow-2xl overflow-hidden min-h-[580px] flex flex-col justify-between">
+          
+          <!-- Chat Header -->
+          <div class="p-3.5 border-b border-white/10 flex items-center justify-between bg-black/40">
+            <div class="flex items-center gap-3">
+              <div class="w-10 h-10 rounded-2xl p-0.5 bg-gradient-to-tr from-violet-500 via-pink-500 to-cyan-400">
+                <div class="w-full h-full bg-canvas rounded-2xl flex items-center justify-center text-cyan-400 font-bold">
+                  <i class="fa-solid fa-bolt"></i>
+                </div>
+              </div>
+              <div>
+                <h4 class="text-xs font-bold text-white flex items-center gap-1.5">
+                  INTWIWA Direct Whisper Channel
+                  <i class="fa-solid fa-circle-check text-cyan-400 text-[10px]"></i>
+                </h4>
+                <p class="text-[10px] text-pink-400 font-semibold">⚡ Powered by PRASHANT YADAV</p>
+              </div>
+            </div>
+            <div class="flex items-center gap-2 text-slate-300">
+              <button onclick="clearWhisperMessages()" title="Clear chat history" class="w-8 h-8 rounded-xl liquid-subtle flex items-center justify-center hover:text-red-400">
+                <i class="fa-solid fa-trash-can text-xs"></i>
+              </button>
+            </div>
+          </div>
+
+          <!-- Messages Stream -->
+          <div id="whisperMessagesList" class="flex-1 p-4 overflow-y-auto space-y-3 max-h-[440px]">
+            <!-- Injected dynamically -->
+          </div>
+
+          <!-- Typing indicator -->
+          <div id="whisperTyping" class="hidden px-4 py-1 text-[10px] text-cyan-400 font-mono italic">
+            <i class="fa-solid fa-circle-notch animate-spin mr-1"></i> Syncing encrypted reply...
+          </div>
+
+          <!-- Message Input Bar with Photo Upload from Gallery -->
+          <div class="p-3 border-t border-white/10 bg-black/40 flex items-center gap-2">
+            
+            <label class="w-9 h-9 rounded-xl liquid-subtle flex items-center justify-center text-slate-300 hover:text-pink-400 cursor-pointer" title="Send photo from gallery">
+              <i class="fa-solid fa-image text-xs"></i>
+              <input type="file" accept="image/*" class="hidden" onchange="sendWhisperPhoto(event)">
+            </label>
+
+            <button onclick="sendWhisperVoiceNote()" title="Send simulated voice note" class="w-9 h-9 rounded-xl liquid-subtle flex items-center justify-center text-slate-300 hover:text-cyan-400">
+              <i class="fa-solid fa-microphone text-xs"></i>
+            </button>
+
+            <input type="text" id="whisperInput" placeholder="Write a message..." class="flex-1 text-xs px-4 py-2.5 rounded-xl liquid-subtle text-white focus:outline-none focus:border-pink-500" onkeydown="if(event.key === 'Enter') sendWhisperMessage()">
+
+            <button onclick="sendWhisperMessage()" class="w-9 h-9 rounded-xl bg-gradient-to-r from-violet-600 to-pink-600 hover:opacity-95 text-white flex items-center justify-center font-bold">
+              <i class="fa-solid fa-paper-plane text-xs"></i>
+            </button>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- ================= TAB 4: PROFILE ================= -->
+      <section id="tabProfile" class="hidden">
+        <div class="max-w-3xl mx-auto space-y-6">
+          
+          <!-- Profile Card -->
+          <div class="liquid-glass rounded-3xl p-6 border border-white/10">
+            <div class="flex flex-col sm:flex-row items-center sm:items-start gap-6">
+              
+              <!-- Profile Avatar with 1-Click Change -->
+              <div class="relative group cursor-pointer">
+                <div class="w-24 h-24 rounded-full p-1 bg-gradient-to-tr from-violet-500 via-pink-500 to-cyan-400 shadow-xl overflow-hidden">
+                  <img id="profileAvatar" src="" class="w-full h-full rounded-full object-cover border-2 border-canvas">
+                </div>
+                <label class="absolute inset-0 bg-black/50 rounded-full flex flex-col items-center justify-center text-white opacity-0 group-hover:opacity-100 transition-opacity cursor-pointer">
+                  <i class="fa-solid fa-camera text-base"></i>
+                  <span class="text-[9px] font-bold mt-1">Change</span>
+                  <input type="file" accept="image/*" class="hidden" onchange="updateProfileAvatarDirect(event)">
+                </label>
+              </div>
+
+              <!-- Stats & Bio -->
+              <div class="flex-1 text-center sm:text-left space-y-3">
+                <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+                  <div>
+                    <div class="flex items-center justify-center sm:justify-start gap-2">
+                      <h2 id="profileHandle" class="text-lg font-bold text-white font-mono">@username</h2>
+                      <i class="fa-solid fa-circle-check text-cyan-400 text-sm"></i>
+                      <span id="profilePrivacyBadge" class="text-[10px] px-2 py-0.5 rounded-full bg-white/10 text-slate-300 font-mono">Public</span>
+                    </div>
+                    <p id="profileFullName" class="text-xs text-slate-300 font-semibold">User Real Name</p>
+                  </div>
+
+                  <div class="flex items-center justify-center gap-2">
+                    <button onclick="openSettingsModal('account')" class="px-3.5 py-1.5 rounded-xl liquid-subtle text-xs font-bold text-white hover:border-pink-500 transition-colors">
+                      Edit Profile
+                    </button>
+                    <button onclick="openSettingsModal()" class="w-8 h-8 rounded-xl liquid-subtle flex items-center justify-center text-slate-200 hover:text-cyan-400">
+                      <i class="fa-solid fa-gear text-xs"></i>
+                    </button>
+                    <button onclick="handleLogout()" class="px-3.5 py-1.5 rounded-xl bg-red-500/20 text-red-300 border border-red-500/30 text-xs font-bold hover:bg-red-500/30 transition-colors">
+                      Sign Out
+                    </button>
+                  </div>
+                </div>
+
+                <!-- Stats counters (Clickable for Followers/Following modal) -->
+                <div class="flex items-center justify-center sm:justify-start gap-6 pt-1 text-xs select-none">
+                  <div class="cursor-pointer">
+                    <span id="profilePostCount" class="font-extrabold text-white">0</span>
+                    <span class="text-slate-400 ml-1">posts</span>
+                  </div>
+                  <div onclick="openFollowersModal('followers')" class="cursor-pointer hover:text-pink-400 transition-colors">
+                    <span id="profileFollowersCount" class="font-extrabold text-white">0</span>
+                    <span class="text-slate-400 ml-1">followers</span>
+                  </div>
+                  <div onclick="openFollowersModal('following')" class="cursor-pointer hover:text-pink-400 transition-colors">
+                    <span id="profileFollowingCount" class="font-extrabold text-white">0</span>
+                    <span class="text-slate-400 ml-1">following</span>
+                  </div>
+                </div>
+
+                <p id="profileBio" class="text-xs text-slate-300 leading-relaxed max-w-lg">
+                  Bio text
+                </p>
+              </div>
+
+            </div>
+          </div>
+
+          <!-- Profile Grid of User's Uploads -->
+          <div class="liquid-glass rounded-3xl p-4 border border-white/10">
+            <div class="flex items-center justify-center gap-6 border-b border-white/10 pb-3 text-xs font-bold">
+              <span class="text-white border-b-2 border-pink-500 pb-2 flex items-center gap-1.5">
+                <i class="fa-solid fa-table-cells"></i> YOUR UPLOADS
+              </span>
+            </div>
+
+            <div id="profileGrid" class="grid grid-cols-3 gap-2 sm:gap-3 mt-4">
+              <!-- Rendered dynamically -->
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+    </main>
+
+    <!-- ================= BOTTOM NAVIGATION BAR (MOBILE) ================= -->
+    <nav class="md:hidden fixed bottom-0 left-0 right-0 z-40 liquid-glass border-t border-white/10 px-6 py-2.5 flex items-center justify-between">
+      <button onclick="navigateTo('feed')" id="mobNavFeed" class="flex flex-col items-center gap-0.5 text-pink-500 font-bold">
+        <i class="fa-solid fa-house text-lg"></i>
+        <span class="text-[9px]">Echoes</span>
+      </button>
+
+      <button onclick="navigateTo('motion')" id="mobNavMotion" class="flex flex-col items-center gap-0.5 text-slate-400">
+        <i class="fa-solid fa-clapperboard text-lg"></i>
+        <span class="text-[9px]">Reels</span>
+      </button>
+
+      <button onclick="openCreateModal()" class="w-10 h-10 rounded-2xl bg-gradient-to-tr from-violet-600 to-pink-600 text-white flex items-center justify-center shadow-lg -mt-3 ring-4 ring-canvas">
+        <i class="fa-solid fa-plus text-base"></i>
+      </button>
+
+      <button onclick="openSettingsModal()" class="flex flex-col items-center gap-0.5 text-slate-400">
+        <i class="fa-solid fa-gear text-lg"></i>
+        <span class="text-[9px]">Settings</span>
+      </button>
+
+      <button onclick="navigateTo('profile')" id="mobNavProfile" class="flex flex-col items-center gap-0.5 text-slate-400">
+        <i class="fa-solid fa-user text-lg"></i>
+        <span class="text-[9px]">Profile</span>
+      </button>
+    </nav>
+
+  </div>
+
+
+  <!-- ==============================================================
+       3. MODALS (SETTINGS, REAL UPLOAD, STORY VIEWER & FOLLOWERS)
+       ============================================================== -->
+
+  <!-- FOLLOWERS / FOLLOWING MODAL -->
+  <div id="followersModal" class="fixed inset-0 z-50 bg-black/80 backdrop-blur-md hidden flex items-center justify-center p-4">
+    <div class="w-full max-w-sm liquid-glass rounded-3xl p-5 border border-white/15 shadow-2xl space-y-4">
+      <div class="flex items-center justify-between pb-2 border-b border-white/10">
+        <h4 id="followersModalTitle" class="text-sm font-bold text-white">Followers</h4>
+        <button onclick="closeFollowersModal()" class="w-7 h-7 rounded-full liquid-subtle text-slate-300 hover:text-white flex items-center justify-center">
+          <i class="fa-solid fa-xmark text-xs"></i>
+        </button>
+      </div>
+
+      <div id="followersListContainer" class="space-y-3 max-h-72 overflow-y-auto">
+        <!-- Injected dynamically -->
+      </div>
+    </div>
+  </div>
+
+  <!-- MASTER SETTINGS MODAL -->
+  <div id="settingsModal" class="fixed inset-0 z-50 bg-black/85 backdrop-blur-xl hidden flex items-center justify-center p-3 sm:p-5 overflow-y-auto">
+    <div class="w-full max-w-2xl liquid-glass rounded-3xl border border-white/20 shadow-2xl overflow-hidden flex flex-col max-h-[90vh]">
+      
+      <!-- Settings Header -->
+      <div class="p-4 sm:p-5 border-b border-white/10 flex items-center justify-between bg-black/40">
+        <div class="flex items-center gap-3">
+          <div class="w-9 h-9 rounded-2xl bg-gradient-to-tr from-violet-600 to-pink-600 flex items-center justify-center text-white shadow-md">
+            <i class="fa-solid fa-sliders text-sm"></i>
+          </div>
+          <div>
+            <h3 class="text-sm sm:text-base font-bold text-white flex items-center gap-2">
+              INTWIWA Settings & Studio
+            </h3>
+            <p class="text-[10px] text-slate-400 font-mono">Personalize visuals, sound & real credentials</p>
+          </div>
+        </div>
+        <button onclick="closeSettingsModal()" class="w-8 h-8 rounded-full liquid-subtle text-slate-300 hover:text-white flex items-center justify-center">
+          <i class="fa-solid fa-xmark text-sm"></i>
+        </button>
+      </div>
+
+      <!-- Settings Layout -->
+      <div class="flex-1 flex flex-col md:flex-row overflow-hidden min-h-[460px]">
+        
+        <!-- Tab Bar -->
+        <div class="md:w-48 border-b md:border-b-0 md:border-r border-white/10 bg-black/30 p-2 sm:p-3 flex md:flex-col gap-1 overflow-x-auto no-scrollbar flex-shrink-0">
+          <button onclick="switchSettingsCategory('themes')" id="setTab-themes" class="px-3 py-2 rounded-xl text-xs font-bold transition-all text-white bg-gradient-to-r from-violet-600 to-pink-600 flex items-center gap-2 whitespace-nowrap">
+            <i class="fa-solid fa-palette text-xs w-4"></i>
+            <span>Liquid Themes</span>
+          </button>
+          <button onclick="switchSettingsCategory('audio')" id="setTab-audio" class="px-3 py-2 rounded-xl text-xs font-bold transition-all text-slate-400 hover:text-white flex items-center gap-2 whitespace-nowrap">
+            <i class="fa-solid fa-volume-high text-xs w-4"></i>
+            <span>Audio & Sound</span>
+          </button>
+          <button onclick="switchSettingsCategory('account')" id="setTab-account" class="px-3 py-2 rounded-xl text-xs font-bold transition-all text-slate-400 hover:text-white flex items-center gap-2 whitespace-nowrap">
+            <i class="fa-solid fa-user-shield text-xs w-4"></i>
+            <span>Account & Privacy</span>
+          </button>
+          <button onclick="switchSettingsCategory('system')" id="setTab-system" class="px-3 py-2 rounded-xl text-xs font-bold transition-all text-slate-400 hover:text-white flex items-center gap-2 whitespace-nowrap">
+            <i class="fa-solid fa-microchip text-xs w-4"></i>
+            <span>Storage & Cache</span>
+          </button>
+          <button onclick="switchSettingsCategory('about')" id="setTab-about" class="px-3 py-2 rounded-xl text-xs font-bold transition-all text-slate-400 hover:text-white flex items-center gap-2 whitespace-nowrap">
+            <i class="fa-solid fa-bolt text-xs w-4 text-yellow-300"></i>
+            <span>About INTWIWA</span>
+          </button>
+        </div>
+
+        <!-- Tab Body Content -->
+        <div class="flex-1 p-4 sm:p-6 overflow-y-auto space-y-6">
+
+          <!-- 1. LIQUID THEMES -->
+          <div id="setPane-themes" class="space-y-4">
+            <div>
+              <h4 class="text-xs font-mono uppercase text-slate-300 tracking-wider font-bold">Liquid Glass Aesthetic Themes</h4>
+              <p class="text-xs text-slate-400 mt-0.5">Select a real-time reactive refraction profile.</p>
+            </div>
+
+            <div class="grid grid-cols-2 sm:grid-cols-3 gap-3">
+              <div onclick="applyLiquidTheme('theme-cyber')" class="p-3 rounded-2xl border-2 border-violet-500 bg-violet-950/30 cursor-pointer hover:scale-102 transition-transform flex flex-col justify-between h-24">
+                <span class="text-xs font-bold text-white">Cyber Neon</span>
+                <div class="flex gap-1.5">
+                  <div class="w-4 h-4 rounded-full bg-purple-600"></div>
+                  <div class="w-4 h-4 rounded-full bg-pink-500"></div>
+                  <div class="w-4 h-4 rounded-full bg-cyan-400"></div>
+                </div>
+              </div>
+
+              <div onclick="applyLiquidTheme('theme-ocean')" class="p-3 rounded-2xl border border-white/10 bg-sky-950/30 cursor-pointer hover:border-cyan-400 transition-all flex flex-col justify-between h-24">
+                <span class="text-xs font-bold text-white">Deep Ocean</span>
+                <div class="flex gap-1.5">
+                  <div class="w-4 h-4 rounded-full bg-sky-600"></div>
+                  <div class="w-4 h-4 rounded-full bg-cyan-400"></div>
+                </div>
+              </div>
+
+              <div onclick="applyLiquidTheme('theme-emerald')" class="p-3 rounded-2xl border border-white/10 bg-emerald-950/30 cursor-pointer hover:border-emerald-400 transition-all flex flex-col justify-between h-24">
+                <span class="text-xs font-bold text-white">Emerald Matrix</span>
+                <div class="flex gap-1.5">
+                  <div class="w-4 h-4 rounded-full bg-emerald-600"></div>
+                  <div class="w-4 h-4 rounded-full bg-teal-300"></div>
+                </div>
+              </div>
+
+              <div onclick="applyLiquidTheme('theme-sunset')" class="p-3 rounded-2xl border border-white/10 bg-rose-950/30 cursor-pointer hover:border-rose-400 transition-all flex flex-col justify-between h-24">
+                <span class="text-xs font-bold text-white">Sunset Rose</span>
+                <div class="flex gap-1.5">
+                  <div class="w-4 h-4 rounded-full bg-rose-600"></div>
+                  <div class="w-4 h-4 rounded-full bg-amber-400"></div>
+                </div>
+              </div>
+
+              <div onclick="applyLiquidTheme('theme-obsidian')" class="p-3 rounded-2xl border border-white/10 bg-zinc-950 cursor-pointer hover:border-indigo-400 transition-all flex flex-col justify-between h-24">
+                <span class="text-xs font-bold text-white">Obsidian Dark</span>
+                <div class="flex gap-1.5">
+                  <div class="w-4 h-4 rounded-full bg-zinc-800"></div>
+                  <div class="w-4 h-4 rounded-full bg-indigo-600"></div>
+                </div>
+              </div>
+
+              <div onclick="applyLiquidTheme('theme-prism')" class="p-3 rounded-2xl border border-white/10 bg-slate-800/40 cursor-pointer hover:border-white transition-all flex flex-col justify-between h-24">
+                <span class="text-xs font-bold text-white">Frosted Prism</span>
+                <div class="flex gap-1.5">
+                  <div class="w-4 h-4 rounded-full bg-white"></div>
+                  <div class="w-4 h-4 rounded-full bg-slate-400"></div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Blur Slider -->
+            <div class="p-3.5 rounded-2xl liquid-subtle space-y-2">
+              <div class="flex items-center justify-between text-xs">
+                <span class="font-bold text-white">Liquid Glass Blur Intensity</span>
+                <span id="blurValLabel" class="text-pink-400 font-mono">28px</span>
+              </div>
+              <input type="range" min="8" max="44" value="28" id="blurSlider" oninput="updateBlurIntensity(this.value)" class="w-full accent-pink-500">
+            </div>
+          </div>
+
+          <!-- 2. AUDIO & HAPTICS -->
+          <div id="setPane-audio" class="hidden space-y-4">
+            <div>
+              <h4 class="text-xs font-mono uppercase text-slate-300 tracking-wider font-bold">Synthesizer & Sound Engine</h4>
+              <p class="text-xs text-slate-400 mt-0.5">Control procedural Web Audio API SFX on taps and likes.</p>
+            </div>
+
+            <div class="p-3.5 rounded-2xl liquid-subtle flex items-center justify-between">
+              <div>
+                <p class="text-xs font-bold text-white">Tactile Audio SFX</p>
+                <p class="text-[10px] text-slate-400">Procedural sounds on taps and heart bursts</p>
+              </div>
+              <div onclick="toggleAudioSfx(this)" id="switchAudioMaster" class="switch-track active">
+                <div class="switch-thumb"></div>
+              </div>
+            </div>
+
+            <div class="p-3.5 rounded-2xl liquid-subtle space-y-2">
+              <div class="flex items-center justify-between text-xs">
+                <span class="font-bold text-white">Synthesizer Master Gain</span>
+                <span id="volumeValLabel" class="text-cyan-400 font-mono">75%</span>
+              </div>
+              <input type="range" min="0" max="100" value="75" id="sfxVolumeSlider" oninput="updateSfxVolume(this.value)" class="w-full accent-cyan-400">
+            </div>
+
+            <div class="p-3.5 rounded-2xl liquid-subtle flex items-center justify-between">
+              <div>
+                <p class="text-xs font-bold text-white">Haptic Vibration on Tap</p>
+                <p class="text-[10px] text-slate-400">Triggers mobile device vibration on actions</p>
+              </div>
+              <div onclick="toggleHaptics(this)" id="switchHaptics" class="switch-track active">
+                <div class="switch-thumb"></div>
+              </div>
+            </div>
+
+            <div class="flex items-center gap-2 pt-2">
+              <button onclick="playAudio('pop')" class="flex-1 py-2 rounded-xl liquid-subtle hover:border-pink-500 text-xs font-bold text-white flex items-center justify-center gap-2">
+                <i class="fa-solid fa-music text-pink-400"></i> Test Heart Pop
+              </button>
+              <button onclick="playAudio('follow')" class="flex-1 py-2 rounded-xl liquid-subtle hover:border-cyan-400 text-xs font-bold text-white flex items-center justify-center gap-2">
+                <i class="fa-solid fa-bell text-cyan-400"></i> Test Chime
+              </button>
+            </div>
+          </div>
+
+          <!-- 3. ACCOUNT & PRIVACY -->
+          <div id="setPane-account" class="hidden space-y-4">
+            <div>
+              <h4 class="text-xs font-mono uppercase text-slate-300 tracking-wider font-bold">Profile & Identity Setup</h4>
+              <p class="text-xs text-slate-400 mt-0.5">Manage credentials and gallery avatar.</p>
+            </div>
+
+            <div class="flex items-center gap-3 p-3.5 rounded-2xl liquid-subtle">
+              <img id="settingsAvatarPreview" src="" class="w-12 h-12 rounded-2xl object-cover ring-2 ring-pink-500">
+              <div class="flex-1 min-w-0">
+                <p class="text-xs font-bold text-white">Change Avatar from Gallery</p>
+                <p class="text-[10px] text-slate-400">Upload new photo directly</p>
+              </div>
+              <label class="px-3 py-1.5 rounded-xl bg-gradient-to-r from-violet-600 to-pink-600 text-xs font-bold text-white cursor-pointer hover:opacity-95">
+                Browse
+                <input type="file" accept="image/*" class="hidden" onchange="changeAvatarFromSettings(event)">
+              </label>
+            </div>
+
+            <div class="space-y-3">
+              <div>
+                <label class="block text-[11px] font-mono text-slate-300 font-bold mb-1">Display Name</label>
+                <input type="text" id="settingsInputName" class="w-full text-xs px-3.5 py-2 rounded-xl bg-black/40 border border-white/10 text-white focus:outline-none focus:border-pink-500">
+              </div>
+
+              <div>
+                <label class="block text-[11px] font-mono text-slate-300 font-bold mb-1">Handle (@username)</label>
+                <input type="text" id="settingsInputHandle" oninput="cleanHandleInput(this)" class="w-full text-xs px-3.5 py-2 rounded-xl bg-black/40 border border-white/10 text-white focus:outline-none focus:border-pink-500 font-mono">
+              </div>
+
+              <div>
+                <label class="block text-[11px] font-mono text-slate-300 font-bold mb-1">Bio</label>
+                <textarea id="settingsInputBio" rows="2" class="w-full text-xs px-3.5 py-2 rounded-xl bg-black/40 border border-white/10 text-white focus:outline-none focus:border-pink-500 resize-none"></textarea>
+              </div>
+            </div>
+
+            <div class="p-3.5 rounded-2xl liquid-subtle flex items-center justify-between">
+              <div>
+                <p class="text-xs font-bold text-white">Private Account</p>
+                <p class="text-[10px] text-slate-400">Only approved followers can view echoes</p>
+              </div>
+              <div onclick="togglePrivateAccount(this)" id="switchPrivateAccount" class="switch-track">
+                <div class="switch-thumb"></div>
+              </div>
+            </div>
+
+            <button onclick="saveAccountSettings()" class="w-full py-2.5 rounded-xl bg-gradient-to-r from-violet-600 to-pink-600 text-white font-bold text-xs shadow-md">
+              Save Account Changes
+            </button>
+          </div>
+
+          <!-- 4. SYSTEM & STORAGE -->
+          <div id="setPane-system" class="hidden space-y-4">
+            <div>
+              <h4 class="text-xs font-mono uppercase text-slate-300 tracking-wider font-bold">Storage & Memory Footprint</h4>
+              <p class="text-xs text-slate-400 mt-0.5">Inspect your device storage utilization.</p>
+            </div>
+
+            <div class="p-3.5 rounded-2xl liquid-subtle space-y-2">
+              <div class="flex items-center justify-between text-xs">
+                <span class="text-slate-300 font-bold">Local Storage Footprint</span>
+                <span id="cacheSizeLabel" class="text-cyan-400 font-mono">0 KB</span>
+              </div>
+              <div class="w-full h-1.5 rounded-full bg-white/10 overflow-hidden">
+                <div class="w-1/3 h-full bg-gradient-to-r from-violet-500 to-pink-500"></div>
+              </div>
+            </div>
+
+            <button onclick="clearAppCache()" class="w-full py-2.5 rounded-xl bg-red-500/20 text-red-300 border border-red-500/30 text-xs font-bold hover:bg-red-500/30 transition-colors flex items-center justify-center gap-2">
+              <i class="fa-solid fa-trash-can"></i>
+              <span>Clear Stored Media & Reset Feeds</span>
+            </button>
+          </div>
+
+          <!-- 5. ABOUT INTWIWA -->
+          <div id="setPane-about" class="hidden space-y-4 text-center py-2">
+            <div class="w-16 h-16 mx-auto rounded-3xl p-1 bg-gradient-to-tr from-violet-500 via-pink-500 to-cyan-400 shadow-xl">
+              <div class="w-full h-full bg-canvas rounded-2xl flex items-center justify-center">
+                <i class="fa-solid fa-bolt text-2xl text-transparent bg-clip-text bg-gradient-to-r from-violet-400 to-pink-400"></i>
+              </div>
+            </div>
+
+            <div>
+              <h3 class="text-xl font-black font-display bg-gradient-to-r from-white via-slate-100 to-pink-200 bg-clip-text text-transparent">INTWIWA</h3>
+              <p class="text-xs text-slate-400 mt-0.5">Liquid Social Operating Platform</p>
+            </div>
+
+            <div class="inline-flex items-center gap-2 px-4 py-2 rounded-2xl bg-gradient-to-r from-violet-500/20 via-pink-500/20 to-cyan-500/20 border border-white/20 text-white font-extrabold text-xs shadow-md">
+              <i class="fa-solid fa-bolt text-yellow-300"></i>
+              <span>Powered by PRASHANT YADAV</span>
+            </div>
+
+            <div class="p-3.5 rounded-2xl liquid-subtle text-left text-xs text-slate-300 space-y-1.5 font-mono">
+              <div class="flex justify-between">
+                <span class="text-slate-400">Platform Build</span>
+                <span class="text-white">v6.0-Unified-Safe</span>
+              </div>
+              <div class="flex justify-between">
+                <span class="text-slate-400">Status</span>
+                <span class="text-emerald-400">Fully Functional</span>
+              </div>
+              <div class="flex justify-between">
+                <span class="text-slate-400">Founder & Creator</span>
+                <span class="text-pink-400">PRASHANT YADAV</span>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+
+  <!-- DIRECT GALLERY POST / REEL CREATION MODAL -->
+  <div id="createModal" class="fixed inset-0 z-50 bg-black/85 backdrop-blur-md hidden flex items-center justify-center p-4">
+    <div class="w-full max-w-lg liquid-glass rounded-3xl p-6 border border-white/15 shadow-2xl space-y-4">
+      
+      <div class="flex items-center justify-between pb-3 border-b border-white/10">
+        <h3 class="text-sm font-bold text-white flex items-center gap-2">
+          <i class="fa-solid fa-square-plus text-pink-400"></i> Upload from Gallery / Camera
+        </h3>
+        <button onclick="closeCreateModal()" class="w-7 h-7 rounded-full liquid-subtle text-slate-300 hover:text-white flex items-center justify-center">
+          <i class="fa-solid fa-xmark text-xs"></i>
+        </button>
+      </div>
+
+      <!-- File Select from Device Gallery -->
+      <div>
+        <label class="block text-[11px] font-mono uppercase tracking-wider text-slate-300 font-bold mb-2">Select Photo or Video from Device</label>
+        <label class="file-drop-glow rounded-2xl p-6 flex flex-col items-center justify-center gap-2 cursor-pointer bg-black/40">
+          <i class="fa-solid fa-cloud-arrow-up text-3xl text-pink-400"></i>
+          <p class="text-xs font-semibold text-white">Tap to choose from Device Gallery</p>
+          <p class="text-[10px] text-slate-400">Real files supported (JPG, PNG, WEBP, MP4, MOV)</p>
+          <input type="file" id="createMediaFileInput" accept="image/*,video/*" class="hidden" onchange="previewMediaFromGallery(event)">
+        </label>
+
+        <!-- Preview Area -->
+        <div id="createPreviewBox" class="hidden mt-3 rounded-2xl overflow-hidden max-h-56 bg-black border border-white/10 flex items-center justify-center">
+          <img id="createImgPreview" class="hidden w-full h-full object-cover">
+          <video id="createVideoPreview" controls playsinline class="hidden w-full h-full max-h-56"></video>
+        </div>
+      </div>
+
+      <div>
+        <label class="block text-[11px] font-mono uppercase tracking-wider text-slate-300 font-bold mb-1">Caption</label>
+        <textarea id="createCaptionInput" rows="3" placeholder="Write real caption... #INTWIWA" class="w-full text-xs px-3.5 py-2.5 rounded-xl bg-black/40 border border-white/10 text-white focus:outline-none focus:border-pink-500 resize-none"></textarea>
+      </div>
+
+      <div class="flex items-center justify-between pt-2">
+        <div class="flex items-center gap-2 text-xs text-slate-400 font-mono">
+          <span class="cursor-pointer hover:text-pink-400" onclick="insertTag('#INTWIWA')">#INTWIWA</span>
+          <span class="cursor-pointer hover:text-cyan-400" onclick="insertTag('#PrashantYadav')">#PrashantYadav</span>
+        </div>
+        <button onclick="publishMediaPost()" id="publishPostBtn" class="px-5 py-2.5 rounded-xl bg-gradient-to-r from-violet-600 to-pink-600 hover:opacity-95 text-white font-bold text-xs shadow-lg">
+          Share to INTWIWA
+        </button>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- FULLSCREEN STORY VIEWER (MOMENTS) -->
+  <div id="storyViewerModal" class="fixed inset-0 z-50 bg-black/95 backdrop-blur-2xl hidden flex items-center justify-center p-3">
+    <div class="relative w-full max-w-sm h-[600px] rounded-3xl overflow-hidden border border-white/20 shadow-2xl bg-canvas flex flex-col justify-between p-4">
+      
+      <!-- Progress Bar -->
+      <div class="flex items-center gap-1 w-full z-20">
+        <div class="flex-1 h-1 bg-white/20 rounded-full overflow-hidden">
+          <div id="storyProgressFill" class="h-full bg-white rounded-full"></div>
+        </div>
+      </div>
+
+      <!-- Header -->
+      <div class="flex items-center justify-between z-20 mt-3">
+        <div class="flex items-center gap-2.5">
+          <img id="storyAvatar" src="" class="w-8 h-8 rounded-full object-cover border border-white/30">
+          <div>
+            <h5 id="storyAuthor" class="text-xs font-bold text-white">Author</h5>
+            <span class="text-[9px] text-white/70">Story Moment</span>
+          </div>
+        </div>
+
+        <button onclick="closeStory()" class="w-7 h-7 rounded-full bg-black/60 text-white flex items-center justify-center hover:bg-black">
+          <i class="fa-solid fa-xmark text-xs"></i>
+        </button>
+      </div>
+
+      <!-- Media Element -->
+      <img id="storyMediaImg" class="absolute inset-0 w-full h-full object-cover z-10 pointer-events-none">
+      <video id="storyMediaVideo" playsinline autoplay muted loop class="hidden absolute inset-0 w-full h-full object-cover z-10 pointer-events-none"></video>
+
+      <!-- Reaction Bar -->
+      <div class="z-20 space-y-2">
+        <p id="storyCaption" class="text-xs text-white drop-shadow bg-black/45 p-2 rounded-xl backdrop-blur-sm"></p>
+        <div class="flex items-center gap-2">
+          <input type="text" placeholder="Send reaction..." class="flex-1 text-xs px-3 py-2 rounded-full bg-black/60 backdrop-blur-md text-white border border-white/20 focus:outline-none">
+          <button onclick="playAudio('pop'); triggerToast('Reaction sent! ❤️'); closeStory();" class="w-9 h-9 rounded-full bg-pink-600 text-white flex items-center justify-center">
+            <i class="fa-solid fa-heart text-xs"></i>
+          </button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- TOAST NOTIFICATION -->
+  <div id="toast" class="fixed bottom-20 md:bottom-6 right-6 z-50 transform translate-y-24 opacity-0 transition-all duration-300 pointer-events-none">
+    <div class="liquid-glass text-white text-xs font-semibold px-4 py-2.5 rounded-2xl shadow-2xl flex items-center gap-2 border border-white/20">
+      <i class="fa-solid fa-bolt text-yellow-300 text-xs"></i>
+      <span id="toastMsg">Notification</span>
+    </div>
+  </div>
+
+
+  <!-- ==============================================================
+       4. JAVASCRIPT APPLICATION CORE (STABLE & SAFE)
+       ============================================================== -->
+  <script>
+    /* ================= STORAGE KEYS ================= */
+    const STORAGE_USERS_REGISTRY = 'INTWIWA_REGISTERED_USERS_STORE';
+    const STORAGE_CURRENT_SESSION = 'INTWIWA_AUTHENTICATED_SESSION';
+    const STORAGE_POSTS_STORE = 'INTWIWA_REAL_POSTS_STORE';
+    const STORAGE_STORIES_STORE = 'INTWIWA_REAL_STORIES_STORE';
+    const STORAGE_REELS_STORE = 'INTWIWA_REAL_REELS_STORE';
+    const STORAGE_MESSAGES_STORE = 'INTWIWA_REAL_MESSAGES_STORE';
+    const STORAGE_THEME_KEY = 'INTWIWA_ACTIVE_THEME';
+
+    /* ================= SOUND ENGINE ================= */
+    let audioCtx = null;
+    let sfxEnabled = true;
+    let sfxVolume = 0.75;
+    let hapticsEnabled = true;
+
+    window.playAudio = function(type = 'pop') {
+      if (!sfxEnabled) return;
+      try {
+        if (!audioCtx) audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+        if (audioCtx.state === 'suspended') audioCtx.resume();
+        const osc = audioCtx.createOscillator();
+        const gain = audioCtx.createGain();
+        osc.connect(gain);
+        gain.connect(audioCtx.destination);
+        const now = audioCtx.currentTime;
+        const effectiveGain = 0.15 * sfxVolume;
+
+        if (type === 'pop') {
+          osc.type = 'sine';
+          osc.frequency.setValueAtTime(460, now);
+          osc.frequency.exponentialRampToValueAtTime(920, now + 0.08);
+          gain.gain.setValueAtTime(effectiveGain, now);
+          gain.gain.exponentialRampToValueAtTime(0.001, now + 0.08);
+          osc.start(now);
+          osc.stop(now + 0.08);
+
+          if (hapticsEnabled && navigator.vibrate) {
+            navigator.vibrate(15);
+          }
+        } else if (type === 'follow') {
+          osc.type = 'triangle';
+          osc.frequency.setValueAtTime(540, now);
+          osc.frequency.exponentialRampToValueAtTime(1080, now + 0.12);
+          gain.gain.setValueAtTime(effectiveGain, now);
+          gain.gain.exponentialRampToValueAtTime(0.001, now + 0.12);
+          osc.start(now);
+          osc.stop(now + 0.12);
+
+          if (hapticsEnabled && navigator.vibrate) {
+            navigator.vibrate([20, 30, 20]);
+          }
+        }
+      } catch (e) {}
+    };
+
+    /* ================= STATE ================= */
+    let currentUser = null;
+    let realPosts = [];
+    let realStories = [];
+    let realReels = [];
+    let realMessages = [];
+    let signupAvatarDataUrl = '';
+
+    /* Helper: Compress image to avoid localstorage quota crash */
+    function compressImage(dataUrl, maxWidth, maxHeight, quality, callback) {
+      const img = new Image();
+      img.onload = function() {
+        let width = img.width;
+        let height = img.height;
+        if (width > height) {
+          if (width > maxWidth) {
+            height *= maxWidth / width;
+            width = maxWidth;
+          }
+        } else {
+          if (height > maxHeight) {
+            width *= maxHeight / height;
+            height = maxHeight;
+          }
+        }
+        const canvas = document.createElement('canvas');
+        canvas.width = width;
+        canvas.height = height;
+        const ctx = canvas.getContext('2d');
+        ctx.drawImage(img, 0, 0, width, height);
+        callback(canvas.toDataURL('image/jpeg', quality));
+      };
+      img.onerror = function() {
+        callback(dataUrl);
+      };
+      img.src = dataUrl;
+    }
+
+    /* Helper: Generate stylish gradient initial avatar */
+    function generateGradientAvatar(name) {
+      const initials = (name || 'User')
+        .split(' ')
+        .map(n => n[0])
+        .slice(0, 2)
+        .join('')
+        .toUpperCase();
+      const canvas = document.createElement('canvas');
+      canvas.width = 160;
+      canvas.height = 160;
+      const ctx = canvas.getContext('2d');
+
+      const grad = ctx.createLinearGradient(0, 0, 160, 160);
+      grad.addColorStop(0, '#a855f7');
+      grad.addColorStop(0.5, '#ec4899');
+      grad.addColorStop(1, '#06b6d4');
+      ctx.fillStyle = grad;
+      ctx.fillRect(0, 0, 160, 160);
+
+      ctx.font = 'bold 64px "Outfit", sans-serif';
+      ctx.fillStyle = '#ffffff';
+      ctx.textAlign = 'center';
+      ctx.textBaseline = 'middle';
+      ctx.fillText(initials, 80, 84);
+
+      return canvas.toDataURL('image/png');
+    }
+
+    /* ================= AUTHENTICATION FLOW ================= */
+    window.switchAuthMode = function(mode) {
+      window.playAudio('pop');
+      const tabS = document.getElementById('authTabSignup');
+      const tabL = document.getElementById('authTabLogin');
+      const formS = document.getElementById('authSignupForm');
+      const formL = document.getElementById('authLoginForm');
+
+      if (mode === 'signup') {
+        tabS.className = 'flex-1 py-2 rounded-xl text-xs font-bold transition-all text-white bg-gradient-to-r from-violet-600 to-pink-600 shadow-lg shadow-pink-500/20';
+        tabL.className = 'flex-1 py-2 rounded-xl text-xs font-bold transition-all text-slate-400 hover:text-white';
+        formS.classList.remove('hidden');
+        formL.classList.add('hidden');
+      } else {
+        tabL.className = 'flex-1 py-2 rounded-xl text-xs font-bold transition-all text-white bg-gradient-to-r from-violet-600 to-pink-600 shadow-lg shadow-pink-500/20';
+        tabS.className = 'flex-1 py-2 rounded-xl text-xs font-bold transition-all text-slate-400 hover:text-white';
+        formL.classList.remove('hidden');
+        formS.classList.add('hidden');
+      }
+    };
+
+    window.cleanHandleInput = function(el) {
+      el.value = el.value.replace(/[^a-zA-Z0-9_]/g, '').toLowerCase();
+    };
+
+    window.previewAvatarFromGallery = function(e) {
+      const file = e.target.files && e.target.files[0];
+      if (!file) return;
+
+      const reader = new FileReader();
+      reader.onload = function(evt) {
+        compressImage(evt.target.result, 240, 240, 0.8, function(compressedUrl) {
+          signupAvatarDataUrl = compressedUrl;
+          const img = document.getElementById('signupAvatarPreview');
+          const placeholder = document.getElementById('signupAvatarPlaceholder');
+          img.src = signupAvatarDataUrl;
+          img.classList.remove('hidden');
+          placeholder.classList.add('hidden');
+          document.getElementById('signupAvatarText').innerText = 'Photo Ready ✓';
+          window.triggerToast('Profile photo ready from device! 📸');
+        });
+      };
+      reader.readAsDataURL(file);
+    };
+
+    window.handleSignupSubmit = function(e) {
+      e.preventDefault();
+      try {
+        const name = document.getElementById('signupName').value.trim();
+        const handle = document.getElementById('signupHandle').value.trim();
+        const contact = document.getElementById('signupContact').value.trim();
+        const password = document.getElementById('signupPassword').value;
+        const bio = document.getElementById('signupBio').value.trim() || 'Real member on INTWIWA ⚡';
+
+        if (!name) {
+          window.triggerToast('Kripya apna Full Name dalein');
+          return;
+        }
+
+        if (!handle || handle.length < 2) {
+          window.triggerToast('Handle kam se kam 2 characters ka hona chahiye');
+          return;
+        }
+
+        if (!password || password.length < 4) {
+          window.triggerToast('Password kam se kam 4 characters ka hona chahiye');
+          return;
+        }
+
+        let usersStore = {};
+        try {
+          usersStore = JSON.parse(localStorage.getItem(STORAGE_USERS_REGISTRY) || '{}');
+        } catch(err) {
+          usersStore = {};
+        }
+
+        if (usersStore[handle.toLowerCase()]) {
+          window.triggerToast(`Username @${handle} pehle se registered hai! Dusra try karein.`);
+          return;
+        }
+
+        // If user didn't select an image, generate a stylish gradient avatar automatically
+        const finalAvatar = signupAvatarDataUrl || generateGradientAvatar(name);
+
+        const newUser = {
+          name,
+          handle: handle.toLowerCase(),
+          contact,
+          password,
+          bio,
+          avatar: finalAvatar,
+          followersCount: 0,
+          followingCount: 1, // Follows Founder by default
+          followingList: ['prashant_yadav'],
+          isPrivate: false,
+          createdAt: new Date().toISOString()
+        };
+
+        usersStore[handle.toLowerCase()] = newUser;
+        localStorage.setItem(STORAGE_USERS_REGISTRY, JSON.stringify(usersStore));
+        localStorage.setItem(STORAGE_CURRENT_SESSION, JSON.stringify(newUser));
+
+        currentUser = newUser;
+        window.playAudio('follow');
+        window.triggerToast(`Account Successfully Created! Welcome, ${name} ⚡`);
+        launchAuthenticatedApp();
+      } catch (err) {
+        console.error('Signup error:', err);
+        window.triggerToast('Account create karne me issue hua, kripya dubara try karein.');
+      }
+    };
+
+    window.handleLoginSubmit = function(e) {
+      e.preventDefault();
+      try {
+        const identifier = document.getElementById('loginIdentifier').value.trim().toLowerCase().replace('@', '');
+        const password = document.getElementById('loginPassword').value;
+
+        let usersStore = {};
+        try {
+          usersStore = JSON.parse(localStorage.getItem(STORAGE_USERS_REGISTRY) || '{}');
+        } catch(err) {
+          usersStore = {};
+        }
+
+        let foundUser = null;
+        for (let k in usersStore) {
+          const u = usersStore[k];
+          if (u.handle.toLowerCase() === identifier || (u.contact && u.contact.toLowerCase() === identifier)) {
+            foundUser = u;
+            break;
+          }
+        }
+
+        if (!foundUser) {
+          window.triggerToast('Account nahi mila. Pehle Create Account karein.');
+          return;
+        }
+
+        if (foundUser.password !== password) {
+          window.triggerToast('Galat password! Please check again.');
+          return;
+        }
+
+        currentUser = foundUser;
+        localStorage.setItem(STORAGE_CURRENT_SESSION, JSON.stringify(currentUser));
+        window.playAudio('follow');
+        window.triggerToast(`Welcome back, @${currentUser.handle}! ⚡`);
+        launchAuthenticatedApp();
+      } catch(err) {
+        console.error('Login error:', err);
+        window.triggerToast('Login error occurred.');
+      }
+    };
+
+    window.handleLogout = function() {
+      window.playAudio('pop');
+      localStorage.removeItem(STORAGE_CURRENT_SESSION);
+      currentUser = null;
+      document.getElementById('authGate').classList.remove('hidden');
+      document.getElementById('mainApp').classList.add('hidden');
+      window.triggerToast('Logged out of INTWIWA');
+    };
+
+    /* ================= APP INITIALIZATION ================= */
+    function checkSession() {
+      const savedTheme = localStorage.getItem(STORAGE_THEME_KEY);
+      if (savedTheme) {
+        document.body.className = `selection:bg-pink-500 selection:text-white ${savedTheme}`;
+      }
+
+      const storedUser = localStorage.getItem(STORAGE_CURRENT_SESSION);
+      if (storedUser) {
+        try {
+          currentUser = JSON.parse(storedUser);
+          if (currentUser && currentUser.handle) {
+            launchAuthenticatedApp();
+            return;
+          }
+        } catch(e) {}
+      }
+
+      // Show Gateway if no valid session
+      document.getElementById('authGate').classList.remove('hidden');
+      document.getElementById('mainApp').classList.add('hidden');
+    }
+
+    function launchAuthenticatedApp() {
+      document.getElementById('authGate').classList.add('hidden');
+      document.getElementById('mainApp').classList.remove('hidden');
+
+      // Update Header & Profile info
+      document.getElementById('headerUserAvatar').src = currentUser.avatar;
+      document.getElementById('trayMyAvatar').src = currentUser.avatar;
+      document.getElementById('sidebarUserAvatar').src = currentUser.avatar;
+      document.getElementById('sidebarUserName').innerText = currentUser.name;
+      document.getElementById('sidebarUserHandle').innerText = '@' + currentUser.handle;
+
+      document.getElementById('profileAvatar').src = currentUser.avatar;
+      document.getElementById('profileFullName').innerText = currentUser.name;
+      document.getElementById('profileHandle').innerText = '@' + currentUser.handle;
+      document.getElementById('profileBio').innerText = currentUser.bio;
+      document.getElementById('profileFollowersCount').innerText = currentUser.followersCount || 0;
+      document.getElementById('profileFollowingCount').innerText = currentUser.followingCount || 1;
+
+      loadUserData();
+      renderFeed();
+      renderStories();
+      renderReels();
+      renderProfileGrid();
+      renderWhisper();
+    }
+
+    /* ================= DATA MANAGEMENT ================= */
+    function loadUserData() {
+      try {
+        realPosts = JSON.parse(localStorage.getItem(STORAGE_POSTS_STORE) || '[]');
+      } catch(e) { realPosts = []; }
+      try {
+        realStories = JSON.parse(localStorage.getItem(STORAGE_STORIES_STORE) || '[]');
+      } catch(e) { realStories = []; }
+      try {
+        realReels = JSON.parse(localStorage.getItem(STORAGE_REELS_STORE) || '[]');
+      } catch(e) { realReels = []; }
+      try {
+        realMessages = JSON.parse(localStorage.getItem(STORAGE_MESSAGES_STORE) || '[]');
+      } catch(e) { realMessages = []; }
+    }
+
+    function saveUserData() {
+      try {
+        localStorage.setItem(STORAGE_POSTS_STORE, JSON.stringify(realPosts));
+        localStorage.setItem(STORAGE_STORIES_STORE, JSON.stringify(realStories));
+        localStorage.setItem(STORAGE_REELS_STORE, JSON.stringify(realReels));
+        localStorage.setItem(STORAGE_MESSAGES_STORE, JSON.stringify(realMessages));
+      } catch (e) {
+        console.warn('Storage quota exceeded:', e);
+        window.triggerToast('Storage full! Old cached media may be pruned.');
+      }
+    }
+
+    /* ================= FOLLOW / FOLLOWING SYSTEM ================= */
+    window.openFollowersModal = function(type) {
+      window.playAudio('pop');
+      const modal = document.getElementById('followersModal');
+      const title = document.getElementById('followersModalTitle');
+      const list = document.getElementById('followersListContainer');
+
+      title.innerText = type === 'followers' ? 'Your Followers' : 'Following';
+      list.innerHTML = '';
+
+      if (type === 'followers') {
+        if (!currentUser.followersCount || currentUser.followersCount === 0) {
+          list.innerHTML = `
+            <div class="text-center py-6 text-slate-400 text-xs">
+              <p>No followers yet.</p>
+              <p class="text-[10px] text-slate-500 mt-1">Share your profile @${currentUser.handle}!</p>
+            </div>
+          `;
+        }
+      } else {
+        // Following list (includes Founder)
+        list.innerHTML = `
+          <div class="flex items-center justify-between p-2 rounded-xl liquid-subtle">
+            <div class="flex items-center gap-2.5">
+              <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-violet-600 via-pink-600 to-cyan-400 p-0.5">
+                <div class="w-full h-full bg-canvas rounded-xl flex items-center justify-center font-bold text-white text-xs">PY</div>
+              </div>
+              <div>
+                <div class="flex items-center gap-1">
+                  <span class="text-xs font-bold text-white">PRASHANT YADAV</span>
+                  <i class="fa-solid fa-circle-check text-cyan-400 text-[10px]"></i>
+                </div>
+                <span class="text-[10px] text-slate-400 font-mono">@prashant_yadav</span>
+              </div>
+            </div>
+            <button onclick="toggleFollowFounder(this)" class="px-3 py-1 rounded-xl bg-white/10 text-xs font-bold text-pink-400 hover:bg-white/20">
+              Following
+            </button>
+          </div>
+        `;
+      }
+
+      modal.classList.remove('hidden');
+    };
+
+    window.closeFollowersModal = function() {
+      document.getElementById('followersModal').classList.add('hidden');
+    };
+
+    window.toggleFollowFounder = function(btn) {
+      window.playAudio('follow');
+      if (btn.innerText === 'Following') {
+        btn.innerText = 'Follow';
+        btn.className = 'px-3 py-1 rounded-xl bg-gradient-to-r from-violet-600 to-pink-600 text-xs font-bold text-white';
+        currentUser.followingCount = Math.max(0, (currentUser.followingCount || 1) - 1);
+      } else {
+        btn.innerText = 'Following';
+        btn.className = 'px-3 py-1 rounded-xl bg-white/10 text-xs font-bold text-pink-400';
+        currentUser.followingCount = (currentUser.followingCount || 0) + 1;
+      }
+      document.getElementById('profileFollowingCount').innerText = currentUser.followingCount;
+      updateUserInStore(currentUser);
+    };
+
+    /* ================= REAL POST CREATION (GALLERY) ================= */
+    let stagedMediaType = 'image';
+    let stagedMediaDataUrl = '';
+
+    window.openCreateModal = function() {
+      window.playAudio('pop');
+      document.getElementById('createModal').classList.remove('hidden');
+    };
+
+    window.closeCreateModal = function() {
+      document.getElementById('createModal').classList.add('hidden');
+      resetCreateForm();
+    };
+
+    function resetCreateForm() {
+      stagedMediaDataUrl = '';
+      document.getElementById('createMediaFileInput').value = '';
+      document.getElementById('createPreviewBox').classList.add('hidden');
+      document.getElementById('createImgPreview').classList.add('hidden');
+      document.getElementById('createVideoPreview').classList.add('hidden');
+      document.getElementById('createCaptionInput').value = '';
+    }
+
+    window.previewMediaFromGallery = function(e) {
+      const file = e.target.files && e.target.files[0];
+      if (!file) return;
+
+      stagedMediaType = file.type.startsWith('video') ? 'video' : 'image';
+
+      const reader = new FileReader();
+      reader.onload = function(evt) {
+        if (stagedMediaType === 'image') {
+          compressImage(evt.target.result, 800, 800, 0.78, function(comp) {
+            stagedMediaDataUrl = comp;
+            showMediaPreview();
+          });
+        } else {
+          stagedMediaDataUrl = evt.target.result;
+          showMediaPreview();
+        }
+      };
+      reader.readAsDataURL(file);
+    };
+
+    function showMediaPreview() {
+      const box = document.getElementById('createPreviewBox');
+      const imgEl = document.getElementById('createImgPreview');
+      const vidEl = document.getElementById('createVideoPreview');
+      box.classList.remove('hidden');
+
+      if (stagedMediaType === 'image') {
+        imgEl.src = stagedMediaDataUrl;
+        imgEl.classList.remove('hidden');
+        vidEl.classList.add('hidden');
+      } else {
+        vidEl.src = stagedMediaDataUrl;
+        vidEl.classList.remove('hidden');
+        imgEl.classList.add('hidden');
+        vidEl.load();
+      }
+      window.triggerToast(`Real ${stagedMediaType} ready! 📸`);
+    }
+
+    window.insertTag = function(t) {
+      document.getElementById('createCaptionInput').value += ' ' + t + ' ';
+    };
+
+    window.publishMediaPost = function() {
+      if (!stagedMediaDataUrl) {
+        window.triggerToast('Please select a photo or video from device');
+        return;
+      }
+
+      window.playAudio('follow');
+      const caption = document.getElementById('createCaptionInput').value.trim() || 'My post on INTWIWA ⚡';
+      const isVideo = stagedMediaType === 'video';
+
+      const newPost = {
+        id: Date.now(),
+        authorName: currentUser.name,
+        authorHandle: currentUser.handle,
+        avatar: currentUser.avatar,
+        verified: true,
+        type: isVideo ? 'video' : 'image',
+        mediaUrl: stagedMediaDataUrl,
+        caption: caption,
+        likes: 0,
+        liked: false,
+        bookmarked: false,
+        time: 'Just now',
+        comments: []
+      };
+
+      realPosts.unshift(newPost);
+
+      if (isVideo) {
+        realReels.unshift({
+          type: 'video',
+          url: stagedMediaDataUrl,
+          author: currentUser.name,
+          avatar: currentUser.avatar,
+          caption: caption,
+          likes: 0
+        });
+      }
+
+      saveUserData();
+      closeCreateModal();
+      renderFeed();
+      renderReels();
+      renderProfileGrid();
+      navigateTo('feed');
+      window.triggerToast('Post shared to your INTWIWA profile! ⚡');
+    };
+
+    /* ================= REAL FEED RENDERING ================= */
+    function renderFeed() {
+      const container = document.getElementById('postsStream');
+      container.innerHTML = '';
+
+      if (realPosts.length === 0) {
+        container.innerHTML = `
+          <div class="liquid-glass rounded-3xl p-8 border border-white/10 text-center space-y-3">
+            <div class="w-16 h-16 rounded-full bg-white/5 mx-auto flex items-center justify-center text-pink-400 text-2xl">
+              <i class="fa-solid fa-camera"></i>
+            </div>
+            <h3 class="text-base font-bold text-white">Your Feed is Ready</h3>
+            <p class="text-xs text-slate-400 max-w-sm mx-auto">No fake bots here. Tap below to upload real photos or reels from your gallery!</p>
+            <button onclick="openCreateModal()" class="px-4 py-2 rounded-xl bg-gradient-to-r from-violet-600 to-pink-600 text-white font-bold text-xs shadow-md">
+              Upload from Gallery
+            </button>
+          </div>
+        `;
+        return;
+      }
+
+      realPosts.forEach(post => {
+        const card = document.createElement('article');
+        card.className = 'liquid-glass rounded-3xl overflow-hidden border border-white/10 shadow-xl';
+
+        let mediaTag = '';
+        if (post.type === 'video') {
+          mediaTag = `<video src="${post.mediaUrl}" controls playsinline class="w-full max-h-[500px] object-cover bg-black"></video>`;
+        } else {
+          mediaTag = `
+            <div class="relative w-full aspect-square bg-black overflow-hidden select-none cursor-pointer" ondblclick="triggerPostDoubleTap(${post.id}, event)">
+              <img src="${post.mediaUrl}" class="w-full h-full object-cover">
+              <div id="heartPop-${post.id}" class="absolute top-1/2 left-1/2 pointer-events-none hidden">
+                <i class="fa-solid fa-heart text-6xl text-pink-500 drop-shadow-2xl"></i>
+              </div>
+            </div>
+          `;
+        }
+
+        let commentsHtml = (post.comments || []).map(c => `
+          <div class="text-xs text-slate-300">
+            <strong class="text-white font-mono">@${c.user}</strong> <span>${c.text}</span>
+          </div>
+        `).join('');
+
+        card.innerHTML = `
+          <div class="p-3.5 flex items-center justify-between">
+            <div class="flex items-center gap-3">
+              <div class="relative w-10 h-10 rounded-full p-[2px] moment-ring-live">
+                <img src="${post.avatar}" class="w-full h-full rounded-full object-cover border-2 border-canvas">
+              </div>
+              <div>
+                <div class="flex items-center gap-1.5">
+                  <span class="text-xs font-bold text-white">${post.authorName}</span>
+                  <i class="fa-solid fa-circle-check text-cyan-400 text-[10px]"></i>
+                </div>
+                <div class="flex items-center gap-2">
+                  <span class="text-[10px] text-slate-400 font-mono">@${post.authorHandle}</span>
+                  <span class="text-[10px] text-slate-500">• ${post.time}</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          ${mediaTag}
+
+          <div class="p-3.5 space-y-2.5">
+            <div class="flex items-center justify-between">
+              <div class="flex items-center gap-4 text-slate-200">
+                <button onclick="togglePostLike(${post.id})" class="text-xl hover:text-pink-500 transition-colors">
+                  <i class="fa-${post.liked ? 'solid' : 'regular'} fa-heart ${post.liked ? 'text-pink-500' : ''}"></i>
+                </button>
+                <button onclick="focusCommentInput(${post.id})" class="text-xl hover:text-cyan-400 transition-colors">
+                  <i class="fa-regular fa-comment"></i>
+                </button>
+                <button onclick="sharePostToWhisper(${post.id})" class="text-xl hover:text-violet-400 transition-colors">
+                  <i class="fa-regular fa-paper-plane"></i>
+                </button>
+              </div>
+
+              <button onclick="togglePostBookmark(${post.id})" class="text-xl text-slate-200 hover:text-amber-400 transition-colors">
+                <i class="fa-${post.bookmarked ? 'solid' : 'regular'} fa-bookmark ${post.bookmarked ? 'text-amber-400' : ''}"></i>
+              </button>
+            </div>
+
+            <p class="text-xs font-bold text-white font-mono">${post.likes} likes</p>
+
+            <div class="text-xs leading-relaxed">
+              <span class="font-bold text-white mr-1.5 font-mono">@${post.authorHandle}</span>
+              <span class="text-slate-200">${post.caption}</span>
+            </div>
+
+            <div class="space-y-1 pt-1">
+              ${commentsHtml}
+            </div>
+
+            <div class="flex items-center gap-2 pt-2 border-t border-white/10">
+              <input type="text" id="commentInp-${post.id}" placeholder="Add a comment..." class="flex-1 text-xs bg-transparent text-white placeholder-slate-400 focus:outline-none" onkeydown="if(event.key === 'Enter') submitComment(${post.id})">
+              <button onclick="submitComment(${post.id})" class="text-xs font-bold text-pink-400 hover:text-pink-300">
+                Post
+              </button>
+            </div>
+          </div>
+        `;
+        container.appendChild(card);
+      });
+    }
+
+    window.triggerPostDoubleTap = function(id, e) {
+      window.playAudio('pop');
+      const burst = document.getElementById(`heartPop-${id}`);
+      if (burst) {
+        burst.classList.remove('hidden');
+        burst.classList.add('heart-burst-anim');
+        setTimeout(() => {
+          burst.classList.add('hidden');
+          burst.classList.remove('heart-burst-anim');
+        }, 850);
+      }
+      const p = realPosts.find(x => x.id === id);
+      if (p && !p.liked) {
+        p.liked = true;
+        p.likes += 1;
+        saveUserData();
+        renderFeed();
+      }
+      window.triggerToast('Liked! ❤️');
+    };
+
+    window.togglePostLike = function(id) {
+      window.playAudio('pop');
+      const p = realPosts.find(x => x.id === id);
+      if (!p) return;
+      p.liked = !p.liked;
+      p.likes += p.liked ? 1 : -1;
+      saveUserData();
+      renderFeed();
+    };
+
+    window.togglePostBookmark = function(id) {
+      window.playAudio('pop');
+      const p = realPosts.find(x => x.id === id);
+      if (!p) return;
+      p.bookmarked = !p.bookmarked;
+      saveUserData();
+      renderFeed();
+      window.triggerToast(p.bookmarked ? 'Saved to bookmarks' : 'Removed from bookmarks');
+    };
+
+    window.focusCommentInput = function(id) {
+      const inp = document.getElementById(`commentInp-${id}`);
+      if (inp) inp.focus();
+    };
+
+    window.submitComment = function(id) {
+      window.playAudio('pop');
+      const inp = document.getElementById(`commentInp-${id}`);
+      const text = inp.value.trim();
+      if (!text) return;
+
+      const p = realPosts.find(x => x.id === id);
+      if (p) {
+        if (!p.comments) p.comments = [];
+        p.comments.push({ user: currentUser.handle, text });
+        saveUserData();
+        renderFeed();
+      }
+      inp.value = '';
+      window.triggerToast('Comment added! 💬');
+    };
+
+    window.sharePostToWhisper = function(id) {
+      navigateTo('whisper');
+      const inp = document.getElementById('whisperInput');
+      inp.value = `Shared Post #${id} from @${currentUser.handle}`;
+      inp.focus();
+      window.triggerToast('Post linked in Whisper! 🚀');
+    };
+
+    /* ================= REAL STORY UPLOADS (MOMENTS) ================= */
+    window.uploadStoryFromGallery = function(e) {
+      const file = e.target.files && e.target.files[0];
+      if (!file) return;
+
+      const isVid = file.type.startsWith('video');
+      const reader = new FileReader();
+      reader.onload = function(evt) {
+        const afterProcessing = function(url) {
+          const storyObj = {
+            id: 'story-' + Date.now(),
+            author: currentUser.name,
+            avatar: currentUser.avatar,
+            type: isVid ? 'video' : 'image',
+            mediaUrl: url,
+            caption: 'Real Moment from device 🌟 #INTWIWA'
+          };
+          realStories.unshift(storyObj);
+          saveUserData();
+          renderStories();
+          window.playAudio('follow');
+          window.triggerToast('Story uploaded from gallery! ⚡');
+        };
+
+        if (isVid) {
+          afterProcessing(evt.target.result);
+        } else {
+          compressImage(evt.target.result, 800, 1200, 0.75, afterProcessing);
+        }
+      };
+      reader.readAsDataURL(file);
+    };
+
+    function renderStories() {
+      const container = document.getElementById('dynamicStoriesList');
+      container.innerHTML = '';
+
+      realStories.forEach(s => {
+        const el = document.createElement('div');
+        el.className = 'flex flex-col items-center flex-shrink-0 cursor-pointer select-none group';
+        el.onclick = () => launchStoryViewer(s);
+
+        el.innerHTML = `
+          <div class="w-16 h-16 rounded-full p-[2.5px] moment-ring-live transition-transform group-hover:scale-105">
+            <img src="${s.avatar}" class="w-full h-full rounded-full object-cover border-2 border-canvas">
+          </div>
+          <span class="text-[11px] font-bold text-slate-200 mt-1.5 truncate max-w-[68px]">${s.author.split(' ')[0]}</span>
+        `;
+        container.appendChild(el);
+      });
+    }
+
+    let storyTimeout = null;
+    function launchStoryViewer(s) {
+      window.playAudio('pop');
+      const modal = document.getElementById('storyViewerModal');
+      document.getElementById('storyAuthor').innerText = s.author;
+      document.getElementById('storyAvatar').src = s.avatar;
+      document.getElementById('storyCaption').innerText = s.caption;
+
+      const imgEl = document.getElementById('storyMediaImg');
+      const vidEl = document.getElementById('storyMediaVideo');
+
+      if (s.type === 'video') {
+        vidEl.src = s.mediaUrl;
+        vidEl.classList.remove('hidden');
+        imgEl.classList.add('hidden');
+        vidEl.play().catch(()=>{});
+      } else {
+        imgEl.src = s.mediaUrl;
+        imgEl.classList.remove('hidden');
+        vidEl.classList.add('hidden');
+      }
+
+      modal.classList.remove('hidden');
+
+      const fill = document.getElementById('storyProgressFill');
+      fill.classList.remove('story-running');
+      void fill.offsetWidth;
+      fill.classList.add('story-running');
+
+      clearTimeout(storyTimeout);
+      storyTimeout = setTimeout(() => {
+        closeStory();
+      }, 5000);
+    }
+
+    window.closeStory = function() {
+      clearTimeout(storyTimeout);
+      document.getElementById('storyViewerModal').classList.add('hidden');
+      const vidEl = document.getElementById('storyMediaVideo');
+      vidEl.pause();
+    };
+
+    /* ================= REAL MOTION REELS (VERTICAL VIEWER) ================= */
+    let currentReelIndex = 0;
+    let reelIsLiked = false;
+
+    window.uploadDirectReelFromGallery = function(e) {
+      const file = e.target.files && e.target.files[0];
+      if (!file) return;
+
+      const reader = new FileReader();
+      reader.onload = function(evt) {
+        const newReel = {
+          type: 'video',
+          url: evt.target.result,
+          author: currentUser.name,
+          avatar: currentUser.avatar,
+          caption: 'Real Video Reel on INTWIWA ⚡',
+          likes: 0
+        };
+        realReels.unshift(newReel);
+        currentReelIndex = 0;
+        saveUserData();
+        renderReels();
+        window.playAudio('follow');
+        window.triggerToast('Reel uploaded and playing! 🎬');
+      };
+      reader.readAsDataURL(file);
+    };
+
+    function renderReels() {
+      const emptyState = document.getElementById('motionEmptyState');
+      const vidEl = document.getElementById('motionVideoElement');
+      const topBar = document.getElementById('motionTopBar');
+      const audioBtn = document.getElementById('motionAudioBtn');
+      const dblTap = document.getElementById('motionDblTapArea');
+      const sideRail = document.getElementById('motionSideRail');
+      const metaArea = document.getElementById('motionMetaArea');
+
+      if (realReels.length === 0) {
+        emptyState.classList.remove('hidden');
+        vidEl.classList.add('hidden');
+        topBar.classList.add('hidden');
+        audioBtn.classList.add('hidden');
+        dblTap.classList.add('hidden');
+        sideRail.classList.add('hidden');
+        metaArea.classList.add('hidden');
+        return;
+      }
+
+      emptyState.classList.add('hidden');
+      vidEl.classList.remove('hidden');
+      topBar.classList.remove('hidden');
+      audioBtn.classList.remove('hidden');
+      dblTap.classList.remove('hidden');
+      sideRail.classList.remove('hidden');
+      metaArea.classList.remove('hidden');
+
+      const reel = realReels[currentReelIndex];
+      vidEl.src = reel.url;
+      vidEl.play().catch(()=>{});
+
+      document.getElementById('motionAuthorName').innerText = reel.author;
+      document.getElementById('motionAuthorAvatar').src = reel.avatar;
+      document.getElementById('motionCaption').innerText = reel.caption;
+      document.getElementById('motionLikeCount').innerText = reel.likes;
+    }
+
+    window.nextMotionClip = function() {
+      if (realReels.length === 0) return;
+      window.playAudio('pop');
+      currentReelIndex = (currentReelIndex + 1) % realReels.length;
+      reelIsLiked = false;
+      document.getElementById('motionLikeIcon').className = 'fa-regular fa-heart text-lg';
+      renderReels();
+    };
+
+    window.toggleMotionLike = function() {
+      if (realReels.length === 0) return;
+      window.playAudio('pop');
+      reelIsLiked = !reelIsLiked;
+      const reel = realReels[currentReelIndex];
+      reel.likes += reelIsLiked ? 1 : -1;
+      document.getElementById('motionLikeCount').innerText = reel.likes;
+      const icon = document.getElementById('motionLikeIcon');
+      icon.className = reelIsLiked ? 'fa-solid fa-heart text-lg text-pink-500' : 'fa-regular fa-heart text-lg';
+      saveUserData();
+    };
+
+    window.handleMotionDoubleTap = function(e) {
+      window.playAudio('pop');
+      const burst = document.getElementById('motionHeartBurst');
+      burst.classList.remove('hidden');
+      burst.classList.add('heart-burst-anim');
+      setTimeout(() => {
+        burst.classList.add('hidden');
+        burst.classList.remove('heart-burst-anim');
+      }, 850);
+      if (!reelIsLiked) toggleMotionLike();
+    };
+
+    window.toggleMotionAudio = function() {
+      const vid = document.getElementById('motionVideoElement');
+      const icon = document.getElementById('motionAudioIcon');
+      vid.muted = !vid.muted;
+      if (vid.muted) {
+        icon.className = 'fa-solid fa-volume-xmark text-xs';
+        window.triggerToast('Reel muted');
+      } else {
+        icon.className = 'fa-solid fa-volume-high text-xs text-pink-400';
+        window.triggerToast('Reel sound on 🔊');
+      }
+    };
+
+    /* ================= REAL WHISPER (DIRECT MESSAGING) ================= */
+    function renderWhisper() {
+      const stream = document.getElementById('whisperMessagesList');
+      stream.innerHTML = '';
+
+      if (realMessages.length === 0) {
+        stream.innerHTML = `
+          <div class="text-center py-12 space-y-2 text-slate-400">
+            <i class="fa-solid fa-comments text-3xl text-pink-400"></i>
+            <p class="text-xs font-semibold text-white">Encrypted Direct Whisper Channel</p>
+            <p class="text-[11px]">Send real text, voice notes, or photos directly from your device.</p>
+          </div>
+        `;
+        return;
+      }
+
+      realMessages.forEach(m => {
+        const div = document.createElement('div');
+        div.className = `flex items-end ${m.isMine ? 'justify-end' : 'justify-start'} gap-2`;
+
+        let bodyContent = `<p>${m.text}</p>`;
+        if (m.type === 'image') {
+          bodyContent = `<img src="${m.mediaUrl}" class="rounded-xl max-h-48 object-cover mb-1">`;
+        } else if (m.type === 'voice') {
+          bodyContent = `
+            <div class="flex items-center gap-2 py-1">
+              <i class="fa-solid fa-play text-xs text-cyan-400"></i>
+              <div class="flex gap-0.5 items-center">
+                <span class="w-1 h-3 bg-cyan-400 rounded-full animate-pulse"></span>
+                <span class="w-1 h-5 bg-cyan-400 rounded-full"></span>
+                <span class="w-1 h-2 bg-cyan-400 rounded-full animate-pulse"></span>
+                <span class="w-1 h-4 bg-cyan-400 rounded-full"></span>
+              </div>
+              <span class="text-[10px] font-mono">0:04</span>
+            </div>
+          `;
+        }
+
+        div.innerHTML = `
+          <div class="p-3 rounded-2xl ${m.isMine ? 'bg-gradient-to-r from-violet-600 to-pink-600 text-white' : 'liquid-subtle text-slate-200'} text-xs max-w-[85%] space-y-1 shadow-md">
+            ${bodyContent}
+            <div class="flex items-center justify-between text-[9px] ${m.isMine ? 'text-white/80' : 'text-slate-400'} pt-0.5">
+              <span>${m.time}</span>
+              <i class="fa-solid fa-check-double text-cyan-400"></i>
+            </div>
+          </div>
+        `;
+        stream.appendChild(div);
+      });
+      stream.scrollTop = stream.scrollHeight;
+    }
+
+    window.sendWhisperMessage = function() {
+      const inp = document.getElementById('whisperInput');
+      const text = inp.value.trim();
+      if (!text) return;
+
+      window.playAudio('pop');
+      realMessages.push({
+        sender: currentUser.name,
+        text,
+        type: 'text',
+        isMine: true,
+        time: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
+      });
+      inp.value = '';
+      saveUserData();
+      renderWhisper();
+    };
+
+    window.sendWhisperPhoto = function(e) {
+      const file = e.target.files && e.target.files[0];
+      if (!file) return;
+
+      const reader = new FileReader();
+      reader.onload = function(evt) {
+        compressImage(evt.target.result, 600, 600, 0.75, function(comp) {
+          window.playAudio('pop');
+          realMessages.push({
+            sender: currentUser.name,
+            text: '',
+            type: 'image',
+            mediaUrl: comp,
+            isMine: true,
+            time: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
+          });
+          saveUserData();
+          renderWhisper();
+          window.triggerToast('Photo sent in Whisper! 📸');
+        });
+      };
+      reader.readAsDataURL(file);
+    };
+
+    window.sendWhisperVoiceNote = function() {
+      window.playAudio('follow');
+      realMessages.push({
+        sender: currentUser.name,
+        text: '',
+        type: 'voice',
+        isMine: true,
+        time: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
+      });
+      saveUserData();
+      renderWhisper();
+      window.triggerToast('Voice note dispatched! 🎙️');
+    };
+
+    window.clearWhisperMessages = function() {
+      window.playAudio('pop');
+      realMessages = [];
+      saveUserData();
+      renderWhisper();
+      window.triggerToast('Chat cleared');
+    };
+
+    /* ================= REAL PROFILE GRID ================= */
+    function renderProfileGrid() {
+      const grid = document.getElementById('profileGrid');
+      grid.innerHTML = '';
+
+      if (realPosts.length === 0) {
+        grid.innerHTML = `
+          <div class="col-span-3 py-10 text-center text-xs text-slate-400 font-mono">
+            No uploaded media yet
+          </div>
+        `;
+        document.getElementById('profilePostCount').innerText = 0;
+        return;
+      }
+
+      realPosts.forEach(p => {
+        const item = document.createElement('div');
+        item.className = 'aspect-square rounded-2xl overflow-hidden border border-white/10 relative group cursor-pointer bg-black';
+        
+        let visual = p.type === 'video'
+          ? `<video src="${p.mediaUrl}" class="w-full h-full object-cover"></video>`
+          : `<img src="${p.mediaUrl}" class="w-full h-full object-cover group-hover:scale-105 transition-transform">`;
+
+        item.innerHTML = `
+          ${visual}
+          <div class="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center gap-3 text-white text-xs font-bold font-mono">
+            <span><i class="fa-solid fa-heart mr-1"></i>${p.likes}</span>
+            <span><i class="fa-solid fa-comment mr-1"></i>${p.comments ? p.comments.length : 0}</span>
+          </div>
+        `;
+        grid.appendChild(item);
+      });
+
+      document.getElementById('profilePostCount').innerText = realPosts.length;
+    }
+
+    window.updateProfileAvatarDirect = function(e) {
+      const file = e.target.files && e.target.files[0];
+      if (!file) return;
+
+      const reader = new FileReader();
+      reader.onload = function(evt) {
+        compressImage(evt.target.result, 240, 240, 0.8, function(comp) {
+          currentUser.avatar = comp;
+          syncUserAvatarAcrossApp(currentUser.avatar);
+          updateUserInStore(currentUser);
+          window.playAudio('follow');
+          window.triggerToast('Profile photo updated! 📸');
+        });
+      };
+      reader.readAsDataURL(file);
+    };
+
+    function syncUserAvatarAcrossApp(newAvatar) {
+      document.getElementById('profileAvatar').src = newAvatar;
+      document.getElementById('headerUserAvatar').src = newAvatar;
+      document.getElementById('trayMyAvatar').src = newAvatar;
+      document.getElementById('sidebarUserAvatar').src = newAvatar;
+      document.getElementById('settingsAvatarPreview').src = newAvatar;
+    }
+
+    function updateUserInStore(u) {
+      try {
+        localStorage.setItem(STORAGE_CURRENT_SESSION, JSON.stringify(u));
+        let usersStore = {};
+        try {
+          usersStore = JSON.parse(localStorage.getItem(STORAGE_USERS_REGISTRY) || '{}');
+        } catch(e) {}
+        usersStore[u.handle] = u;
+        localStorage.setItem(STORAGE_USERS_REGISTRY, JSON.stringify(usersStore));
+      } catch(e) {}
+    }
+
+    /* ================= SETTINGS & THEMES ================= */
+    window.openSettingsModal = function(defaultTab = 'themes') {
+      window.playAudio('pop');
+      document.getElementById('settingsModal').classList.remove('hidden');
+      switchSettingsCategory(defaultTab);
+
+      if (currentUser) {
+        document.getElementById('settingsInputName').value = currentUser.name;
+        document.getElementById('settingsInputHandle').value = currentUser.handle;
+        document.getElementById('settingsInputBio').value = currentUser.bio;
+        document.getElementById('settingsAvatarPreview').src = currentUser.avatar;
+      }
+      calculateStorageSize();
+    };
+
+    window.closeSettingsModal = function() {
+      document.getElementById('settingsModal').classList.add('hidden');
+    };
+
+    window.switchSettingsCategory = function(cat) {
+      window.playAudio('pop');
+      const tabs = ['themes', 'audio', 'account', 'system', 'about'];
+      tabs.forEach(t => {
+        const btn = document.getElementById('setTab-' + t);
+        const pane = document.getElementById('setPane-' + t);
+        if (t === cat) {
+          btn.className = 'px-3 py-2 rounded-xl text-xs font-bold transition-all text-white bg-gradient-to-r from-violet-600 to-pink-600 flex items-center gap-2 whitespace-nowrap shadow-md';
+          pane.classList.remove('hidden');
+        } else {
+          btn.className = 'px-3 py-2 rounded-xl text-xs font-bold transition-all text-slate-400 hover:text-white flex items-center gap-2 whitespace-nowrap';
+          pane.classList.add('hidden');
+        }
+      });
+    };
+
+    window.applyLiquidTheme = function(themeClass) {
+      window.playAudio('follow');
+      document.body.className = `selection:bg-pink-500 selection:text-white ${themeClass}`;
+      localStorage.setItem(STORAGE_THEME_KEY, themeClass);
+      window.triggerToast(`Theme active: ${themeClass.replace('theme-', '').toUpperCase()} 🎨`);
+    };
+
+    window.updateBlurIntensity = function(val) {
+      document.documentElement.style.setProperty('--blur-strength', `${val}px`);
+      document.getElementById('blurValLabel').innerText = `${val}px`;
+    };
+
+    window.toggleAudioSfx = function(el) {
+      el.classList.toggle('active');
+      sfxEnabled = el.classList.contains('active');
+      if (sfxEnabled) window.playAudio('pop');
+      window.triggerToast(sfxEnabled ? 'Audio SFX Enabled' : 'Audio SFX Muted');
+    };
+
+    window.updateSfxVolume = function(val) {
+      sfxVolume = val / 100;
+      document.getElementById('volumeValLabel').innerText = `${val}%`;
+      window.playAudio('pop');
+    };
+
+    window.toggleHaptics = function(el) {
+      el.classList.toggle('active');
+      hapticsEnabled = el.classList.contains('active');
+      window.playAudio('pop');
+      window.triggerToast(hapticsEnabled ? 'Haptics Active' : 'Haptics Disabled');
+    };
+
+    window.togglePrivateAccount = function(el) {
+      el.classList.toggle('active');
+      const isPrivate = el.classList.contains('active');
+      if (currentUser) {
+        currentUser.isPrivate = isPrivate;
+        updateUserInStore(currentUser);
+      }
+      document.getElementById('profilePrivacyBadge').innerText = isPrivate ? 'Private' : 'Public';
+      window.playAudio('pop');
+      window.triggerToast(isPrivate ? 'Account switched to Private' : 'Account is Public');
+    };
+
+    window.changeAvatarFromSettings = function(e) {
+      const file = e.target.files && e.target.files[0];
+      if (!file) return;
+
+      const reader = new FileReader();
+      reader.onload = function(evt) {
+        compressImage(evt.target.result, 240, 240, 0.8, function(comp) {
+          currentUser.avatar = comp;
+          syncUserAvatarAcrossApp(currentUser.avatar);
+          updateUserInStore(currentUser);
+          window.playAudio('follow');
+          window.triggerToast('Profile photo updated! 📸');
+        });
+      };
+      reader.readAsDataURL(file);
+    };
+
+    window.saveAccountSettings = function() {
+      window.playAudio('follow');
+      const newName = document.getElementById('settingsInputName').value.trim();
+      const newHandle = document.getElementById('settingsInputHandle').value.trim();
+      const newBio = document.getElementById('settingsInputBio').value.trim();
+
+      if (newName) currentUser.name = newName;
+      if (newHandle) currentUser.handle = newHandle;
+      if (newBio) currentUser.bio = newBio;
+
+      updateUserInStore(currentUser);
+
+      document.getElementById('profileFullName').innerText = currentUser.name;
+      document.getElementById('profileHandle').innerText = '@' + currentUser.handle;
+      document.getElementById('profileBio').innerText = currentUser.bio;
+      document.getElementById('sidebarUserName').innerText = currentUser.name;
+      document.getElementById('sidebarUserHandle').innerText = '@' + currentUser.handle;
+
+      closeSettingsModal();
+      window.triggerToast('Account changes saved! ✨');
+    };
+
+    function calculateStorageSize() {
+      let total = 0;
+      for (let x in localStorage) {
+        if (localStorage.hasOwnProperty(x)) {
+          total += (localStorage[x].length * 2);
+        }
+      }
+      const kb = (total / 1024).toFixed(1);
+      const label = document.getElementById('cacheSizeLabel');
+      if (label) label.innerText = `${kb} KB`;
+    }
+
+    window.clearAppCache = function() {
+      window.playAudio('pop');
+      localStorage.removeItem(STORAGE_POSTS_STORE);
+      localStorage.removeItem(STORAGE_STORIES_STORE);
+      localStorage.removeItem(STORAGE_REELS_STORE);
+      localStorage.removeItem(STORAGE_MESSAGES_STORE);
+      window.triggerToast('Cached media cleared. Refreshing...');
+      setTimeout(() => location.reload(), 600);
+    };
+
+    /* ================= NAVIGATION ================= */
+    window.navigateTo = function(key) {
+      window.playAudio('pop');
+      const tabs = ['feed', 'motion', 'whisper', 'profile'];
+      tabs.forEach(t => {
+        const sec = document.getElementById('tab' + capitalize(t));
+        const navD = document.getElementById('navItem' + capitalize(t));
+        const navM = document.getElementById('mobNav' + capitalize(t));
+
+        if (t === key) {
+          sec.classList.remove('hidden');
+          if (navD) {
+            navD.className = 'px-3.5 py-1.5 rounded-xl text-xs font-bold text-white bg-gradient-to-r from-violet-600 to-pink-600 transition-all flex items-center gap-1.5 shadow-md';
+          }
+          if (navM) {
+            navM.className = 'flex flex-col items-center gap-0.5 text-pink-500 font-bold';
+          }
+        } else {
+          sec.classList.add('hidden');
+          if (navD) {
+            navD.className = 'px-3.5 py-1.5 rounded-xl text-xs font-bold text-slate-300 hover:text-white transition-all flex items-center gap-1.5';
+          }
+          if (navM) {
+            navM.className = 'flex flex-col items-center gap-0.5 text-slate-400';
+          }
+        }
+      });
+
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    };
+
+    function capitalize(s) {
+      return s.charAt(0).toUpperCase() + s.slice(1);
+    }
+
+    /* ================= TOAST SYSTEM ================= */
+    let toastTimer = null;
+    window.triggerToast = function(msg) {
+      const el = document.getElementById('toast');
+      document.getElementById('toastMsg').innerText = msg;
+      el.classList.remove('translate-y-24', 'opacity-0');
+      el.classList.add('translate-y-0', 'opacity-100');
+      clearTimeout(toastTimer);
+      toastTimer = setTimeout(() => {
+        el.classList.remove('translate-y-0', 'opacity-100');
+        el.classList.add('translate-y-24', 'opacity-0');
+      }, 2500);
+    };
+
+    /* ================= INITIAL LOAD ================= */
+    window.addEventListener('DOMContentLoaded', () => {
+      checkSession();
+    });
+  </script>
+
+</body>
+</html>
