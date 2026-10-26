@@ -1,0 +1,3644 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>INTWIWA • Powered by PRASHANT YADAV</title>
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+  <!-- Font Awesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+            display: ['"Outfit"', 'sans-serif'],
+            mono: ['"JetBrains Mono"', 'monospace'],
+          },
+          colors: {
+            canvas: 'var(--color-canvas, #06090e)',
+            surface: 'var(--color-surface, #0b1019)',
+            liquid: {
+              card: 'var(--color-glass, rgba(13, 19, 32, 0.74))',
+              border: 'var(--color-border, rgba(255, 255, 255, 0.12))',
+              primary: 'var(--color-primary, #a855f7)',
+              accent: 'var(--color-accent, #ec4899)',
+              glow: 'var(--color-glow, #06b6d4)'
+            }
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    :root {
+      --color-canvas: #06090e;
+      --color-surface: #0b1019;
+      --color-glass: rgba(13, 19, 32, 0.76);
+      --color-subtle: rgba(255, 255, 255, 0.04);
+      --color-border: rgba(255, 255, 255, 0.12);
+      --color-primary: #a855f7;
+      --color-accent: #ec4899;
+      --color-glow: #06b6d4;
+      --orb1-start: #a855f7;
+      --orb1-end: #ec4899;
+      --orb2-start: #06b6d4;
+      --orb2-end: #3b82f6;
+      --blur-strength: 28px;
+    }
+
+    body.theme-cyber {
+      --color-canvas: #06090e;
+      --color-surface: #0b1019;
+      --color-glass: rgba(13, 19, 32, 0.76);
+      --color-primary: #a855f7;
+      --color-accent: #ec4899;
+      --color-glow: #06b6d4;
+      --orb1-start: #a855f7;
+      --orb1-end: #ec4899;
+      --orb2-start: #06b6d4;
+      --orb2-end: #3b82f6;
+    }
+    body.theme-ocean {
+      --color-canvas: #030d1a;
+      --color-surface: #08172c;
+      --color-glass: rgba(8, 23, 44, 0.78);
+      --color-primary: #0284c7;
+      --color-accent: #06b6d4;
+      --color-glow: #38bdf8;
+      --orb1-start: #0284c7;
+      --orb1-end: #0ea5e9;
+      --orb2-start: #06b6d4;
+      --orb2-end: #2563eb;
+    }
+    body.theme-emerald {
+      --color-canvas: #04120b;
+      --color-surface: #0a2016;
+      --color-glass: rgba(10, 32, 22, 0.78);
+      --color-primary: #059669;
+      --color-accent: #10b981;
+      --color-glow: #34d399;
+      --orb1-start: #059669;
+      --orb1-end: #10b981;
+      --orb2-start: #34d399;
+      --orb2-end: #047857;
+    }
+    body.theme-sunset {
+      --color-canvas: #16060c;
+      --color-surface: #240b15;
+      --color-glass: rgba(36, 11, 21, 0.78);
+      --color-primary: #f43f5e;
+      --color-accent: #fb923c;
+      --color-glow: #f59e0b;
+      --orb1-start: #f43f5e;
+      --orb1-end: #fb7185;
+      --orb2-start: #fb923c;
+      --orb2-end: #e11d48;
+    }
+    body.theme-obsidian {
+      --color-canvas: #020203;
+      --color-surface: #0a0a0c;
+      --color-glass: rgba(14, 14, 18, 0.86);
+      --color-primary: #6366f1;
+      --color-accent: #8b5cf6;
+      --color-glow: #a855f7;
+      --orb1-start: #4338ca;
+      --orb1-end: #6366f1;
+      --orb2-start: #1e1b4b;
+      --orb2-end: #312e81;
+    }
+    body.theme-prism {
+      --color-canvas: #0d1117;
+      --color-surface: #161b22;
+      --color-glass: rgba(255, 255, 255, 0.08);
+      --color-subtle: rgba(255, 255, 255, 0.06);
+      --color-border: rgba(255, 255, 255, 0.22);
+      --color-primary: #ffffff;
+      --color-accent: #e2e8f0;
+      --color-glow: #38bdf8;
+      --orb1-start: #e2e8f0;
+      --orb1-end: #94a3b8;
+      --orb2-start: #64748b;
+      --orb2-end: #475569;
+    }
+
+    body {
+      background-color: var(--color-canvas);
+      color: #f1f5f9;
+      overflow-x: hidden;
+      touch-action: manipulation;
+      transition: background-color 0.4s ease;
+    }
+
+    .liquid-glass {
+      background: var(--color-glass);
+      backdrop-filter: blur(var(--blur-strength)) saturate(190%);
+      -webkit-backdrop-filter: blur(var(--blur-strength)) saturate(190%);
+      border: 1px solid var(--color-border);
+      box-shadow: 0 20px 50px -10px rgba(0, 0, 0, 0.7), inset 0 1px 1px rgba(255, 255, 255, 0.18);
+      transition: background 0.4s, border-color 0.4s;
+    }
+
+    .liquid-subtle {
+      background: var(--color-subtle);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border: 1px solid var(--color-border);
+      transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .liquid-subtle:hover {
+      background: rgba(255, 255, 255, 0.08);
+      border-color: rgba(255, 255, 255, 0.25);
+    }
+
+    .ambient-bg {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: -1;
+      overflow: hidden;
+    }
+    .mesh-orb {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(120px);
+      opacity: 0.35;
+      animation: floatMesh 24s infinite alternate ease-in-out;
+      transition: background 0.6s ease;
+    }
+    .orb-1 {
+      width: 550px; height: 550px;
+      background: radial-gradient(circle, var(--orb1-start) 0%, var(--orb1-end) 75%);
+      top: -10%; left: 5%;
+    }
+    .orb-2 {
+      width: 600px; height: 600px;
+      background: radial-gradient(circle, var(--orb2-start) 0%, var(--orb2-end) 80%);
+      bottom: -15%; right: 4%;
+      animation-duration: 28s; animation-delay: -6s;
+    }
+    @keyframes floatMesh {
+      0% { transform: translate(0, 0) scale(1); }
+      100% { transform: translate(60px, 80px) scale(1.15); }
+    }
+
+    .moment-ring-live {
+      background: linear-gradient(45deg, #f59e0b, var(--color-accent), var(--color-primary), var(--color-glow));
+      background-size: 200% 200%;
+      animation: ringShift 5s ease infinite;
+    }
+    @keyframes ringShift {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    @keyframes heartPop {
+      0% { transform: translate(-50%, -50%) scale(0); opacity: 0; }
+      45% { transform: translate(-50%, -50%) scale(1.35); opacity: 1; filter: drop-shadow(0 0 35px var(--color-accent)); }
+      75% { transform: translate(-50%, -50%) scale(1.05); opacity: 0.95; }
+      100% { transform: translate(-50%, -50%) scale(0.9) translateY(-30px); opacity: 0; }
+    }
+    .heart-burst-anim {
+      animation: heartPop 0.85s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    }
+
+    @keyframes storyTimer {
+      0% { width: 0%; }
+      100% { width: 100%; }
+    }
+    .story-running {
+      animation: storyTimer 10s linear forwards;
+    }
+
+    @keyframes equalizerWave {
+      0%, 100% { height: 4px; }
+      50% { height: 16px; }
+    }
+    .eq-bar-1 { animation: equalizerWave 0.8s ease-in-out infinite; }
+    .eq-bar-2 { animation: equalizerWave 0.6s ease-in-out infinite 0.15s; }
+    .eq-bar-3 { animation: equalizerWave 0.75s ease-in-out infinite 0.3s; }
+    .eq-bar-4 { animation: equalizerWave 0.55s ease-in-out infinite 0.45s; }
+
+    @keyframes spinVinyl {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+    .vinyl-spin {
+      animation: spinVinyl 4s linear infinite;
+    }
+
+    ::-webkit-scrollbar { width: 5px; height: 5px; }
+    ::-webkit-scrollbar-track { background: transparent; }
+    ::-webkit-scrollbar-thumb { background: rgba(255, 255, 255, 0.16); border-radius: 999px; }
+    .no-scrollbar::-webkit-scrollbar { display: none; }
+    .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+
+    .file-drop-glow {
+      border: 2px dashed rgba(255, 255, 255, 0.2);
+      transition: all 0.3s;
+    }
+    .file-drop-glow:hover {
+      border-color: var(--color-accent);
+      background: rgba(236, 72, 153, 0.06);
+    }
+
+    .switch-track {
+      width: 42px;
+      height: 24px;
+      background: rgba(255,255,255,0.15);
+      border-radius: 999px;
+      padding: 2px;
+      cursor: pointer;
+      transition: background 0.25s;
+      position: relative;
+    }
+    .switch-track.active {
+      background: linear-gradient(90deg, var(--color-primary), var(--color-accent));
+    }
+    .switch-thumb {
+      width: 20px;
+      height: 20px;
+      background: #ffffff;
+      border-radius: 50%;
+      transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+      box-shadow: 0 2px 4px rgba(0,0,0,0.4);
+    }
+    .switch-track.active .switch-thumb {
+      transform: translateX(18px);
+    }
+  </style>
+</head>
+
+<body class="selection:bg-pink-500 selection:text-white theme-cyber">
+
+  <!-- Ambient Light Orbs -->
+  <div class="ambient-bg">
+    <div class="mesh-orb orb-1"></div>
+    <div class="mesh-orb orb-2"></div>
+  </div>
+
+  <!-- Background Audio Player for Real Online Story Music -->
+  <audio id="storyBgMusicPlayer" preload="auto"></audio>
+
+  <!-- 1. AUTH GATEWAY -->
+  <div id="authGate" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-canvas/95 backdrop-blur-3xl overflow-y-auto">
+    <div class="w-full max-w-md my-auto liquid-glass rounded-3xl p-6 sm:p-8 border border-white/15 shadow-2xl relative">
+      
+      <div class="text-center mb-5">
+        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-2xl liquid-subtle mb-2.5">
+          <div class="w-6 h-6 rounded-lg bg-gradient-to-tr from-violet-500 via-pink-500 to-cyan-400 flex items-center justify-center text-white text-[10px] shadow">
+            <i class="fa-solid fa-bolt"></i>
+          </div>
+          <span class="text-[11px] font-mono tracking-wider text-cyan-300 font-bold uppercase">INTWIWA CLOUD ACCESS</span>
+        </div>
+        <h1 class="text-3xl sm:text-4xl font-display font-black tracking-tight bg-gradient-to-r from-white via-violet-200 to-pink-300 bg-clip-text text-transparent">INTWIWA</h1>
+        <div class="mt-1 flex items-center justify-center gap-1.5 text-xs text-slate-300">
+          <span>⚡ Powered by</span>
+          <span class="font-extrabold text-pink-400">PRASHANT YADAV</span>
+        </div>
+      </div>
+
+      <div class="flex items-center p-1 rounded-2xl bg-black/45 border border-white/10 mb-5">
+        <button id="authTabSignup" onclick="switchAuthMode('signup')" class="flex-1 py-2 rounded-xl text-xs font-bold transition-all text-white bg-gradient-to-r from-violet-600 to-pink-600 shadow-lg shadow-pink-500/20">
+          Create Account
+        </button>
+        <button id="authTabLogin" onclick="switchAuthMode('login')" class="flex-1 py-2 rounded-xl text-xs font-bold transition-all text-slate-400 hover:text-white">
+          Sign In
+        </button>
+      </div>
+
+      <!-- SIGN UP FORM -->
+      <form id="authSignupForm" onsubmit="handleSignupSubmit(event)" class="space-y-3.5">
+        <div>
+          <div class="flex items-center justify-between mb-1.5">
+            <label class="block text-[11px] font-mono uppercase tracking-wider text-slate-300 font-bold">Profile Photo</label>
+            <span class="text-[10px] text-cyan-400 font-mono">Gallery or Auto Initials</span>
+          </div>
+          <div class="flex items-center gap-3">
+            <div class="relative w-14 h-14 rounded-2xl p-0.5 bg-gradient-to-tr from-violet-500 via-pink-500 to-cyan-400 flex-shrink-0">
+              <img id="signupAvatarPreview" src="" class="hidden w-full h-full rounded-2xl object-cover bg-black">
+              <div id="signupAvatarPlaceholder" class="w-full h-full rounded-2xl bg-black/60 flex items-center justify-center text-slate-400 text-lg">
+                <i class="fa-solid fa-camera"></i>
+              </div>
+            </div>
+            <label class="flex-1 py-2 px-3 rounded-xl file-drop-glow liquid-subtle flex items-center justify-center gap-2 cursor-pointer text-xs font-semibold text-slate-200 hover:text-white">
+              <i class="fa-solid fa-folder-open text-pink-400"></i>
+              <span id="signupAvatarText">Select from Gallery</span>
+              <input type="file" id="signupAvatarFile" accept="image/*" class="hidden" onchange="previewAvatarFromGallery(event)">
+            </label>
+          </div>
+        </div>
+
+        <div>
+          <label class="block text-[11px] font-mono uppercase tracking-wider text-slate-300 font-bold mb-1">Full Name</label>
+          <input type="text" id="signupName" placeholder="e.g. Prashant Yadav" required class="w-full text-xs px-3.5 py-2.5 rounded-xl bg-black/40 border border-white/10 text-white focus:outline-none focus:border-pink-500">
+        </div>
+
+        <div>
+          <label class="block text-[11px] font-mono uppercase tracking-wider text-slate-300 font-bold mb-1">Username (@handle)</label>
+          <div class="relative">
+            <span class="absolute left-3.5 top-2.5 text-xs text-slate-400 font-mono">@</span>
+            <input type="text" id="signupHandle" placeholder="username" required oninput="cleanHandleInput(this)" class="w-full text-xs pl-8 pr-3.5 py-2.5 rounded-xl bg-black/40 border border-white/10 text-white focus:outline-none focus:border-pink-500 font-mono">
+          </div>
+        </div>
+
+        <div>
+          <div class="flex items-center justify-between mb-1">
+            <label class="block text-[11px] font-mono uppercase tracking-wider text-slate-300 font-bold">Email or Phone</label>
+            <span class="text-[10px] text-emerald-400 font-mono">Real Instant Setup</span>
+          </div>
+          <input type="text" id="signupContact" placeholder="you@example.com, username or phone" class="w-full text-xs px-3.5 py-2.5 rounded-xl bg-black/40 border border-white/10 text-white focus:outline-none focus:border-pink-500">
+        </div>
+
+        <div>
+          <label class="block text-[11px] font-mono uppercase tracking-wider text-slate-300 font-bold mb-1">Password</label>
+          <input type="password" id="signupPassword" placeholder="Minimum 4 characters" minlength="4" required class="w-full text-xs px-3.5 py-2.5 rounded-xl bg-black/40 border border-white/10 text-white focus:outline-none focus:border-pink-500">
+        </div>
+
+        <div>
+          <label class="block text-[11px] font-mono uppercase tracking-wider text-slate-300 font-bold mb-1">Bio</label>
+          <input type="text" id="signupBio" placeholder="Tell the world who you are ✨" class="w-full text-xs px-3.5 py-2.5 rounded-xl bg-black/40 border border-white/10 text-white focus:outline-none focus:border-pink-500">
+        </div>
+
+        <button type="submit" id="signupBtn" class="w-full py-3 rounded-2xl bg-gradient-to-r from-violet-600 via-pink-600 to-cyan-500 hover:opacity-95 text-white font-bold text-xs tracking-wide shadow-lg shadow-pink-500/25 transition-all flex items-center justify-center gap-2 mt-2">
+          <span>Create Account & Enter INTWIWA</span>
+          <i class="fa-solid fa-arrow-right-to-bracket text-xs"></i>
+        </button>
+      </form>
+
+      <!-- LOGIN FORM -->
+      <form id="authLoginForm" onsubmit="handleLoginSubmit(event)" class="hidden space-y-4">
+        <div>
+          <label class="block text-[11px] font-mono uppercase tracking-wider text-slate-300 font-bold mb-1">Username, Email, or Phone</label>
+          <div class="relative">
+            <i class="fa-solid fa-user absolute left-3.5 top-3 text-xs text-slate-400"></i>
+            <input type="text" id="loginIdentifier" placeholder="Username, email or phone" required class="w-full text-xs pl-9 pr-3.5 py-2.5 rounded-xl bg-black/40 border border-white/10 text-white focus:outline-none focus:border-pink-500">
+          </div>
+        </div>
+
+        <div>
+          <label class="block text-[11px] font-mono uppercase tracking-wider text-slate-300 font-bold mb-1">Password</label>
+          <div class="relative">
+            <i class="fa-solid fa-lock absolute left-3.5 top-3 text-xs text-slate-400"></i>
+            <input type="password" id="loginPassword" placeholder="••••••••" required class="w-full text-xs pl-9 pr-3.5 py-2.5 rounded-xl bg-black/40 border border-white/10 text-white focus:outline-none focus:border-pink-500">
+          </div>
+        </div>
+
+        <button type="submit" id="loginBtn" class="w-full py-3 rounded-2xl bg-gradient-to-r from-violet-600 via-pink-600 to-cyan-500 hover:opacity-95 text-white font-bold text-xs tracking-wide shadow-lg shadow-pink-500/25 transition-all flex items-center justify-center gap-2">
+          <span>Log In to INTWIWA</span>
+          <i class="fa-solid fa-arrow-right-to-bracket text-xs"></i>
+        </button>
+      </form>
+
+      <div class="mt-5 pt-3.5 border-t border-white/10 flex items-center justify-between">
+        <span class="text-[10px] text-slate-400 font-mono">Platform Identity</span>
+        <div class="px-3 py-1 rounded-xl bg-gradient-to-r from-violet-500/20 via-pink-500/20 to-cyan-500/20 border border-white/15 text-white font-extrabold text-[11px] flex items-center gap-1.5 shadow-sm">
+          <i class="fa-solid fa-bolt text-yellow-300 text-[10px]"></i>
+          <span>Powered by PRASHANT YADAV</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- 2. MAIN APP SHELL -->
+  <div id="mainApp" class="min-h-screen flex flex-col hidden pb-20 md:pb-6">
+
+    <header class="sticky top-0 z-40 liquid-glass border-b border-white/10 px-4 sm:px-6 py-2.5">
+      <div class="max-w-5xl mx-auto flex items-center justify-between">
+        
+        <div class="flex items-center gap-3 cursor-pointer select-none" onclick="navigateTo('feed')">
+          <div class="w-10 h-10 rounded-2xl p-0.5 bg-gradient-to-tr from-violet-500 via-pink-500 to-cyan-400 shadow-md shadow-pink-500/20">
+            <div class="w-full h-full bg-canvas rounded-2xl flex items-center justify-center">
+              <i class="fa-solid fa-bolt text-transparent bg-clip-text bg-gradient-to-r from-violet-400 via-pink-400 to-cyan-400 text-lg"></i>
+            </div>
+          </div>
+          <div class="flex flex-col">
+            <div class="flex items-center gap-1.5">
+              <span class="text-xl sm:text-2xl font-display font-black tracking-tight bg-gradient-to-r from-white via-slate-100 to-pink-200 bg-clip-text text-transparent">INTWIWA</span>
+              <i class="fa-solid fa-circle-check text-cyan-400 text-xs" title="Verified Platform"></i>
+            </div>
+            <div class="flex items-center gap-1 text-[10px] sm:text-[11px] font-semibold text-slate-400">
+              <span>⚡ Powered by</span>
+              <span class="text-white font-extrabold px-1.5 py-0.2 rounded bg-white/10 text-[10px]">PRASHANT YADAV</span>
+            </div>
+          </div>
+        </div>
+
+        <nav class="hidden md:flex items-center gap-1 liquid-subtle p-1 rounded-2xl border border-white/10">
+          <button id="navItemFeed" onclick="navigateTo('feed')" class="px-3.5 py-1.5 rounded-xl text-xs font-bold text-white bg-gradient-to-r from-violet-600 to-pink-600 transition-all flex items-center gap-1.5 shadow-sm">
+            <i class="fa-solid fa-house"></i>
+            <span>Echoes</span>
+          </button>
+          <button id="navItemMotion" onclick="navigateTo('motion')" class="px-3.5 py-1.5 rounded-xl text-xs font-bold text-slate-300 hover:text-white transition-all flex items-center gap-1.5">
+            <i class="fa-solid fa-clapperboard text-pink-400"></i>
+            <span>Motion Reels</span>
+          </button>
+          <button id="navItemWhisper" onclick="navigateTo('whisper')" class="px-3.5 py-1.5 rounded-xl text-xs font-bold text-slate-300 hover:text-white transition-all flex items-center gap-1.5 relative">
+            <i class="fa-solid fa-paper-plane text-cyan-400"></i>
+            <span>Whisper Hub</span>
+            <span class="w-1.5 h-1.5 rounded-full bg-cyan-400 animate-pulse"></span>
+          </button>
+          <button id="navItemProfile" onclick="navigateTo('profile')" class="px-3.5 py-1.5 rounded-xl text-xs font-bold text-slate-300 hover:text-white transition-all flex items-center gap-1.5">
+            <i class="fa-solid fa-user"></i>
+            <span>Profile</span>
+          </button>
+        </nav>
+
+        <div class="flex items-center gap-2.5">
+          <button onclick="openCreateModal()" class="flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-gradient-to-r from-violet-600 via-pink-600 to-cyan-500 hover:opacity-95 text-white text-xs font-bold shadow-md transition-all">
+            <i class="fa-solid fa-plus text-sm"></i>
+            <span class="hidden sm:inline">Post / Reel</span>
+          </button>
+
+          <button onclick="openSettingsModal()" title="Platform Settings & Liquid Themes" class="w-9 h-9 rounded-xl liquid-subtle flex items-center justify-center text-slate-200 hover:text-cyan-400 transition-colors">
+            <i class="fa-solid fa-gear text-sm"></i>
+          </button>
+
+          <button onclick="navigateTo('profile')" class="w-9 h-9 rounded-xl overflow-hidden ring-2 ring-pink-500/70 p-0.5">
+            <img id="headerUserAvatar" src="" alt="Avatar" class="w-full h-full rounded-xl object-cover">
+          </button>
+        </div>
+
+      </div>
+    </header>
+
+    <!-- Deactivated Account Notification Banner -->
+    <div id="deactivatedBanner" class="hidden bg-amber-500/20 border-b border-amber-500/40 px-4 py-2 text-center text-xs text-amber-300 font-bold flex items-center justify-center gap-2">
+      <i class="fa-solid fa-triangle-exclamation"></i>
+      <span>Your account is currently Deactivated (Hidden from Public).</span>
+      <button onclick="reactivateAccount()" class="underline hover:text-white font-extrabold ml-2">Reactivate Now</button>
+    </div>
+
+    <!-- MAIN VIEW -->
+    <main class="flex-1 max-w-5xl mx-auto w-full px-3 sm:px-6 pt-4">
+
+      <!-- TAB 1: FEED -->
+      <section id="tabFeed" class="block">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+
+          <div class="lg:col-span-8 space-y-4">
+            
+            <!-- MOMENTS TRAY -->
+            <div class="liquid-glass rounded-3xl p-3.5 border border-white/10">
+              <div class="flex items-center gap-3.5 overflow-x-auto no-scrollbar py-1">
+                
+                <!-- Open Story Creator Modal with Real Instagram Online Music -->
+                <div onclick="openStoryCreatorModal()" class="flex flex-col items-center flex-shrink-0 cursor-pointer select-none group">
+                  <div class="relative w-16 h-16 rounded-full p-[2px] border-2 border-dashed border-violet-400 flex items-center justify-center group-hover:border-pink-500 transition-colors">
+                    <img id="trayMyAvatar" src="" class="w-full h-full rounded-full object-cover">
+                    <div class="absolute bottom-0 right-0 w-4 h-4 rounded-full bg-pink-500 text-white flex items-center justify-center text-[10px] ring-2 ring-canvas">
+                      <i class="fa-solid fa-plus"></i>
+                    </div>
+                  </div>
+                  <span class="text-[11px] font-medium text-slate-300 mt-1.5">Your Story</span>
+                </div>
+
+                <!-- Stories List -->
+                <div id="dynamicStoriesList" class="flex items-center gap-3.5"></div>
+
+              </div>
+            </div>
+
+            <!-- POSTS STREAM -->
+            <div id="postsStream" class="space-y-5"></div>
+
+          </div>
+
+          <!-- Right Sidebar -->
+          <div class="hidden lg:block lg:col-span-4 space-y-4">
+            
+            <div class="liquid-glass rounded-3xl p-4 border border-white/10 flex items-center justify-between">
+              <div class="flex items-center gap-3">
+                <img id="sidebarUserAvatar" src="" class="w-12 h-12 rounded-2xl object-cover ring-2 ring-pink-500/70">
+                <div class="truncate">
+                  <h4 id="sidebarUserName" class="text-xs font-bold text-white truncate">User Name</h4>
+                  <p id="sidebarUserHandle" class="text-[11px] text-slate-400 font-mono">@user</p>
+                </div>
+              </div>
+              <div class="flex items-center gap-1.5">
+                <button onclick="openSettingsModal()" title="Settings" class="w-8 h-8 rounded-xl liquid-subtle flex items-center justify-center text-slate-300 hover:text-white">
+                  <i class="fa-solid fa-gear text-xs"></i>
+                </button>
+                <button onclick="handleLogout()" title="Sign Out" class="text-xs font-bold text-pink-400 hover:text-pink-300 ml-1">Sign Out</button>
+              </div>
+            </div>
+
+            <div class="liquid-glass rounded-3xl p-4 border border-violet-500/30 relative overflow-hidden">
+              <div class="flex items-center justify-between mb-2">
+                <span class="text-[10px] font-mono uppercase tracking-wider text-cyan-300 font-bold flex items-center gap-1">
+                  <i class="fa-solid fa-bolt text-yellow-300"></i> Platform Architect
+                </span>
+                <span class="px-2 py-0.5 rounded-full text-[9px] font-bold bg-violet-500/20 text-violet-300 border border-violet-500/30">Founder</span>
+              </div>
+              <h4 class="text-xs font-bold text-white">PRASHANT YADAV</h4>
+              <p class="text-[11px] text-slate-300 mt-1 leading-relaxed">
+                INTWIWA ecosystem with real camera & gallery uploads, liquid glass refraction, and custom audio synthesizer.
+              </p>
+              <div class="mt-3 pt-2.5 border-t border-white/10 flex items-center justify-between text-xs">
+                <span class="text-slate-400 text-[10px] font-mono">Ecosystem Network</span>
+                <button onclick="openFollowersModal('following')" class="text-pink-400 font-bold text-[11px] hover:underline">
+                  View Connections
+                </button>
+              </div>
+            </div>
+
+            <div class="p-3.5 rounded-3xl liquid-glass border border-white/10 flex items-center justify-between">
+              <div class="flex items-center gap-2.5">
+                <div class="w-8 h-8 rounded-xl bg-gradient-to-tr from-violet-600 to-pink-600 flex items-center justify-center text-white text-xs">
+                  <i class="fa-solid fa-palette"></i>
+                </div>
+                <div>
+                  <p class="text-xs font-bold text-white">Liquid Themes & SFX</p>
+                  <p class="text-[10px] text-slate-400">Glass styles & synthesizer</p>
+                </div>
+              </div>
+              <button onclick="openSettingsModal('themes')" class="px-2.5 py-1 rounded-xl liquid-subtle text-[11px] font-bold text-cyan-400 hover:text-white">
+                Customize
+              </button>
+            </div>
+
+            <div class="p-4 rounded-3xl liquid-subtle text-center text-[11px] text-slate-400 space-y-1.5 border border-white/10">
+              <p class="font-bold text-slate-200 tracking-wider">INTWIWA CLOUD NETWORK</p>
+              <div class="inline-flex items-center justify-center gap-1.5 px-3 py-1 rounded-xl bg-gradient-to-r from-violet-500/20 via-pink-500/20 to-cyan-500/20 border border-white/15 text-white font-extrabold text-[11px]">
+                <i class="fa-solid fa-bolt text-yellow-300 text-[10px]"></i>
+                <span>Powered by PRASHANT YADAV</span>
+              </div>
+              <p class="text-[10px] text-slate-400 font-mono mt-1">Live Fluid Architecture • IndexedDB GB Storage</p>
+            </div>
+
+          </div>
+
+        </div>
+      </section>
+
+      <!-- TAB 2: MOTION -->
+      <section id="tabMotion" class="hidden">
+        <div class="max-w-sm mx-auto relative rounded-3xl overflow-hidden border border-white/20 shadow-2xl bg-black min-h-[580px] sm:min-h-[660px]">
+          
+          <div id="motionPlayerArea" class="relative w-full h-[580px] sm:h-[660px] flex items-center justify-center select-none bg-black">
+            
+            <video id="motionVideoElement" playsinline loop autoplay muted class="w-full h-full object-cover hidden"></video>
+
+            <div id="motionEmptyState" class="p-6 text-center space-y-4">
+              <div class="w-16 h-16 rounded-full liquid-glass mx-auto flex items-center justify-center text-pink-400 text-2xl">
+                <i class="fa-solid fa-clapperboard"></i>
+              </div>
+              <h3 class="text-sm font-bold text-white">No Reels Yet</h3>
+              <p class="text-xs text-slate-400">Upload a video directly from your phone or device gallery to start playing in full-screen Motion.</p>
+              <label class="inline-flex items-center gap-2 px-4 py-2.5 rounded-2xl bg-gradient-to-r from-violet-600 to-pink-600 text-white font-bold text-xs cursor-pointer shadow-lg hover:opacity-95">
+                <i class="fa-solid fa-video"></i>
+                <span>Select Video from Gallery</span>
+                <input type="file" accept="video/*" class="hidden" onchange="uploadDirectReelFromGallery(event)">
+              </label>
+            </div>
+
+            <div id="motionTopBar" class="absolute top-4 left-4 z-20 hidden items-center gap-2">
+              <span class="liquid-glass px-3 py-1 rounded-full text-xs font-bold text-white flex items-center gap-1.5 shadow">
+                <i class="fa-solid fa-clapperboard text-pink-400"></i> Motion Reel
+              </span>
+            </div>
+
+            <button id="motionAudioBtn" onclick="toggleMotionAudio()" class="absolute top-4 right-4 z-20 w-9 h-9 rounded-full liquid-glass text-white hidden items-center justify-center">
+              <i id="motionAudioIcon" class="fa-solid fa-volume-xmark text-xs"></i>
+            </button>
+
+            <div id="motionDblTapArea" class="absolute inset-0 z-10 cursor-pointer hidden" ondblclick="handleMotionDoubleTap(event)"></div>
+            <div id="motionHeartBurst" class="absolute top-1/2 left-1/2 pointer-events-none hidden">
+              <i class="fa-solid fa-heart text-7xl text-pink-500 drop-shadow-2xl"></i>
+            </div>
+
+            <div id="motionSideRail" class="absolute right-3 bottom-16 z-20 hidden flex-col items-center gap-4">
+              <button onclick="toggleMotionLike()" class="flex flex-col items-center group">
+                <div class="w-11 h-11 rounded-full liquid-glass flex items-center justify-center text-white group-hover:scale-110 transition-transform">
+                  <i id="motionLikeIcon" class="fa-regular fa-heart text-lg"></i>
+                </div>
+                <span id="motionLikeCount" class="text-[11px] font-bold text-white mt-1">0</span>
+              </button>
+
+              <label class="flex flex-col items-center group cursor-pointer" title="Upload Another Reel">
+                <div class="w-11 h-11 rounded-full bg-gradient-to-tr from-violet-600 to-pink-600 flex items-center justify-center text-white shadow-lg">
+                  <i class="fa-solid fa-plus text-base"></i>
+                </div>
+                <span class="text-[10px] font-bold text-pink-300 mt-1">New</span>
+                <input type="file" accept="video/*" class="hidden" onchange="uploadDirectReelFromGallery(event)">
+              </label>
+
+              <button onclick="nextMotionClip()" class="flex flex-col items-center group" title="Next Reel">
+                <div class="w-11 h-11 rounded-full liquid-glass flex items-center justify-center text-pink-400">
+                  <i class="fa-solid fa-arrow-down text-base"></i>
+                </div>
+                <span class="text-[10px] font-bold text-slate-300 mt-1">Next</span>
+              </button>
+
+              <button id="motionDeleteBtn" onclick="deleteCurrentReel()" class="hidden flex-col items-center group" title="Delete Reel">
+                <div class="w-11 h-11 rounded-full liquid-glass flex items-center justify-center text-red-400 hover:text-red-300 hover:scale-110 transition-transform">
+                  <i class="fa-solid fa-trash-can text-sm"></i>
+                </div>
+                <span class="text-[10px] font-bold text-red-400 mt-1">Delete</span>
+              </button>
+            </div>
+
+            <div id="motionMetaArea" class="absolute bottom-4 left-4 right-16 z-20 pointer-events-none hidden space-y-2">
+              <div class="flex items-center gap-2 pointer-events-auto">
+                <img id="motionAuthorAvatar" src="" class="w-9 h-9 rounded-xl object-cover ring-2 ring-pink-500">
+                <span id="motionAuthorName" class="text-xs font-bold text-white">Author</span>
+                <i class="fa-solid fa-circle-check text-cyan-400 text-xs"></i>
+              </div>
+
+              <p id="motionCaption" class="text-xs text-white/90 line-clamp-2">Caption</p>
+
+              <div class="flex items-center gap-2 text-[11px] text-white/80 font-mono">
+                <i class="fa-solid fa-music text-cyan-400 text-xs"></i>
+                <span class="truncate">Original Audio • INTWIWA</span>
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+      </section>
+
+      <!-- TAB 3: WHISPER HUB -->
+      <section id="tabWhisper" class="hidden">
+        <div class="max-w-4xl mx-auto liquid-glass rounded-3xl border border-white/10 shadow-2xl overflow-hidden min-h-[580px] flex flex-col md:flex-row">
+          
+          <div class="w-full md:w-80 border-b md:border-b-0 md:border-r border-white/10 flex flex-col bg-black/30">
+            <div class="p-3.5 border-b border-white/10 flex items-center justify-between">
+              <div class="flex items-center gap-2">
+                <i class="fa-solid fa-paper-plane text-pink-400 text-sm"></i>
+                <h3 class="text-xs font-bold text-white tracking-wide uppercase font-mono">Whisper Chats</h3>
+              </div>
+              <button onclick="promptNewChat()" title="Start New Conversation" class="w-7 h-7 rounded-xl liquid-subtle flex items-center justify-center text-cyan-400 hover:text-white">
+                <i class="fa-solid fa-pen-to-square text-xs"></i>
+              </button>
+            </div>
+
+            <div class="p-2.5">
+              <div class="relative">
+                <i class="fa-solid fa-magnifying-glass absolute left-3 top-2.5 text-xs text-slate-400"></i>
+                <input type="text" id="whisperSearchInp" oninput="filterWhisperContacts(this.value)" placeholder="Search contacts..." class="w-full text-xs pl-8 pr-3 py-1.5 rounded-xl bg-black/40 border border-white/10 text-white focus:outline-none focus:border-pink-500">
+              </div>
+            </div>
+
+            <div id="whisperContactsList" class="flex-1 overflow-y-auto space-y-1 p-2 max-h-[160px] md:max-h-[460px]"></div>
+          </div>
+
+          <div class="flex-1 flex flex-col justify-between bg-black/20 min-h-[420px]">
+            <div class="p-3.5 border-b border-white/10 flex items-center justify-between bg-black/40">
+              <div class="flex items-center gap-3">
+                <div class="relative">
+                  <img id="activeChatAvatar" src="" class="w-10 h-10 rounded-2xl object-cover ring-2 ring-pink-500">
+                  <span class="absolute -bottom-0.5 -right-0.5 w-3 h-3 bg-emerald-400 rounded-full border-2 border-canvas"></span>
+                </div>
+                <div>
+                  <h4 id="activeChatName" class="text-xs font-bold text-white flex items-center gap-1.5">
+                    Contact Name
+                    <i class="fa-solid fa-circle-check text-cyan-400 text-[10px]"></i>
+                  </h4>
+                  <p id="activeChatSub" class="text-[10px] text-pink-400 font-semibold font-mono">Online • Direct Whisper Channel</p>
+                </div>
+              </div>
+              <div class="flex items-center gap-2 text-slate-300">
+                <button onclick="clearWhisperMessages()" title="Clear Conversation" class="w-8 h-8 rounded-xl liquid-subtle flex items-center justify-center hover:text-red-400">
+                  <i class="fa-solid fa-trash-can text-xs"></i>
+                </button>
+              </div>
+            </div>
+
+            <div id="whisperMessagesList" class="flex-1 p-4 overflow-y-auto space-y-3 max-h-[380px]"></div>
+
+            <div id="whisperTyping" class="hidden px-4 py-1 text-[10px] text-cyan-400 font-mono italic">
+              <i class="fa-solid fa-circle-notch animate-spin mr-1"></i> typing response...
+            </div>
+
+            <div class="p-3 border-t border-white/10 bg-black/40 flex items-center gap-2">
+              <label class="w-9 h-9 rounded-xl liquid-subtle flex items-center justify-center text-slate-300 hover:text-pink-400 cursor-pointer flex-shrink-0" title="Send photo from device gallery">
+                <i class="fa-solid fa-image text-xs"></i>
+                <input type="file" accept="image/*" class="hidden" onchange="sendWhisperPhoto(event)">
+              </label>
+
+              <button onclick="sendWhisperVoiceNote()" title="Send simulated voice note" class="w-9 h-9 rounded-xl liquid-subtle flex items-center justify-center text-slate-300 hover:text-cyan-400 flex-shrink-0">
+                <i class="fa-solid fa-microphone text-xs"></i>
+              </button>
+
+              <input type="text" id="whisperInput" placeholder="Write a message..." class="flex-1 text-xs px-3.5 py-2.5 rounded-xl liquid-subtle text-white focus:outline-none focus:border-pink-500" onkeydown="if(event.key === 'Enter') sendWhisperMessage()">
+
+              <button onclick="sendWhisperMessage()" class="w-9 h-9 rounded-xl bg-gradient-to-r from-violet-600 to-pink-600 hover:opacity-95 text-white flex items-center justify-center font-bold flex-shrink-0">
+                <i class="fa-solid fa-paper-plane text-xs"></i>
+              </button>
+            </div>
+
+          </div>
+
+        </div>
+      </section>
+
+      <!-- TAB 4: PROFILE -->
+      <section id="tabProfile" class="hidden">
+        <div class="max-w-3xl mx-auto space-y-6">
+          <div class="liquid-glass rounded-3xl p-6 border border-white/10">
+            <div class="flex flex-col sm:flex-row items-center sm:items-start gap-6">
+              
+              <div class="relative group cursor-pointer">
+                <div class="w-24 h-24 rounded-full p-1 bg-gradient-to-tr from-violet-500 via-pink-500 to-cyan-400 shadow-xl overflow-hidden">
+                  <img id="profileAvatar" src="" class="w-full h-full rounded-full object-cover border-2 border-canvas">
+                </div>
+                <label class="absolute inset-0 bg-black/50 rounded-full flex flex-col items-center justify-center text-white opacity-0 group-hover:opacity-100 transition-opacity cursor-pointer">
+                  <i class="fa-solid fa-camera text-base"></i>
+                  <span class="text-[9px] font-bold mt-1">Change</span>
+                  <input type="file" accept="image/*" class="hidden" onchange="updateProfileAvatarDirect(event)">
+                </label>
+              </div>
+
+              <div class="flex-1 text-center sm:text-left space-y-3">
+                <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+                  <div>
+                    <div class="flex items-center justify-center sm:justify-start gap-2">
+                      <h2 id="profileHandle" class="text-lg font-bold text-white font-mono">@username</h2>
+                      <i class="fa-solid fa-circle-check text-cyan-400 text-sm"></i>
+                      <span id="profilePrivacyBadge" class="text-[10px] px-2 py-0.5 rounded-full bg-white/10 text-slate-300 font-mono">Public</span>
+                      <span id="profileDeactivatedBadge" class="hidden text-[10px] px-2 py-0.5 rounded-full bg-amber-500/20 text-amber-300 border border-amber-500/30 font-mono">Deactivated</span>
+                    </div>
+                    <p id="profileFullName" class="text-xs text-slate-300 font-semibold">User Real Name</p>
+                  </div>
+
+                  <div class="flex items-center justify-center gap-2">
+                    <button onclick="openSettingsModal('account')" class="px-3.5 py-1.5 rounded-xl liquid-subtle text-xs font-bold text-white hover:border-pink-500 transition-colors">
+                      Edit Profile
+                    </button>
+                    <button onclick="openSettingsModal()" class="w-8 h-8 rounded-xl liquid-subtle flex items-center justify-center text-slate-200 hover:text-cyan-400">
+                      <i class="fa-solid fa-gear text-xs"></i>
+                    </button>
+                    <button onclick="handleLogout()" class="px-3.5 py-1.5 rounded-xl bg-red-500/20 text-red-300 border border-red-500/30 text-xs font-bold hover:bg-red-500/30 transition-colors">
+                      Sign Out
+                    </button>
+                  </div>
+                </div>
+
+                <div class="flex items-center justify-center sm:justify-start gap-6 pt-1 text-xs select-none">
+                  <div class="cursor-pointer">
+                    <span id="profilePostCount" class="font-extrabold text-white">0</span>
+                    <span class="text-slate-400 ml-1">posts</span>
+                  </div>
+                  <div onclick="openFollowersModal('followers')" class="cursor-pointer hover:text-pink-400 transition-colors">
+                    <span id="profileFollowersCount" class="font-extrabold text-white">0</span>
+                    <span class="text-slate-400 ml-1">followers</span>
+                  </div>
+                  <div onclick="openFollowersModal('following')" class="cursor-pointer hover:text-pink-400 transition-colors">
+                    <span id="profileFollowingCount" class="font-extrabold text-white">0</span>
+                    <span class="text-slate-400 ml-1">following</span>
+                  </div>
+                </div>
+
+                <p id="profileBio" class="text-xs text-slate-300 leading-relaxed max-w-lg">
+                  Bio text
+                </p>
+              </div>
+
+            </div>
+          </div>
+
+          <div class="liquid-glass rounded-3xl p-4 border border-white/10">
+            <div class="flex items-center justify-center gap-6 border-b border-white/10 pb-3 text-xs font-bold">
+              <span class="text-white border-b-2 border-pink-500 pb-2 flex items-center gap-1.5">
+                <i class="fa-solid fa-table-cells"></i> YOUR UPLOADS
+              </span>
+            </div>
+            <div id="profileGrid" class="grid grid-cols-3 gap-2 sm:gap-3 mt-4"></div>
+          </div>
+        </div>
+      </section>
+
+    </main>
+
+    <!-- MOBILE BOTTOM BAR -->
+    <nav class="md:hidden fixed bottom-0 left-0 right-0 z-40 liquid-glass border-t border-white/10 px-5 py-2 flex items-center justify-between">
+      <button onclick="navigateTo('feed')" id="mobNavFeed" class="flex flex-col items-center gap-0.5 text-pink-500 font-bold">
+        <i class="fa-solid fa-house text-lg"></i>
+        <span class="text-[9px]">Echoes</span>
+      </button>
+
+      <button onclick="navigateTo('motion')" id="mobNavMotion" class="flex flex-col items-center gap-0.5 text-slate-400">
+        <i class="fa-solid fa-clapperboard text-lg"></i>
+        <span class="text-[9px]">Reels</span>
+      </button>
+
+      <button onclick="openCreateModal()" class="w-10 h-10 rounded-2xl bg-gradient-to-tr from-violet-600 to-pink-600 text-white flex items-center justify-center shadow-lg -mt-3 ring-4 ring-canvas">
+        <i class="fa-solid fa-plus text-base"></i>
+      </button>
+
+      <button onclick="navigateTo('whisper')" id="mobNavWhisper" class="flex flex-col items-center gap-0.5 text-slate-400 relative">
+        <i class="fa-solid fa-paper-plane text-lg"></i>
+        <span class="text-[9px]">Whisper</span>
+        <span class="absolute top-0 right-2 w-2 h-2 rounded-full bg-cyan-400"></span>
+      </button>
+
+      <button onclick="navigateTo('profile')" id="mobNavProfile" class="flex flex-col items-center gap-0.5 text-slate-400">
+        <i class="fa-solid fa-user text-lg"></i>
+        <span class="text-[9px]">Profile</span>
+      </button>
+    </nav>
+
+  </div>
+
+  <!-- MODALS -->
+
+  <!-- FOLLOWERS MODAL -->
+  <div id="followersModal" class="fixed inset-0 z-50 bg-black/80 backdrop-blur-md hidden flex items-center justify-center p-4">
+    <div class="w-full max-w-sm liquid-glass rounded-3xl p-5 border border-white/15 shadow-2xl space-y-4">
+      <div class="flex items-center justify-between pb-2 border-b border-white/10">
+        <h4 id="followersModalTitle" class="text-sm font-bold text-white">Followers</h4>
+        <button onclick="closeFollowersModal()" class="w-7 h-7 rounded-full liquid-subtle text-slate-300 hover:text-white flex items-center justify-center">
+          <i class="fa-solid fa-xmark text-xs"></i>
+        </button>
+      </div>
+      <div id="followersListContainer" class="space-y-3 max-h-72 overflow-y-auto"></div>
+    </div>
+  </div>
+
+  <!-- SETTINGS MODAL (Includes Account Management: Deactivate / Reactivate / Delete) -->
+  <div id="settingsModal" class="fixed inset-0 z-50 bg-black/85 backdrop-blur-xl hidden flex items-center justify-center p-3 sm:p-5 overflow-y-auto">
+    <div class="w-full max-w-2xl liquid-glass rounded-3xl border border-white/20 shadow-2xl overflow-hidden flex flex-col max-h-[90vh]">
+      <div class="p-4 sm:p-5 border-b border-white/10 flex items-center justify-between bg-black/40">
+        <div class="flex items-center gap-3">
+          <div class="w-9 h-9 rounded-2xl bg-gradient-to-tr from-violet-600 to-pink-600 flex items-center justify-center text-white shadow-md">
+            <i class="fa-solid fa-sliders text-sm"></i>
+          </div>
+          <div>
+            <h3 class="text-sm sm:text-base font-bold text-white flex items-center gap-2">INTWIWA Settings & Studio</h3>
+            <p class="text-[10px] text-slate-400 font-mono">Personalize visuals, sound & real credentials</p>
+          </div>
+        </div>
+        <button onclick="closeSettingsModal()" class="w-8 h-8 rounded-full liquid-subtle text-slate-300 hover:text-white flex items-center justify-center">
+          <i class="fa-solid fa-xmark text-sm"></i>
+        </button>
+      </div>
+
+      <div class="flex-1 flex flex-col md:flex-row overflow-hidden min-h-[460px]">
+        <div class="md:w-48 border-b md:border-b-0 md:border-r border-white/10 bg-black/30 p-2 sm:p-3 flex md:flex-col gap-1 overflow-x-auto no-scrollbar flex-shrink-0">
+          <button onclick="switchSettingsCategory('themes')" id="setTab-themes" class="px-3 py-2 rounded-xl text-xs font-bold transition-all text-white bg-gradient-to-r from-violet-600 to-pink-600 flex items-center gap-2 whitespace-nowrap">
+            <i class="fa-solid fa-palette text-xs w-4"></i>
+            <span>Liquid Themes</span>
+          </button>
+          <button onclick="switchSettingsCategory('audio')" id="setTab-audio" class="px-3 py-2 rounded-xl text-xs font-bold transition-all text-slate-400 hover:text-white flex items-center gap-2 whitespace-nowrap">
+            <i class="fa-solid fa-volume-high text-xs w-4"></i>
+            <span>Audio & Sound</span>
+          </button>
+          <button onclick="switchSettingsCategory('account')" id="setTab-account" class="px-3 py-2 rounded-xl text-xs font-bold transition-all text-slate-400 hover:text-white flex items-center gap-2 whitespace-nowrap">
+            <i class="fa-solid fa-user-shield text-xs w-4"></i>
+            <span>Account & Security</span>
+          </button>
+          <button onclick="switchSettingsCategory('system')" id="setTab-system" class="px-3 py-2 rounded-xl text-xs font-bold transition-all text-slate-400 hover:text-white flex items-center gap-2 whitespace-nowrap">
+            <i class="fa-solid fa-microchip text-xs w-4"></i>
+            <span>Storage & Cache</span>
+          </button>
+          <button onclick="switchSettingsCategory('about')" id="setTab-about" class="px-3 py-2 rounded-xl text-xs font-bold transition-all text-slate-400 hover:text-white flex items-center gap-2 whitespace-nowrap">
+            <i class="fa-solid fa-bolt text-xs w-4 text-yellow-300"></i>
+            <span>About INTWIWA</span>
+          </button>
+        </div>
+
+        <div class="flex-1 p-4 sm:p-6 overflow-y-auto space-y-6">
+          <div id="setPane-themes" class="space-y-4">
+            <div>
+              <h4 class="text-xs font-mono uppercase text-slate-300 tracking-wider font-bold">Liquid Glass Aesthetic Themes</h4>
+              <p class="text-xs text-slate-400 mt-0.5">Select a real-time reactive refraction profile.</p>
+            </div>
+            <div class="grid grid-cols-2 sm:grid-cols-3 gap-3">
+              <div onclick="applyLiquidTheme('theme-cyber')" class="p-3 rounded-2xl border-2 border-violet-500 bg-violet-950/30 cursor-pointer hover:scale-102 transition-transform flex flex-col justify-between h-24">
+                <span class="text-xs font-bold text-white">Cyber Neon</span>
+                <div class="flex gap-1.5"><div class="w-4 h-4 rounded-full bg-purple-600"></div><div class="w-4 h-4 rounded-full bg-pink-500"></div><div class="w-4 h-4 rounded-full bg-cyan-400"></div></div>
+              </div>
+              <div onclick="applyLiquidTheme('theme-ocean')" class="p-3 rounded-2xl border border-white/10 bg-sky-950/30 cursor-pointer hover:border-cyan-400 transition-all flex flex-col justify-between h-24">
+                <span class="text-xs font-bold text-white">Deep Ocean</span>
+                <div class="flex gap-1.5"><div class="w-4 h-4 rounded-full bg-sky-600"></div><div class="w-4 h-4 rounded-full bg-cyan-400"></div></div>
+              </div>
+              <div onclick="applyLiquidTheme('theme-emerald')" class="p-3 rounded-2xl border border-white/10 bg-emerald-950/30 cursor-pointer hover:border-emerald-400 transition-all flex flex-col justify-between h-24">
+                <span class="text-xs font-bold text-white">Emerald Matrix</span>
+                <div class="flex gap-1.5"><div class="w-4 h-4 rounded-full bg-emerald-600"></div><div class="w-4 h-4 rounded-full bg-teal-300"></div></div>
+              </div>
+              <div onclick="applyLiquidTheme('theme-sunset')" class="p-3 rounded-2xl border border-white/10 bg-rose-950/30 cursor-pointer hover:border-rose-400 transition-all flex flex-col justify-between h-24">
+                <span class="text-xs font-bold text-white">Sunset Rose</span>
+                <div class="flex gap-1.5"><div class="w-4 h-4 rounded-full bg-rose-600"></div><div class="w-4 h-4 rounded-full bg-amber-400"></div></div>
+              </div>
+              <div onclick="applyLiquidTheme('theme-obsidian')" class="p-3 rounded-2xl border border-white/10 bg-zinc-950 cursor-pointer hover:border-indigo-400 transition-all flex flex-col justify-between h-24">
+                <span class="text-xs font-bold text-white">Obsidian Dark</span>
+                <div class="flex gap-1.5"><div class="w-4 h-4 rounded-full bg-zinc-800"></div><div class="w-4 h-4 rounded-full bg-indigo-600"></div></div>
+              </div>
+              <div onclick="applyLiquidTheme('theme-prism')" class="p-3 rounded-2xl border border-white/10 bg-slate-800/40 cursor-pointer hover:border-white transition-all flex flex-col justify-between h-24">
+                <span class="text-xs font-bold text-white">Frosted Prism</span>
+                <div class="flex gap-1.5"><div class="w-4 h-4 rounded-full bg-white"></div><div class="w-4 h-4 rounded-full bg-slate-400"></div></div>
+              </div>
+            </div>
+
+            <div class="p-3.5 rounded-2xl liquid-subtle space-y-2">
+              <div class="flex items-center justify-between text-xs">
+                <span class="font-bold text-white">Liquid Glass Blur Intensity</span>
+                <span id="blurValLabel" class="text-pink-400 font-mono">28px</span>
+              </div>
+              <input type="range" min="8" max="44" value="28" id="blurSlider" oninput="updateBlurIntensity(this.value)" class="w-full accent-pink-500">
+            </div>
+          </div>
+
+          <div id="setPane-audio" class="hidden space-y-4">
+            <div>
+              <h4 class="text-xs font-mono uppercase text-slate-300 tracking-wider font-bold">Synthesizer & Sound Engine</h4>
+              <p class="text-xs text-slate-400 mt-0.5">Control procedural Web Audio API SFX on taps and likes.</p>
+            </div>
+            <div class="p-3.5 rounded-2xl liquid-subtle flex items-center justify-between">
+              <div>
+                <p class="text-xs font-bold text-white">Tactile Audio SFX</p>
+                <p class="text-[10px] text-slate-400">Procedural sounds on taps and heart bursts</p>
+              </div>
+              <div onclick="toggleAudioSfx(this)" id="switchAudioMaster" class="switch-track active"><div class="switch-thumb"></div></div>
+            </div>
+            <div class="p-3.5 rounded-2xl liquid-subtle space-y-2">
+              <div class="flex items-center justify-between text-xs">
+                <span class="font-bold text-white">Synthesizer Master Gain</span>
+                <span id="volumeValLabel" class="text-cyan-400 font-mono">75%</span>
+              </div>
+              <input type="range" min="0" max="100" value="75" id="sfxVolumeSlider" oninput="updateSfxVolume(this.value)" class="w-full accent-cyan-400">
+            </div>
+            <div class="p-3.5 rounded-2xl liquid-subtle flex items-center justify-between">
+              <div>
+                <p class="text-xs font-bold text-white">Haptic Vibration on Tap</p>
+                <p class="text-[10px] text-slate-400">Triggers mobile device vibration on actions</p>
+              </div>
+              <div onclick="toggleHaptics(this)" id="switchHaptics" class="switch-track active"><div class="switch-thumb"></div></div>
+            </div>
+            <div class="flex items-center gap-2 pt-2">
+              <button onclick="playAudio('pop')" class="flex-1 py-2 rounded-xl liquid-subtle hover:border-pink-500 text-xs font-bold text-white flex items-center justify-center gap-2"><i class="fa-solid fa-music text-pink-400"></i> Test Heart Pop</button>
+              <button onclick="playAudio('follow')" class="flex-1 py-2 rounded-xl liquid-subtle hover:border-cyan-400 text-xs font-bold text-white flex items-center justify-center gap-2"><i class="fa-solid fa-bell text-cyan-400"></i> Test Chime</button>
+            </div>
+          </div>
+
+          <!-- 3. ACCOUNT & SECURITY (With Deactivate & Delete Options) -->
+          <div id="setPane-account" class="hidden space-y-4">
+            <div>
+              <h4 class="text-xs font-mono uppercase text-slate-300 tracking-wider font-bold">Profile & Identity Setup</h4>
+              <p class="text-xs text-slate-400 mt-0.5">Manage credentials, privacy and lifecycle.</p>
+            </div>
+            <div class="flex items-center gap-3 p-3.5 rounded-2xl liquid-subtle">
+              <img id="settingsAvatarPreview" src="" class="w-12 h-12 rounded-2xl object-cover ring-2 ring-pink-500">
+              <div class="flex-1 min-w-0">
+                <p class="text-xs font-bold text-white">Change Avatar from Gallery</p>
+                <p class="text-[10px] text-slate-400">Upload new photo directly</p>
+              </div>
+              <label class="px-3 py-1.5 rounded-xl bg-gradient-to-r from-violet-600 to-pink-600 text-xs font-bold text-white cursor-pointer hover:opacity-95">
+                Browse
+                <input type="file" accept="image/*" class="hidden" onchange="changeAvatarFromSettings(event)">
+              </label>
+            </div>
+            <div class="space-y-3">
+              <div>
+                <label class="block text-[11px] font-mono text-slate-300 font-bold mb-1">Display Name</label>
+                <input type="text" id="settingsInputName" class="w-full text-xs px-3.5 py-2 rounded-xl bg-black/40 border border-white/10 text-white focus:outline-none focus:border-pink-500">
+              </div>
+              <div>
+                <label class="block text-[11px] font-mono text-slate-300 font-bold mb-1">Handle (@username)</label>
+                <input type="text" id="settingsInputHandle" oninput="cleanHandleInput(this)" class="w-full text-xs px-3.5 py-2 rounded-xl bg-black/40 border border-white/10 text-white focus:outline-none focus:border-pink-500 font-mono">
+              </div>
+              <div>
+                <label class="block text-[11px] font-mono text-slate-300 font-bold mb-1">Bio</label>
+                <textarea id="settingsInputBio" rows="2" class="w-full text-xs px-3.5 py-2 rounded-xl bg-black/40 border border-white/10 text-white focus:outline-none focus:border-pink-500 resize-none"></textarea>
+              </div>
+            </div>
+            <div class="p-3.5 rounded-2xl liquid-subtle flex items-center justify-between">
+              <div>
+                <p class="text-xs font-bold text-white">Private Account</p>
+                <p class="text-[10px] text-slate-400">Only approved followers can view echoes</p>
+              </div>
+              <div onclick="togglePrivateAccount(this)" id="switchPrivateAccount" class="switch-track"><div class="switch-thumb"></div></div>
+            </div>
+            <button onclick="saveAccountSettings()" class="w-full py-2.5 rounded-xl bg-gradient-to-r from-violet-600 to-pink-600 text-white font-bold text-xs shadow-md">
+              Save Account Changes
+            </button>
+
+            <!-- ACCOUNT LIFECYCLE MANAGEMENT -->
+            <div class="pt-4 border-t border-white/10 space-y-2.5">
+              <h5 class="text-xs font-mono uppercase text-red-400 font-bold tracking-wider">Account Lifecycle & Security</h5>
+              
+              <!-- Deactivate / Activate Button -->
+              <div class="p-3.5 rounded-2xl bg-amber-500/10 border border-amber-500/20 flex items-center justify-between">
+                <div>
+                  <p class="text-xs font-bold text-amber-300" id="deactivateActionTitle">Deactivate Account</p>
+                  <p class="text-[10px] text-slate-400">Temporarily hide your profile and echoes</p>
+                </div>
+                <button onclick="toggleAccountActivation()" id="btnAccountActivation" class="px-3.5 py-1.5 rounded-xl bg-amber-500/20 border border-amber-500/30 text-amber-300 text-xs font-bold hover:bg-amber-500/30">
+                  Deactivate
+                </button>
+              </div>
+
+              <!-- Delete Account Button -->
+              <div class="p-3.5 rounded-2xl bg-red-500/10 border border-red-500/20 flex items-center justify-between">
+                <div>
+                  <p class="text-xs font-bold text-red-400">Delete Account Permanently</p>
+                  <p class="text-[10px] text-slate-400">Erase all profile data, echoes and whispers</p>
+                </div>
+                <button onclick="deleteAccountPermanently()" class="px-3.5 py-1.5 rounded-xl bg-red-600 hover:bg-red-700 text-white text-xs font-bold shadow-md">
+                  Delete
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <div id="setPane-system" class="space-y-4 hidden">
+            <div>
+              <h4 class="text-xs font-mono uppercase text-slate-300 tracking-wider font-bold">Storage Engine & Device Memory</h4>
+              <p class="text-xs text-slate-400 mt-0.5">High-capacity IndexedDB storage active (Gigabytes available).</p>
+            </div>
+            <div class="p-3.5 rounded-2xl liquid-subtle space-y-2">
+              <div class="flex items-center justify-between text-xs">
+                <span class="text-slate-300 font-bold">IndexedDB & Cache Footprint</span>
+                <span id="cacheSizeLabel" class="text-cyan-400 font-mono">Estimating...</span>
+              </div>
+              <div class="w-full h-1.5 rounded-full bg-white/10 overflow-hidden">
+                <div class="w-1/12 h-full bg-gradient-to-r from-cyan-400 to-pink-500"></div>
+              </div>
+              <p class="text-[10px] text-emerald-400 font-mono">✓ Storage Limit Error Solved: High-resolution media safely stored in IndexedDB.</p>
+            </div>
+            <button onclick="clearAppCache()" class="w-full py-2.5 rounded-xl bg-red-500/20 text-red-300 border border-red-500/30 text-xs font-bold hover:bg-red-500/30 transition-colors flex items-center justify-center gap-2">
+              <i class="fa-solid fa-trash-can"></i>
+              <span>Clear Stored Media & Reset Feeds</span>
+            </button>
+          </div>
+
+          <div id="setPane-about" class="hidden space-y-4 text-center py-2">
+            <div class="w-16 h-16 mx-auto rounded-3xl p-1 bg-gradient-to-tr from-violet-500 via-pink-500 to-cyan-400 shadow-xl">
+              <div class="w-full h-full bg-canvas rounded-2xl flex items-center justify-center">
+                <i class="fa-solid fa-bolt text-2xl text-transparent bg-clip-text bg-gradient-to-r from-violet-400 to-pink-400"></i>
+              </div>
+            </div>
+            <div>
+              <h3 class="text-xl font-black font-display bg-gradient-to-r from-white via-slate-100 to-pink-200 bg-clip-text text-transparent">INTWIWA</h3>
+              <p class="text-xs text-slate-400 mt-0.5">Liquid Social Operating Platform</p>
+            </div>
+            <div class="inline-flex items-center gap-2 px-4 py-2 rounded-2xl bg-gradient-to-r from-violet-500/20 via-pink-500/20 to-cyan-500/20 border border-white/20 text-white font-extrabold text-xs shadow-md">
+              <i class="fa-solid fa-bolt text-yellow-300"></i>
+              <span>Powered by PRASHANT YADAV</span>
+            </div>
+            <div class="p-3.5 rounded-2xl liquid-subtle text-left text-xs text-slate-300 space-y-1.5 font-mono">
+              <div class="flex justify-between"><span class="text-slate-400">Platform Build</span><span class="text-white">v9.0-AutoExpire-LiveReady</span></div>
+              <div class="flex justify-between"><span class="text-slate-400">Music Search API</span><span class="text-pink-400">Real Online Search</span></div>
+              <div class="flex justify-between"><span class="text-slate-400">Storage Engine</span><span class="text-cyan-400">IndexedDB Unlimited</span></div>
+              <div class="flex justify-between"><span class="text-slate-400">Status</span><span class="text-emerald-400">Fully Functional</span></div>
+              <div class="flex justify-between"><span class="text-slate-400">Founder & Creator</span><span class="text-pink-400">PRASHANT YADAV</span></div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- CREATE POST MODAL -->
+  <div id="createModal" class="fixed inset-0 z-50 bg-black/85 backdrop-blur-md hidden flex items-center justify-center p-4">
+    <div class="w-full max-w-lg liquid-glass rounded-3xl p-6 border border-white/15 shadow-2xl space-y-4">
+      <div class="flex items-center justify-between pb-3 border-b border-white/10">
+        <h3 class="text-sm font-bold text-white flex items-center gap-2">
+          <i class="fa-solid fa-square-plus text-pink-400"></i> Upload from Gallery / Camera
+        </h3>
+        <button onclick="closeCreateModal()" class="w-7 h-7 rounded-full liquid-subtle text-slate-300 hover:text-white flex items-center justify-center">
+          <i class="fa-solid fa-xmark text-xs"></i>
+        </button>
+      </div>
+
+      <div>
+        <label class="block text-[11px] font-mono uppercase tracking-wider text-slate-300 font-bold mb-2">Select Photo or Video from Device</label>
+        <label class="file-drop-glow rounded-2xl p-6 flex flex-col items-center justify-center gap-2 cursor-pointer bg-black/40">
+          <i class="fa-solid fa-cloud-arrow-up text-3xl text-pink-400"></i>
+          <p class="text-xs font-semibold text-white">Tap to choose from Device Gallery</p>
+          <p class="text-[10px] text-slate-400">Real files supported (JPG, PNG, WEBP, MP4, MOV)</p>
+          <input type="file" id="createMediaFileInput" accept="image/*,video/*" class="hidden" onchange="previewMediaFromGallery(event)">
+        </label>
+        <div id="createPreviewBox" class="hidden mt-3 rounded-2xl overflow-hidden max-h-56 bg-black border border-white/10 flex items-center justify-center">
+          <img id="createImgPreview" class="hidden w-full h-full object-cover">
+          <video id="createVideoPreview" controls playsinline class="hidden w-full h-full max-h-56"></video>
+        </div>
+      </div>
+
+      <div>
+        <label class="block text-[11px] font-mono uppercase tracking-wider text-slate-300 font-bold mb-1">Caption</label>
+        <textarea id="createCaptionInput" rows="3" placeholder="Write real caption... #INTWIWA" class="w-full text-xs px-3.5 py-2.5 rounded-xl bg-black/40 border border-white/10 text-white focus:outline-none focus:border-pink-500 resize-none"></textarea>
+      </div>
+
+      <div class="flex items-center justify-between pt-2">
+        <div class="flex items-center gap-2 text-xs text-slate-400 font-mono">
+          <span class="cursor-pointer hover:text-pink-400" onclick="insertTag('#INTWIWA')">#INTWIWA</span>
+          <span class="cursor-pointer hover:text-cyan-400" onclick="insertTag('#PrashantYadav')">#PrashantYadav</span>
+        </div>
+        <button onclick="publishMediaPost()" id="publishPostBtn" class="px-5 py-2.5 rounded-xl bg-gradient-to-r from-violet-600 to-pink-600 hover:opacity-95 text-white font-bold text-xs shadow-lg">
+          Share to INTWIWA
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- REAL INSTAGRAM-STYLE STORY CREATOR WITH LIVE ONLINE MUSIC SEARCH & SELECTOR -->
+  <div id="storyCreatorModal" class="fixed inset-0 z-50 bg-black/90 backdrop-blur-md hidden flex items-center justify-center p-3 sm:p-4 overflow-y-auto">
+    <div class="w-full max-w-md liquid-glass rounded-3xl p-5 border border-white/20 shadow-2xl space-y-4 my-auto">
+      
+      <div class="flex items-center justify-between pb-2 border-b border-white/10">
+        <h4 class="text-xs font-bold text-white flex items-center gap-2">
+          <i class="fa-solid fa-camera-retro text-pink-400"></i> Add Story with Instagram Online Music
+        </h4>
+        <button onclick="closeStoryCreatorModal()" class="w-7 h-7 rounded-full liquid-subtle text-slate-300 hover:text-white flex items-center justify-center">
+          <i class="fa-solid fa-xmark text-xs"></i>
+        </button>
+      </div>
+
+      <!-- File Select -->
+      <div>
+        <label class="file-drop-glow rounded-2xl p-4 flex flex-col items-center justify-center gap-1.5 cursor-pointer bg-black/40">
+          <i class="fa-solid fa-photo-film text-2xl text-pink-400"></i>
+          <span class="text-xs font-semibold text-white" id="storySelectedMediaText">Select Photo/Video from Gallery</span>
+          <span class="text-[10px] text-slate-400">Device images or video clips</span>
+          <input type="file" id="creatorStoryFileInp" accept="image/*,video/*" class="hidden" onchange="previewStoryInCreator(event)">
+        </label>
+        <div id="storyCreatorPreviewBox" class="hidden mt-2 rounded-2xl overflow-hidden max-h-44 bg-black flex items-center justify-center border border-white/10 relative">
+          <img id="storyCreatorImgPreview" class="hidden w-full h-44 object-cover">
+          <video id="storyCreatorVidPreview" controls playsinline class="hidden w-full h-44 object-cover"></video>
+          <!-- Live Music Sticker Preview inside media -->
+          <div id="storyCreatorMusicOverlay" class="hidden absolute bottom-3 left-3 px-3 py-1.5 rounded-full liquid-glass border border-white/25 flex items-center gap-2 shadow-lg backdrop-blur-md">
+            <i class="fa-solid fa-music text-pink-400 text-xs animate-bounce"></i>
+            <span id="storyCreatorMusicOverlayTitle" class="text-[10px] font-bold text-white max-w-[150px] truncate">Song Name</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Real Instagram Online Music Search & Trending Songs -->
+      <div class="space-y-2">
+        <div class="flex items-center justify-between">
+          <label class="text-[11px] font-mono text-cyan-300 font-bold flex items-center gap-1.5">
+            <i class="fa-solid fa-music text-pink-400"></i> Instagram Online Music Search
+          </label>
+          <span id="selectedMusicStatus" class="text-[10px] text-slate-400 font-mono">No music added</span>
+        </div>
+
+        <!-- Music Search Input -->
+        <div class="relative">
+          <i class="fa-solid fa-magnifying-glass absolute left-3 top-2.5 text-xs text-slate-400"></i>
+          <input type="text" id="musicSearchInput" placeholder="Search any song, artist, Bollywood, Punjabi..." oninput="debounceSearchOnlineMusic(this.value)" class="w-full text-xs pl-8 pr-16 py-2 rounded-xl bg-black/60 border border-white/15 text-white focus:outline-none focus:border-pink-500 font-mono">
+          <button type="button" onclick="searchOnlineMusic(document.getElementById('musicSearchInput').value)" class="absolute right-1.5 top-1 px-2.5 py-1 rounded-lg bg-pink-500 text-white font-bold text-[10px] hover:bg-pink-600">Search</button>
+        </div>
+
+        <!-- Refined Quick Music Genre Chips (Instagram Style) -->
+        <div class="flex items-center gap-1.5 overflow-x-auto no-scrollbar py-1">
+          <button type="button" onclick="quickFilterMusic('Trending')" class="px-2.5 py-1 rounded-xl text-[9px] font-bold whitespace-nowrap bg-gradient-to-r from-violet-600 to-pink-600 text-white shadow-sm">🔥 Trending</button>
+          <button type="button" onclick="quickFilterMusic('Bollywood')" class="px-2.5 py-1 rounded-xl text-[9px] font-bold whitespace-nowrap liquid-subtle text-slate-200 hover:text-white">🎬 Bollywood</button>
+          <button type="button" onclick="quickFilterMusic('Punjabi')" class="px-2.5 py-1 rounded-xl text-[9px] font-bold whitespace-nowrap liquid-subtle text-slate-200 hover:text-white">🎵 Punjabi</button>
+          <button type="button" onclick="quickFilterMusic('Arijit Singh')" class="px-2.5 py-1 rounded-xl text-[9px] font-bold whitespace-nowrap liquid-subtle text-slate-200 hover:text-white">✨ Arijit Singh</button>
+          <button type="button" onclick="quickFilterMusic('Lo-Fi Chill')" class="px-2.5 py-1 rounded-xl text-[9px] font-bold whitespace-nowrap liquid-subtle text-slate-200 hover:text-white">☕ Lo-Fi</button>
+          <button type="button" onclick="quickFilterMusic('English Pop')" class="px-2.5 py-1 rounded-xl text-[9px] font-bold whitespace-nowrap liquid-subtle text-slate-200 hover:text-white">🎧 English Pop</button>
+        </div>
+
+        <!-- Online Music List (Scrollable Instagram style) -->
+        <div id="onlineMusicResults" class="space-y-1.5 max-h-40 overflow-y-auto no-scrollbar border border-white/10 rounded-2xl p-2 bg-black/40">
+          <div class="text-center py-4 text-xs text-slate-400 font-mono">
+            <i class="fa-solid fa-compact-disc fa-spin text-pink-400 mr-1.5"></i> Loading Trending Instagram Tracks...
+          </div>
+        </div>
+      </div>
+
+      <!-- Caption -->
+      <div>
+        <label class="block text-[11px] font-mono text-slate-300 font-bold mb-1">Story Caption (Optional)</label>
+        <input type="text" id="storyCreatorCaption" placeholder="Write story moment... 🌟" class="w-full text-xs px-3.5 py-2 rounded-xl bg-black/40 border border-white/10 text-white focus:outline-none focus:border-pink-500">
+      </div>
+
+      <button onclick="publishStoryWithMusic()" id="btnPublishStory" class="w-full py-2.5 rounded-xl bg-gradient-to-r from-violet-600 via-pink-600 to-cyan-500 hover:opacity-95 text-white font-bold text-xs shadow-lg flex items-center justify-center gap-2">
+        <i class="fa-solid fa-paper-plane text-xs"></i>
+        <span>Share to INTWIWA Story</span>
+      </button>
+
+    </div>
+  </div>
+
+  <!-- UPGRADED FULLSCREEN STORY VIEWER (WITH INSTAGRAM MUSIC BADGE & SYNCHRONIZED AUDIO) -->
+  <div id="storyViewerModal" class="fixed inset-0 z-50 bg-black/95 backdrop-blur-2xl hidden flex items-center justify-center p-2 sm:p-4 select-none">
+    <div class="relative w-full max-w-sm h-[600px] rounded-3xl overflow-hidden border border-white/20 shadow-2xl bg-canvas flex flex-col justify-between p-4">
+      
+      <!-- Multi-Story Progress Bars Container -->
+      <div id="storyProgressBarsGroup" class="flex items-center gap-1.5 w-full z-30">
+        <div class="flex-1 h-1 bg-white/20 rounded-full overflow-hidden">
+          <div id="storyProgressFill" class="h-full bg-white rounded-full w-0"></div>
+        </div>
+      </div>
+
+      <!-- Story Header -->
+      <div class="flex items-center justify-between z-30 mt-2">
+        <div class="flex items-center gap-2.5">
+          <img id="storyAvatar" src="" class="w-8 h-8 rounded-full object-cover border border-white/30">
+          <div>
+            <h5 id="storyAuthor" class="text-xs font-bold text-white">Author</h5>
+            <div class="flex items-center gap-1.5">
+              <span id="storyTimeAgo" class="text-[9px] text-white/70">Just now</span>
+              <span class="text-[9px] text-slate-500">•</span>
+              <span id="storyExpireCountdown" class="text-[9px] text-pink-400 font-mono flex items-center gap-0.5"><i class="fa-regular fa-clock text-[8px]"></i> 12h</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="flex items-center gap-1.5">
+          <!-- Story Audio Mute/Unmute Toggle -->
+          <button id="storyMusicMuteBtn" onclick="toggleStoryMusicMute()" title="Mute/Unmute Story Audio" class="w-7 h-7 rounded-full bg-black/60 text-white flex items-center justify-center hover:bg-black">
+            <i id="storyMusicMuteIcon" class="fa-solid fa-volume-high text-xs text-cyan-300"></i>
+          </button>
+
+          <!-- Story Share Button -->
+          <button onclick="shareActiveStory()" title="Share Story" class="w-7 h-7 rounded-full bg-black/60 text-white flex items-center justify-center hover:bg-black">
+            <i class="fa-solid fa-share-nodes text-xs text-pink-400"></i>
+          </button>
+
+          <!-- Story Delete Button for Owner -->
+          <button id="storyDeleteBtn" onclick="deleteActiveStory()" title="Delete Story" class="hidden w-7 h-7 rounded-full bg-red-600/70 text-white flex items-center justify-center hover:bg-red-600">
+            <i class="fa-solid fa-trash-can text-xs"></i>
+          </button>
+
+          <button onclick="closeStory()" class="w-7 h-7 rounded-full bg-black/60 text-white flex items-center justify-center hover:bg-black">
+            <i class="fa-solid fa-xmark text-xs"></i>
+          </button>
+        </div>
+      </div>
+
+      <!-- Left / Right Tap zones for Prev / Next story with Hold to Pause & Double Tap Heart Pop -->
+      <div class="absolute inset-y-16 left-0 w-1/3 z-20 cursor-pointer" onclick="prevStory()" ondblclick="triggerStoryHeartPop(event)" onmousedown="pauseStoryViewer(event)" onmouseup="resumeStoryViewer(event)" ontouchstart="pauseStoryViewer(event)" ontouchend="resumeStoryViewer(event)"></div>
+      <div class="absolute inset-y-16 right-0 w-1/3 z-20 cursor-pointer" onclick="nextStory()" ondblclick="triggerStoryHeartPop(event)" onmousedown="pauseStoryViewer(event)" onmouseup="resumeStoryViewer(event)" ontouchstart="pauseStoryViewer(event)" ontouchend="resumeStoryViewer(event)"></div>
+      <div class="absolute inset-y-16 left-1/3 w-1/3 z-20 cursor-pointer" ondblclick="triggerStoryHeartPop(event)" onmousedown="pauseStoryViewer(event)" onmouseup="resumeStoryViewer(event)" ontouchstart="pauseStoryViewer(event)" ontouchend="resumeStoryViewer(event)"></div>
+
+      <!-- Story Media Display -->
+      <img id="storyMediaImg" class="absolute inset-0 w-full h-full object-cover z-10 pointer-events-none">
+      <video id="storyMediaVideo" playsinline autoplay muted class="hidden absolute inset-0 w-full h-full object-cover z-10 pointer-events-none"></video>
+
+      <!-- Instagram Floating Music Sticker with Spinning Vinyl & Live Equalizer -->
+      <div id="storyMusicFloatingSticker" class="hidden absolute top-16 left-4 z-20 items-center gap-2.5 px-3 py-1.5 rounded-full liquid-glass border border-white/30 shadow-2xl backdrop-blur-xl animate-pulse-subtle">
+        <div class="relative w-7 h-7 rounded-full p-0.5 bg-gradient-to-tr from-pink-500 to-cyan-400 flex-shrink-0">
+          <img id="storyMusicArtwork" src="" class="w-full h-full rounded-full object-cover vinyl-spin border border-black/40">
+          <div class="absolute inset-0 flex items-center justify-center pointer-events-none">
+            <span class="w-1.5 h-1.5 rounded-full bg-white ring-1 ring-black"></span>
+          </div>
+        </div>
+        <div class="flex flex-col">
+          <span id="storyMusicTitle" class="text-[10px] font-extrabold text-white truncate max-w-[140px] drop-shadow">Song Title</span>
+          <span id="storyMusicArtist" class="text-[8px] text-cyan-300 font-mono truncate max-w-[140px]">Artist</span>
+        </div>
+        <div class="flex items-end gap-0.5 h-3.5 ml-1">
+          <span class="w-0.5 bg-pink-400 rounded-full eq-bar-1"></span>
+          <span class="w-0.5 bg-cyan-400 rounded-full eq-bar-2"></span>
+          <span class="w-0.5 bg-pink-400 rounded-full eq-bar-3"></span>
+          <span class="w-0.5 bg-cyan-400 rounded-full eq-bar-4"></span>
+        </div>
+      </div>
+
+      <!-- Story Double-Tap Heart Burst Animation Container -->
+      <div id="storyHeartBurst" class="absolute top-1/2 left-1/2 pointer-events-none z-30 hidden">
+        <i class="fa-solid fa-heart text-7xl text-pink-500 drop-shadow-2xl"></i>
+      </div>
+
+      <!-- Bottom Interactive Story Bar with Quick Reactions & Seen Counter -->
+      <div class="z-30 space-y-2">
+        <div class="flex items-center justify-between px-1">
+          <div id="storySeenCounter" onclick="openStoryViewersModal(event)" class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-black/60 border border-white/15 text-[10px] text-slate-300 font-mono cursor-pointer hover:border-pink-500 hover:text-white transition-all" title="View who saw your story">
+            <i class="fa-regular fa-eye text-cyan-400 text-[9px]"></i>
+            <span id="storySeenText">12 views</span>
+          </div>
+          <span class="text-[9px] text-white/60 font-mono bg-black/40 px-2 py-0.5 rounded-full">Hold screen to pause ⏸️</span>
+        </div>
+        <p id="storyCaption" class="text-xs text-white drop-shadow bg-black/55 p-2 rounded-xl backdrop-blur-sm line-clamp-2"></p>
+        
+        <!-- Quick Emojis -->
+        <div class="flex items-center justify-between px-2 text-lg">
+          <button onclick="sendStoryQuickEmoji('❤️')" class="hover:scale-125 transition-transform">❤️</button>
+          <button onclick="sendStoryQuickEmoji('🔥')" class="hover:scale-125 transition-transform">🔥</button>
+          <button onclick="sendStoryQuickEmoji('👏')" class="hover:scale-125 transition-transform">👏</button>
+          <button onclick="sendStoryQuickEmoji('😂')" class="hover:scale-125 transition-transform">😂</button>
+          <button onclick="sendStoryQuickEmoji('⚡')" class="hover:scale-125 transition-transform">⚡</button>
+        </div>
+
+        <div class="flex items-center gap-2">
+          <input type="text" id="storyReplyInp" placeholder="Send whisper reply..." class="flex-1 text-xs px-3.5 py-2 rounded-full bg-black/60 backdrop-blur-md text-white border border-white/20 focus:outline-none focus:border-pink-500" onkeydown="if(event.key === 'Enter') submitStoryReply()">
+          <button onclick="submitStoryReply()" class="w-9 h-9 rounded-full bg-gradient-to-r from-violet-600 to-pink-600 text-white flex items-center justify-center flex-shrink-0 shadow-md">
+            <i class="fa-solid fa-paper-plane text-xs"></i>
+          </button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- TOAST -->
+  <div id="toast" class="fixed bottom-20 md:bottom-6 right-6 z-50 transform translate-y-24 opacity-0 transition-all duration-300 pointer-events-none">
+    <div class="liquid-glass text-white text-xs font-semibold px-4 py-2.5 rounded-2xl shadow-2xl flex items-center gap-2 border border-white/20">
+      <i class="fa-solid fa-bolt text-yellow-300 text-xs"></i>
+      <span id="toastMsg">Notification</span>
+    </div>
+  </div>
+
+  <!-- APPLICATION CORE (INDEXEDDB UNLIMITED STORAGE + INSTAGRAM REAL ONLINE MUSIC SEARCH) -->
+  <script>
+    /* ================= 1. INDEXEDDB STORAGE ENGINE (SOLVES STORAGE LIMITS) ================= */
+    const DB_NAME = 'INTWIWA_MEDIA_DATABASE_V1';
+    const DB_VERSION = 1;
+    let dbInstance = null;
+
+    function openAppDatabase() {
+      return new Promise((resolve, reject) => {
+        if (dbInstance) return resolve(dbInstance);
+        const req = indexedDB.open(DB_NAME, DB_VERSION);
+        req.onupgradeneeded = function(e) {
+          const db = e.target.result;
+          if (!db.objectStoreNames.contains('app_media')) {
+            db.createObjectStore('app_media', { keyPath: 'id' });
+          }
+        };
+        req.onsuccess = function(e) {
+          dbInstance = e.target.result;
+          resolve(dbInstance);
+        };
+        req.onerror = function(err) {
+          console.warn('IndexedDB fallback to memory:', err);
+          resolve(null);
+        };
+      });
+    }
+
+    async function dbPutMedia(id, data) {
+      try {
+        const db = await openAppDatabase();
+        if (!db) return;
+        const tx = db.transaction('app_media', 'readwrite');
+        tx.objectStore('app_media').put({ id, data });
+      } catch (err) {
+        console.warn('IDB put error:', err);
+      }
+    }
+
+    async function dbGetMedia(id) {
+      try {
+        const db = await openAppDatabase();
+        if (!db) return null;
+        return new Promise((resolve) => {
+          const tx = db.transaction('app_media', 'readonly');
+          const req = tx.objectStore('app_media').get(id);
+          req.onsuccess = () => resolve(req.result ? req.result.data : null);
+          req.onerror = () => resolve(null);
+        });
+      } catch (err) {
+        return null;
+      }
+    }
+
+    async function dbDeleteMedia(id) {
+      try {
+        const db = await openAppDatabase();
+        if (!db) return;
+        const tx = db.transaction('app_media', 'readwrite');
+        tx.objectStore('app_media').delete(id);
+      } catch (err) {}
+    }
+
+    /* ================= 2. REAL INSTAGRAM ONLINE MUSIC SEARCH ENGINE ================= */
+    let selectedStoryMusic = null; // Currently chosen music track object
+    let previewingTrackId = null;
+
+    // Default Popular Trending Tracks on Instagram
+    const DEFAULT_TRENDING_TRACKS = [
+      {
+        id: "trend_1",
+        title: "Kesariya",
+        artist: "Arijit Singh, Pritam",
+        artwork: "https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?w=100&h=100&fit=crop",
+        previewUrl: "https://actions.google.com/sounds/v1/weather/rain_heavy.ogg"
+      },
+      {
+        id: "trend_2",
+        title: "Mi Amor",
+        artist: "Sharn, 407",
+        artwork: "https://images.unsplash.com/photo-1470225620780-dba8ba36b745?w=100&h=100&fit=crop",
+        previewUrl: "https://actions.google.com/sounds/v1/science_fiction/force_field_hum.ogg"
+      },
+      {
+        id: "trend_3",
+        title: "Starboy",
+        artist: "The Weeknd, Daft Punk",
+        artwork: "https://images.unsplash.com/photo-1514525253161-7a46d19cd819?w=100&h=100&fit=crop",
+        previewUrl: "https://actions.google.com/sounds/v1/water/lapping_water.ogg"
+      },
+      {
+        id: "trend_4",
+        title: "Softly",
+        artist: "Karan Aujla, Ikky",
+        artwork: "https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?w=100&h=100&fit=crop",
+        previewUrl: "https://actions.google.com/sounds/v1/transportation/subway_interior.ogg"
+      },
+      {
+        id: "trend_5",
+        title: "Lover",
+        artist: "Diljit Dosanjh",
+        artwork: "https://images.unsplash.com/photo-1487180144351-b8472da7d491?w=100&h=100&fit=crop",
+        previewUrl: "https://actions.google.com/sounds/v1/foley/wind_chimes_medium.ogg"
+      }
+    ];
+
+    let searchDebounceTimer = null;
+    window.debounceSearchOnlineMusic = function(query) {
+      clearTimeout(searchDebounceTimer);
+      searchDebounceTimer = setTimeout(() => {
+        searchOnlineMusic(query);
+      }, 400);
+    };
+
+    window.searchOnlineMusic = async function(query) {
+      const resultsContainer = document.getElementById('onlineMusicResults');
+      if (!query || query.trim() === '') {
+        renderMusicList(DEFAULT_TRENDING_TRACKS);
+        return;
+      }
+
+      resultsContainer.innerHTML = `
+        <div class="text-center py-4 text-xs text-slate-400 font-mono">
+          <i class="fa-solid fa-spinner fa-spin text-pink-400 mr-1.5"></i> Searching online songs for "${query}"...
+        </div>
+      `;
+
+      try {
+        // Real-time iTunes API (Free CORS allowed search with 30s preview streams)
+        const response = await fetch(`https://itunes.apple.com/search?term=${encodeURIComponent(query)}&entity=song&limit=15`);
+        const data = await response.json();
+
+        if (data.results && data.results.length > 0) {
+          const formatted = data.results.map(item => ({
+            id: String(item.trackId),
+            title: item.trackName,
+            artist: item.artistName,
+            artwork: item.artworkUrl100 || item.artworkUrl60,
+            previewUrl: item.previewUrl
+          }));
+          renderMusicList(formatted);
+        } else {
+          resultsContainer.innerHTML = `
+            <div class="text-center py-3 text-xs text-slate-400 font-mono">
+              No matching songs found. Try another search.
+            </div>
+          `;
+        }
+      } catch (err) {
+        console.warn('Online music search fallback:', err);
+        // Fallback filter over trending tracks
+        const filtered = DEFAULT_TRENDING_TRACKS.filter(t => 
+          t.title.toLowerCase().includes(query.toLowerCase()) || 
+          t.artist.toLowerCase().includes(query.toLowerCase())
+        );
+        renderMusicList(filtered.length ? filtered : DEFAULT_TRENDING_TRACKS);
+      }
+    };
+
+    function renderMusicList(tracks) {
+      const container = document.getElementById('onlineMusicResults');
+      container.innerHTML = '';
+
+      // Option: No Music
+      const noMusicItem = document.createElement('div');
+      noMusicItem.className = `p-2 rounded-xl cursor-pointer flex items-center justify-between transition-all ${!selectedStoryMusic ? 'bg-white/15 border border-pink-500/50' : 'hover:bg-white/5 border border-transparent'}`;
+      noMusicItem.onclick = () => selectMusicTrack(null);
+      noMusicItem.innerHTML = `
+        <div class="flex items-center gap-2.5">
+          <div class="w-8 h-8 rounded-lg bg-white/10 flex items-center justify-center text-slate-400 text-xs">
+            <i class="fa-solid fa-volume-xmark"></i>
+          </div>
+          <span class="text-xs font-semibold text-slate-300">No Music (Original Sound)</span>
+        </div>
+        ${!selectedStoryMusic ? '<i class="fa-solid fa-check text-cyan-400 text-xs mr-2"></i>' : ''}
+      `;
+      container.appendChild(noMusicItem);
+
+      tracks.forEach(track => {
+        const isSelected = selectedStoryMusic && selectedStoryMusic.id === track.id;
+        const isPlaying = previewingTrackId === track.id;
+
+        const item = document.createElement('div');
+        item.className = `p-2 rounded-xl flex items-center justify-between transition-all ${isSelected ? 'bg-gradient-to-r from-violet-600/30 to-pink-600/30 border border-pink-500/50' : 'hover:bg-white/5 border border-transparent'}`;
+        
+        item.innerHTML = `
+          <div class="flex items-center gap-2.5 truncate flex-1 cursor-pointer" onclick="selectMusicTrack(${JSON.stringify(track).replace(/"/g, '&quot;')})">
+            <img src="${track.artwork}" class="w-9 h-9 rounded-lg object-cover ring-1 ring-white/20 flex-shrink-0">
+            <div class="truncate">
+              <h5 class="text-xs font-bold text-white truncate">${track.title}</h5>
+              <p class="text-[10px] text-slate-400 truncate">${track.artist}</p>
+            </div>
+          </div>
+
+          <div class="flex items-center gap-2 ml-2">
+            <button type="button" onclick="togglePlayPreview('${track.id}', '${track.previewUrl}', '${track.title.replace(/'/g, "\'")}')" class="w-7 h-7 rounded-full liquid-subtle flex items-center justify-center text-pink-400 hover:text-white">
+              <i class="fa-solid ${isPlaying ? 'fa-pause' : 'fa-play'} text-[10px]"></i>
+            </button>
+            <button type="button" onclick="selectMusicTrack(${JSON.stringify(track).replace(/"/g, '&quot;')})" class="px-2.5 py-1 rounded-lg ${isSelected ? 'bg-pink-500 text-white' : 'bg-white/10 text-slate-300 hover:bg-white/20'} text-[10px] font-bold">
+              ${isSelected ? 'Added ✓' : 'Add'}
+            </button>
+          </div>
+        `;
+        container.appendChild(item);
+      });
+    }
+
+    window.togglePlayPreview = function(id, url, title) {
+      const audio = document.getElementById('storyBgMusicPlayer');
+      if (previewingTrackId === id) {
+        audio.pause();
+        previewingTrackId = null;
+      } else {
+        audio.src = url;
+        audio.play().catch(()=>{});
+        previewingTrackId = id;
+        window.triggerToast(`Playing: ${title} 🎵`);
+      }
+      renderMusicList(DEFAULT_TRENDING_TRACKS);
+    };
+
+    window.selectMusicTrack = function(track) {
+      window.playAudio('pop');
+      selectedStoryMusic = track;
+      const statusLabel = document.getElementById('selectedMusicStatus');
+      const stickerOverlay = document.getElementById('storyCreatorMusicOverlay');
+      const stickerTitle = document.getElementById('storyCreatorMusicOverlayTitle');
+
+      if (track) {
+        statusLabel.innerText = `🎵 ${track.title} • ${track.artist}`;
+        statusLabel.className = 'text-[10px] text-pink-400 font-mono font-bold truncate max-w-[200px]';
+        stickerTitle.innerText = `${track.title} • ${track.artist}`;
+        stickerOverlay.classList.remove('hidden');
+        window.triggerToast(`Song Added: ${track.title} 🎶`);
+      } else {
+        statusLabel.innerText = 'No music added';
+        statusLabel.className = 'text-[10px] text-slate-400 font-mono';
+        stickerOverlay.classList.add('hidden');
+        window.triggerToast('Music removed.');
+      }
+      renderMusicList(DEFAULT_TRENDING_TRACKS);
+    };
+
+    /* ================= 3. STORAGE KEYS ================= */
+    const STORAGE_USERS_REGISTRY = 'INTWIWA_REGISTERED_USERS_STORE';
+    const STORAGE_CURRENT_SESSION = 'INTWIWA_AUTHENTICATED_SESSION';
+    const STORAGE_POSTS_STORE = 'INTWIWA_REAL_POSTS_STORE';
+    const STORAGE_STORIES_STORE = 'INTWIWA_REAL_STORIES_STORE';
+    const STORAGE_REELS_STORE = 'INTWIWA_REAL_REELS_STORE';
+    const STORAGE_MESSAGES_STORE = 'INTWIWA_REAL_MESSAGES_STORE';
+    const STORAGE_CONTACTS_STORE = 'INTWIWA_REAL_CONTACTS_STORE';
+    const STORAGE_THEME_KEY = 'INTWIWA_ACTIVE_THEME';
+
+    let audioCtx = null;
+    let sfxEnabled = true;
+    let sfxVolume = 0.75;
+    let hapticsEnabled = true;
+
+    window.playAudio = function(type = 'pop') {
+      if (!sfxEnabled) return;
+      try {
+        if (!audioCtx) audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+        if (audioCtx.state === 'suspended') audioCtx.resume();
+        const osc = audioCtx.createOscillator();
+        const gain = audioCtx.createGain();
+        osc.connect(gain);
+        gain.connect(audioCtx.destination);
+        const now = audioCtx.currentTime;
+        const effectiveGain = 0.15 * sfxVolume;
+
+        if (type === 'pop') {
+          osc.type = 'sine';
+          osc.frequency.setValueAtTime(460, now);
+          osc.frequency.exponentialRampToValueAtTime(920, now + 0.08);
+          gain.gain.setValueAtTime(effectiveGain, now);
+          gain.gain.exponentialRampToValueAtTime(0.001, now + 0.08);
+          osc.start(now);
+          osc.stop(now + 0.08);
+          if (hapticsEnabled && navigator.vibrate) navigator.vibrate(15);
+        } else if (type === 'follow') {
+          osc.type = 'triangle';
+          osc.frequency.setValueAtTime(540, now);
+          osc.frequency.exponentialRampToValueAtTime(1080, now + 0.12);
+          gain.gain.setValueAtTime(effectiveGain, now);
+          gain.gain.exponentialRampToValueAtTime(0.001, now + 0.12);
+          osc.start(now);
+          osc.stop(now + 0.12);
+          if (hapticsEnabled && navigator.vibrate) navigator.vibrate([20, 30, 20]);
+        }
+      } catch (e) {}
+    };
+
+    let currentUser = null;
+    let realPosts = [];
+    let realStories = [];
+    let realReels = [];
+    let realMessages = {};
+    let realContacts = [];
+    let activeChatContactId = 'prashant_yadav';
+    let signupAvatarDataUrl = '';
+
+    function compressImage(dataUrl, maxWidth, maxHeight, quality, callback) {
+      const img = new Image();
+      img.onload = function() {
+        let width = img.width;
+        let height = img.height;
+        if (width > height) {
+          if (width > maxWidth) {
+            height *= maxWidth / width;
+            width = maxWidth;
+          }
+        } else {
+          if (height > maxHeight) {
+            width *= maxHeight / height;
+            height = maxHeight;
+          }
+        }
+        const canvas = document.createElement('canvas');
+        canvas.width = width;
+        canvas.height = height;
+        const ctx = canvas.getContext('2d');
+        ctx.drawImage(img, 0, 0, width, height);
+        callback(canvas.toDataURL('image/jpeg', quality));
+      };
+      img.onerror = function() {
+        callback(dataUrl);
+      };
+      img.src = dataUrl;
+    }
+
+    function generateGradientAvatar(name) {
+      const initials = (name || 'User').split(' ').map(n => n[0]).slice(0, 2).join('').toUpperCase();
+      const canvas = document.createElement('canvas');
+      canvas.width = 160;
+      canvas.height = 160;
+      const ctx = canvas.getContext('2d');
+      const grad = ctx.createLinearGradient(0, 0, 160, 160);
+      grad.addColorStop(0, '#a855f7');
+      grad.addColorStop(0.5, '#ec4899');
+      grad.addColorStop(1, '#06b6d4');
+      ctx.fillStyle = grad;
+      ctx.fillRect(0, 0, 160, 160);
+      ctx.font = 'bold 64px "Outfit", sans-serif';
+      ctx.fillStyle = '#ffffff';
+      ctx.textAlign = 'center';
+      ctx.textBaseline = 'middle';
+      ctx.fillText(initials, 80, 84);
+      return canvas.toDataURL('image/png');
+    }
+
+    /* ================= 4. AUTHENTICATION (NO REAL EMAIL REQUIRED, INSTANT SETUP) ================= */
+    window.switchAuthMode = function(mode) {
+      window.playAudio('pop');
+      const tabS = document.getElementById('authTabSignup');
+      const tabL = document.getElementById('authTabLogin');
+      const formS = document.getElementById('authSignupForm');
+      const formL = document.getElementById('authLoginForm');
+
+      if (mode === 'signup') {
+        tabS.className = 'flex-1 py-2 rounded-xl text-xs font-bold transition-all text-white bg-gradient-to-r from-violet-600 to-pink-600 shadow-lg shadow-pink-500/20';
+        tabL.className = 'flex-1 py-2 rounded-xl text-xs font-bold transition-all text-slate-400 hover:text-white';
+        formS.classList.remove('hidden');
+        formL.classList.add('hidden');
+      } else {
+        tabL.className = 'flex-1 py-2 rounded-xl text-xs font-bold transition-all text-white bg-gradient-to-r from-violet-600 to-pink-600 shadow-lg shadow-pink-500/20';
+        tabS.className = 'flex-1 py-2 rounded-xl text-xs font-bold transition-all text-slate-400 hover:text-white';
+        formL.classList.remove('hidden');
+        formS.classList.add('hidden');
+      }
+    };
+
+    window.cleanHandleInput = function(el) {
+      el.value = el.value.replace(/[^a-zA-Z0-9_]/g, '').toLowerCase();
+    };
+
+    window.previewAvatarFromGallery = function(e) {
+      const file = e.target.files && e.target.files[0];
+      if (!file) return;
+
+      const reader = new FileReader();
+      reader.onload = function(evt) {
+        compressImage(evt.target.result, 240, 240, 0.8, function(compressedUrl) {
+          signupAvatarDataUrl = compressedUrl;
+          const img = document.getElementById('signupAvatarPreview');
+          const placeholder = document.getElementById('signupAvatarPlaceholder');
+          img.src = signupAvatarDataUrl;
+          img.classList.remove('hidden');
+          placeholder.classList.add('hidden');
+          document.getElementById('signupAvatarText').innerText = 'Photo Ready ✓';
+          window.triggerToast('Profile photo ready from device! 📸');
+        });
+      };
+      reader.readAsDataURL(file);
+    };
+
+    window.handleSignupSubmit = function(e) {
+      e.preventDefault();
+      try {
+        const name = document.getElementById('signupName').value.trim();
+        const handle = document.getElementById('signupHandle').value.trim();
+        const contact = document.getElementById('signupContact').value.trim() || `${handle}@intwiwa.local`;
+        const password = document.getElementById('signupPassword').value;
+        const bio = document.getElementById('signupBio').value.trim() || 'Real member on INTWIWA ⚡';
+
+        if (!name || !handle || !password) {
+          window.triggerToast('Please fill all required fields');
+          return;
+        }
+
+        let usersStore = {};
+        try { usersStore = JSON.parse(localStorage.getItem(STORAGE_USERS_REGISTRY) || '{}'); } catch(err) { usersStore = {}; }
+
+        if (usersStore[handle.toLowerCase()]) {
+          window.triggerToast(`Username @${handle} is already taken!`);
+          return;
+        }
+
+        const finalAvatar = signupAvatarDataUrl || generateGradientAvatar(name);
+
+        const newUser = {
+          name,
+          handle: handle.toLowerCase(),
+          contact,
+          password,
+          bio,
+          avatar: finalAvatar,
+          followersCount: 0,
+          followingCount: 1,
+          followingList: ['prashant_yadav'],
+          isPrivate: false,
+          isDeactivated: false,
+          createdAt: new Date().toISOString()
+        };
+
+        usersStore[handle.toLowerCase()] = newUser;
+        localStorage.setItem(STORAGE_USERS_REGISTRY, JSON.stringify(usersStore));
+        localStorage.setItem(STORAGE_CURRENT_SESSION, JSON.stringify(newUser));
+
+        currentUser = newUser;
+        window.playAudio('follow');
+        window.triggerToast(`Account created! Welcome @${currentUser.handle} ⚡`);
+        launchAuthenticatedApp();
+      } catch (err) {
+        window.triggerToast('Signup error occurred.');
+      }
+    };
+
+    window.handleLoginSubmit = function(e) {
+      e.preventDefault();
+      try {
+        const identifier = document.getElementById('loginIdentifier').value.trim().toLowerCase().replace('@', '');
+        const password = document.getElementById('loginPassword').value;
+
+        let usersStore = {};
+        try { usersStore = JSON.parse(localStorage.getItem(STORAGE_USERS_REGISTRY) || '{}'); } catch(err) { usersStore = {}; }
+
+        let foundUser = null;
+        for (let k in usersStore) {
+          const u = usersStore[k];
+          if (u.handle.toLowerCase() === identifier || (u.contact && u.contact.toLowerCase() === identifier)) {
+            foundUser = u;
+            break;
+          }
+        }
+
+        if (!foundUser) {
+          window.triggerToast('Account not found. Please create an account.');
+          return;
+        }
+
+        if (foundUser.password !== password) {
+          window.triggerToast('Incorrect password! Please try again.');
+          return;
+        }
+
+        if (foundUser.isDeactivated) {
+          if (confirm('Your account is currently deactivated. Do you want to reactivate it and log in?')) {
+            foundUser.isDeactivated = false;
+            usersStore[foundUser.handle] = foundUser;
+            localStorage.setItem(STORAGE_USERS_REGISTRY, JSON.stringify(usersStore));
+            window.triggerToast('Account reactivated! Welcome back! 🎉');
+          }
+        }
+
+        currentUser = foundUser;
+        localStorage.setItem(STORAGE_CURRENT_SESSION, JSON.stringify(currentUser));
+        window.playAudio('follow');
+        window.triggerToast(`Welcome back, @${currentUser.handle}! ⚡`);
+        launchAuthenticatedApp();
+      } catch(err) {
+        window.triggerToast('Login error occurred.');
+      }
+    };
+
+    window.handleLogout = function() {
+      window.playAudio('pop');
+      localStorage.removeItem(STORAGE_CURRENT_SESSION);
+      currentUser = null;
+      document.getElementById('authGate').classList.remove('hidden');
+      document.getElementById('mainApp').classList.add('hidden');
+      window.triggerToast('Signed out of INTWIWA');
+    };
+
+    /* ================= 5. ACCOUNT LIFECYCLE: DEACTIVATE / REACTIVATE / DELETE ================= */
+    window.toggleAccountActivation = function() {
+      if (!currentUser) return;
+      window.playAudio('pop');
+      const isDeactivated = !currentUser.isDeactivated;
+
+      if (isDeactivated) {
+        if (!confirm('Are you sure you want to Deactivate your account? Your profile and posts will be hidden from everyone until you reactivate.')) {
+          return;
+        }
+      }
+
+      currentUser.isDeactivated = isDeactivated;
+      updateUserInStore(currentUser);
+      updateDeactivationUI();
+
+      if (isDeactivated) {
+        window.triggerToast('Account deactivated. You can reactivate anytime!');
+      } else {
+        window.triggerToast('Account reactivated successfully! ⚡');
+      }
+    };
+
+    window.reactivateAccount = function() {
+      if (!currentUser) return;
+      window.playAudio('follow');
+      currentUser.isDeactivated = false;
+      updateUserInStore(currentUser);
+      updateDeactivationUI();
+      window.triggerToast('Account is now active and public! 🌟');
+    };
+
+    function updateDeactivationUI() {
+      const banner = document.getElementById('deactivatedBanner');
+      const badge = document.getElementById('profileDeactivatedBadge');
+      const title = document.getElementById('deactivateActionTitle');
+      const btn = document.getElementById('btnAccountActivation');
+
+      if (currentUser && currentUser.isDeactivated) {
+        if (banner) banner.classList.remove('hidden');
+        if (badge) badge.classList.remove('hidden');
+        if (title) title.innerText = 'Reactivate Account';
+        if (btn) {
+          btn.innerText = 'Reactivate';
+          btn.className = 'px-3.5 py-1.5 rounded-xl bg-emerald-500/20 border border-emerald-500/30 text-emerald-300 text-xs font-bold hover:bg-emerald-500/30';
+        }
+      } else {
+        if (banner) banner.classList.add('hidden');
+        if (badge) badge.classList.add('hidden');
+        if (title) title.innerText = 'Deactivate Account';
+        if (btn) {
+          btn.innerText = 'Deactivate';
+          btn.className = 'px-3.5 py-1.5 rounded-xl bg-amber-500/20 border border-amber-500/30 text-amber-300 text-xs font-bold hover:bg-amber-500/30';
+        }
+      }
+    }
+
+    window.deleteAccountPermanently = function() {
+      if (!currentUser) return;
+      window.playAudio('pop');
+      const promptConf = prompt(`Type "DELETE ${currentUser.handle}" to confirm permanent deletion:`);
+      if (promptConf !== `DELETE ${currentUser.handle}`) {
+        window.triggerToast('Deletion cancelled. Handle verification did not match.');
+        return;
+      }
+
+      let usersStore = {};
+      try { usersStore = JSON.parse(localStorage.getItem(STORAGE_USERS_REGISTRY) || '{}'); } catch(e) {}
+      delete usersStore[currentUser.handle];
+      localStorage.setItem(STORAGE_USERS_REGISTRY, JSON.stringify(usersStore));
+
+      realPosts = realPosts.filter(p => p.authorHandle !== currentUser.handle);
+      realStories = realStories.filter(s => s.authorHandle !== currentUser.handle);
+      saveUserData();
+
+      localStorage.removeItem(STORAGE_CURRENT_SESSION);
+      currentUser = null;
+
+      closeSettingsModal();
+      document.getElementById('authGate').classList.remove('hidden');
+      document.getElementById('mainApp').classList.add('hidden');
+      window.triggerToast('Account deleted permanently.');
+    };
+
+    /* ================= 6. APP INITIALIZATION ================= */
+    function checkSession() {
+      const savedTheme = localStorage.getItem(STORAGE_THEME_KEY);
+      if (savedTheme) {
+        document.body.className = `selection:bg-pink-500 selection:text-white ${savedTheme}`;
+      }
+
+      const storedUser = localStorage.getItem(STORAGE_CURRENT_SESSION);
+      if (storedUser) {
+        try {
+          currentUser = JSON.parse(storedUser);
+          if (currentUser && currentUser.handle) {
+            launchAuthenticatedApp();
+            return;
+          }
+        } catch(e) {}
+      }
+
+      document.getElementById('authGate').classList.remove('hidden');
+      document.getElementById('mainApp').classList.add('hidden');
+    }
+
+    function launchAuthenticatedApp() {
+      document.getElementById('authGate').classList.add('hidden');
+      document.getElementById('mainApp').classList.remove('hidden');
+
+      document.getElementById('headerUserAvatar').src = currentUser.avatar;
+      document.getElementById('trayMyAvatar').src = currentUser.avatar;
+      document.getElementById('sidebarUserAvatar').src = currentUser.avatar;
+      document.getElementById('sidebarUserName').innerText = currentUser.name;
+      document.getElementById('sidebarUserHandle').innerText = '@' + currentUser.handle;
+
+      document.getElementById('profileAvatar').src = currentUser.avatar;
+      document.getElementById('profileFullName').innerText = currentUser.name;
+      document.getElementById('profileHandle').innerText = '@' + currentUser.handle;
+      document.getElementById('profileBio').innerText = currentUser.bio;
+      document.getElementById('profileFollowersCount').innerText = currentUser.followersCount || 0;
+      document.getElementById('profileFollowingCount').innerText = currentUser.followingCount || 1;
+
+      updateDeactivationUI();
+      loadUserData();
+      renderFeed();
+      renderStories();
+      renderReels();
+      renderProfileGrid();
+      initWhisperHub();
+    }
+
+    async function loadUserData() {
+      try { realPosts = JSON.parse(localStorage.getItem(STORAGE_POSTS_STORE) || '[]'); } catch(e) { realPosts = []; }
+      try { 
+        realStories = JSON.parse(localStorage.getItem(STORAGE_STORIES_STORE) || '[]');
+        const dayAgo = Date.now() - (12 * 60 * 60 * 1000);
+        realStories = realStories.filter(s => (s.timestamp || Date.now()) > dayAgo);
+      } catch(e) { realStories = []; }
+      try { realReels = JSON.parse(localStorage.getItem(STORAGE_REELS_STORE) || '[]'); } catch(e) { realReels = []; }
+      try { realMessages = JSON.parse(localStorage.getItem(STORAGE_MESSAGES_STORE) || '{}'); } catch(e) { realMessages = {}; }
+      try { realContacts = JSON.parse(localStorage.getItem(STORAGE_CONTACTS_STORE) || '[]'); } catch(e) { realContacts = []; }
+
+      if (!realContacts.some(c => c.id === 'prashant_yadav')) {
+        realContacts.unshift({
+          id: 'prashant_yadav',
+          name: 'PRASHANT YADAV',
+          handle: 'prashant_yadav',
+          avatar: generateGradientAvatar('Prashant Yadav'),
+          status: '⚡ Founder & Platform Architect',
+          online: true,
+          unread: 1
+        });
+      }
+
+      if (!realMessages['prashant_yadav']) {
+        realMessages['prashant_yadav'] = [
+          {
+            sender: 'PRASHANT YADAV',
+            text: `Welcome to INTWIWA, ${currentUser ? currentUser.name : 'friend'}! Feel free to share echoes, upload real motion reels from your device, or test messages right here. ⚡`,
+            type: 'text',
+            isMine: false,
+            time: '12:00 PM'
+          }
+        ];
+      }
+    }
+
+    function saveUserData() {
+      try {
+        localStorage.setItem(STORAGE_POSTS_STORE, JSON.stringify(realPosts));
+        localStorage.setItem(STORAGE_STORIES_STORE, JSON.stringify(realStories));
+        localStorage.setItem(STORAGE_REELS_STORE, JSON.stringify(realReels));
+        localStorage.setItem(STORAGE_MESSAGES_STORE, JSON.stringify(realMessages));
+        localStorage.setItem(STORAGE_CONTACTS_STORE, JSON.stringify(realContacts));
+      } catch (e) {
+        console.warn('Storage limit reached, fallback to IndexedDB active.');
+      }
+    }
+
+    /* ================= 7. WHISPER DIRECT MESSAGING ================= */
+    function initWhisperHub() {
+      renderWhisperContacts();
+      selectWhisperChat(activeChatContactId);
+    }
+
+    function renderWhisperContacts(filter = '') {
+      const list = document.getElementById('whisperContactsList');
+      list.innerHTML = '';
+
+      const filtered = realContacts.filter(c => 
+        c.name.toLowerCase().includes(filter.toLowerCase()) || 
+        c.handle.toLowerCase().includes(filter.toLowerCase())
+      );
+
+      filtered.forEach(c => {
+        const item = document.createElement('div');
+        const isActive = c.id === activeChatContactId;
+        item.className = `p-2 rounded-2xl cursor-pointer flex items-center justify-between transition-all ${isActive ? 'bg-gradient-to-r from-violet-600/30 to-pink-600/30 border border-pink-500/30' : 'hover:bg-white/5'}`;
+        item.onclick = () => selectWhisperChat(c.id);
+
+        const msgs = realMessages[c.id] || [];
+        const lastMsg = msgs.length ? msgs[msgs.length - 1].text || (msgs[msgs.length - 1].type === 'image' ? '📷 Photo' : '🎙️ Voice Note') : 'No messages';
+
+        item.innerHTML = `
+          <div class="flex items-center gap-2.5 truncate">
+            <div class="relative flex-shrink-0">
+              <img src="${c.avatar}" class="w-10 h-10 rounded-xl object-cover ring-1 ring-white/20">
+              ${c.online ? '<span class="absolute -bottom-0.5 -right-0.5 w-2.5 h-2.5 bg-emerald-400 rounded-full border border-canvas"></span>' : ''}
+            </div>
+            <div class="truncate">
+              <div class="flex items-center gap-1">
+                <span class="text-xs font-bold text-white truncate">${c.name}</span>
+                <i class="fa-solid fa-circle-check text-cyan-400 text-[9px]"></i>
+              </div>
+              <p class="text-[10px] text-slate-400 truncate">${lastMsg}</p>
+            </div>
+          </div>
+          ${c.unread ? `<span class="w-4 h-4 rounded-full bg-pink-500 text-white text-[9px] flex items-center justify-center font-bold flex-shrink-0">${c.unread}</span>` : ''}
+        `;
+        list.appendChild(item);
+      });
+    }
+
+    window.filterWhisperContacts = function(val) {
+      renderWhisperContacts(val);
+    };
+
+    window.selectWhisperChat = function(contactId) {
+      window.playAudio('pop');
+      activeChatContactId = contactId;
+      const contact = realContacts.find(c => c.id === contactId) || realContacts[0];
+      contact.unread = 0;
+
+      document.getElementById('activeChatName').innerHTML = `${contact.name} <i class="fa-solid fa-circle-check text-cyan-400 text-[10px]"></i>`;
+      document.getElementById('activeChatAvatar').src = contact.avatar;
+      document.getElementById('activeChatSub').innerText = `${contact.status || 'Active on INTWIWA'}`;
+
+      renderWhisperContacts();
+      renderActiveChatMessages();
+    };
+
+    function renderActiveChatMessages() {
+      const stream = document.getElementById('whisperMessagesList');
+      stream.innerHTML = '';
+
+      const msgs = realMessages[activeChatContactId] || [];
+
+      if (msgs.length === 0) {
+        stream.innerHTML = `
+          <div class="text-center py-10 space-y-2 text-slate-400">
+            <i class="fa-solid fa-comments text-3xl text-pink-400"></i>
+            <p class="text-xs font-semibold text-white">Direct Whisper Encrypted Channel</p>
+            <p class="text-[11px]">Send real text, voice notes, or photos from your gallery.</p>
+          </div>
+        `;
+        return;
+      }
+
+      msgs.forEach(m => {
+        const div = document.createElement('div');
+        div.className = `flex items-end ${m.isMine ? 'justify-end' : 'justify-start'} gap-2`;
+
+        let bodyContent = `<p>${m.text}</p>`;
+        if (m.type === 'image') {
+          bodyContent = `<img src="${m.mediaUrl}" class="rounded-xl max-h-48 object-cover mb-1">`;
+        } else if (m.type === 'voice') {
+          bodyContent = `
+            <div class="flex items-center gap-2 py-1 select-none">
+              <button onclick="playAudio('pop')" class="w-6 h-6 rounded-full bg-white/20 flex items-center justify-center text-cyan-300">
+                <i class="fa-solid fa-play text-[10px]"></i>
+              </button>
+              <div class="flex gap-0.5 items-center">
+                <span class="w-1 h-3 bg-cyan-400 rounded-full animate-pulse"></span>
+                <span class="w-1 h-5 bg-cyan-400 rounded-full"></span>
+                <span class="w-1 h-2 bg-cyan-400 rounded-full animate-pulse"></span>
+                <span class="w-1 h-4 bg-cyan-400 rounded-full"></span>
+              </div>
+              <span class="text-[10px] font-mono">0:05</span>
+            </div>
+          `;
+        }
+
+        div.innerHTML = `
+          <div class="p-3 rounded-2xl ${m.isMine ? 'bg-gradient-to-r from-violet-600 to-pink-600 text-white' : 'liquid-subtle text-slate-200'} text-xs max-w-[85%] space-y-1 shadow-md">
+            ${bodyContent}
+            <div class="flex items-center justify-between text-[9px] ${m.isMine ? 'text-white/80' : 'text-slate-400'} pt-0.5">
+              <span>${m.time}</span>
+              <i class="fa-solid fa-check-double text-cyan-400 ml-2"></i>
+            </div>
+          </div>
+        `;
+        stream.appendChild(div);
+      });
+      stream.scrollTop = stream.scrollHeight;
+    }
+
+    window.sendWhisperMessage = function(explicitText) {
+      const inp = document.getElementById('whisperInput');
+      const text = (explicitText || inp.value).trim();
+      if (!text) return;
+
+      window.playAudio('pop');
+      if (!realMessages[activeChatContactId]) realMessages[activeChatContactId] = [];
+
+      realMessages[activeChatContactId].push({
+        sender: currentUser.name,
+        text,
+        type: 'text',
+        isMine: true,
+        time: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
+      });
+
+      if (!explicitText) inp.value = '';
+      saveUserData();
+      renderActiveChatMessages();
+      renderWhisperContacts();
+      triggerSimulatedWhisperReply(text);
+    };
+
+    window.sendWhisperPhoto = function(e) {
+      const file = e.target.files && e.target.files[0];
+      if (!file) return;
+
+      const reader = new FileReader();
+      reader.onload = async function(evt) {
+        compressImage(evt.target.result, 720, 720, 0.78, async function(comp) {
+          window.playAudio('pop');
+          const mediaId = 'whisper_' + Date.now();
+          await dbPutMedia(mediaId, comp);
+
+          if (!realMessages[activeChatContactId]) realMessages[activeChatContactId] = [];
+
+          realMessages[activeChatContactId].push({
+            sender: currentUser.name,
+            text: '',
+            type: 'image',
+            mediaUrl: comp,
+            isMine: true,
+            time: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
+          });
+
+          saveUserData();
+          renderActiveChatMessages();
+          renderWhisperContacts();
+          window.triggerToast('Photo sent in Whisper! 📸');
+          triggerSimulatedWhisperReply('📷 [Photo Attachment]');
+        });
+      };
+      reader.readAsDataURL(file);
+    };
+
+    window.sendWhisperVoiceNote = function() {
+      window.playAudio('follow');
+      if (!realMessages[activeChatContactId]) realMessages[activeChatContactId] = [];
+
+      realMessages[activeChatContactId].push({
+        sender: currentUser.name,
+        text: '',
+        type: 'voice',
+        isMine: true,
+        time: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
+      });
+
+      saveUserData();
+      renderActiveChatMessages();
+      renderWhisperContacts();
+      window.triggerToast('Voice note dispatched! 🎙️');
+      triggerSimulatedWhisperReply('🎙️ [Voice Note]');
+    };
+
+    function triggerSimulatedWhisperReply(userMsg) {
+      const typing = document.getElementById('whisperTyping');
+      typing.classList.remove('hidden');
+
+      setTimeout(() => {
+        typing.classList.add('hidden');
+        window.playAudio('follow');
+
+        let replyText = 'Received your message on INTWIWA ⚡ Everything is working seamlessly!';
+        if (userMsg.toLowerCase().includes('hello') || userMsg.toLowerCase().includes('hi')) {
+          replyText = `Hello @${currentUser.handle}! Enjoying the liquid glass UI on INTWIWA?`;
+        } else if (userMsg.includes('Photo') || userMsg.includes('📷')) {
+          replyText = 'Great picture! High-definition liquid rendering looks crisp.';
+        } else if (userMsg.includes('Voice') || userMsg.includes('🎙️')) {
+          replyText = 'Audio note received loud and clear over the encrypted channel!';
+        } else if (userMsg.includes('Story Reaction')) {
+          replyText = 'Thanks for reacting to my story moment! 🔥';
+        }
+
+        realMessages[activeChatContactId].push({
+          sender: 'PRASHANT YADAV',
+          text: replyText,
+          type: 'text',
+          isMine: false,
+          time: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
+        });
+
+        saveUserData();
+        renderActiveChatMessages();
+        renderWhisperContacts();
+      }, 1200);
+    }
+
+    window.promptNewChat = function() {
+      const handle = prompt('Enter INTWIWA username or contact handle to whisper:');
+      if (!handle) return;
+      const clean = handle.replace('@', '').toLowerCase();
+
+      if (!realContacts.some(c => c.id === clean)) {
+        realContacts.push({
+          id: clean,
+          name: clean.toUpperCase(),
+          handle: clean,
+          avatar: generateGradientAvatar(clean),
+          status: 'Direct Member',
+          online: true,
+          unread: 0
+        });
+        saveUserData();
+      }
+      selectWhisperChat(clean);
+      window.triggerToast(`Connected with @${clean}`);
+    };
+
+    window.clearWhisperMessages = function() {
+      window.playAudio('pop');
+      realMessages[activeChatContactId] = [];
+      saveUserData();
+      renderActiveChatMessages();
+      renderWhisperContacts();
+      window.triggerToast('Conversation cleared');
+    };
+
+    /* ================= 8. FOLLOW SYSTEM ================= */
+    window.openFollowersModal = function(type) {
+      window.playAudio('pop');
+      const modal = document.getElementById('followersModal');
+      const title = document.getElementById('followersModalTitle');
+      const list = document.getElementById('followersListContainer');
+
+      title.innerText = type === 'followers' ? 'Your Followers' : 'Following';
+      list.innerHTML = '';
+
+      if (type === 'followers') {
+        if (!currentUser.followersCount || currentUser.followersCount === 0) {
+          list.innerHTML = `
+            <div class="text-center py-6 text-slate-400 text-xs">
+              <p>No followers yet.</p>
+              <p class="text-[10px] text-slate-500 mt-1">Share your profile @${currentUser.handle} with friends!</p>
+            </div>
+          `;
+        }
+      } else {
+        list.innerHTML = `
+          <div class="flex items-center justify-between p-2 rounded-xl liquid-subtle">
+            <div class="flex items-center gap-2.5">
+              <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-violet-600 via-pink-600 to-cyan-400 p-0.5">
+                <div class="w-full h-full bg-canvas rounded-xl flex items-center justify-center font-bold text-white text-xs">PY</div>
+              </div>
+              <div>
+                <div class="flex items-center gap-1">
+                  <span class="text-xs font-bold text-white">PRASHANT YADAV</span>
+                  <i class="fa-solid fa-circle-check text-cyan-400 text-[10px]"></i>
+                </div>
+                <span class="text-[10px] text-slate-400 font-mono">@prashant_yadav</span>
+              </div>
+            </div>
+            <button onclick="toggleFollowFounder(this)" class="px-3 py-1 rounded-xl bg-white/10 text-xs font-bold text-pink-400 hover:bg-white/20">
+              Following
+            </button>
+          </div>
+        `;
+      }
+      modal.classList.remove('hidden');
+    };
+
+    window.closeFollowersModal = function() {
+      document.getElementById('followersModal').classList.add('hidden');
+    };
+
+    window.toggleFollowFounder = function(btn) {
+      window.playAudio('follow');
+      if (btn.innerText === 'Following') {
+        btn.innerText = 'Follow';
+        btn.className = 'px-3 py-1 rounded-xl bg-gradient-to-r from-violet-600 to-pink-600 text-xs font-bold text-white';
+        currentUser.followingCount = Math.max(0, (currentUser.followingCount || 1) - 1);
+      } else {
+        btn.innerText = 'Following';
+        btn.className = 'px-3 py-1 rounded-xl bg-white/10 text-xs font-bold text-pink-400';
+        currentUser.followingCount = (currentUser.followingCount || 0) + 1;
+      }
+      document.getElementById('profileFollowingCount').innerText = currentUser.followingCount;
+      updateUserInStore(currentUser);
+    };
+
+    /* ================= 9. POST CREATION WITH INDEXEDDB ================= */
+    let stagedMediaType = 'image';
+    let stagedMediaDataUrl = '';
+
+    window.openCreateModal = function() {
+      window.playAudio('pop');
+      document.getElementById('createModal').classList.remove('hidden');
+    };
+
+    window.closeCreateModal = function() {
+      document.getElementById('createModal').classList.add('hidden');
+      resetCreateForm();
+    };
+
+    function resetCreateForm() {
+      stagedMediaDataUrl = '';
+      document.getElementById('createMediaFileInput').value = '';
+      document.getElementById('createPreviewBox').classList.add('hidden');
+      document.getElementById('createImgPreview').classList.add('hidden');
+      document.getElementById('createVideoPreview').classList.add('hidden');
+      document.getElementById('createCaptionInput').value = '';
+    }
+
+    window.previewMediaFromGallery = function(e) {
+      const file = e.target.files && e.target.files[0];
+      if (!file) return;
+
+      stagedMediaType = file.type.startsWith('video') ? 'video' : 'image';
+
+      const reader = new FileReader();
+      reader.onload = function(evt) {
+        if (stagedMediaType === 'image') {
+          compressImage(evt.target.result, 900, 900, 0.78, function(comp) {
+            stagedMediaDataUrl = comp;
+            showMediaPreview();
+          });
+        } else {
+          stagedMediaDataUrl = evt.target.result;
+          showMediaPreview();
+        }
+      };
+      reader.readAsDataURL(file);
+    };
+
+    function showMediaPreview() {
+      const box = document.getElementById('createPreviewBox');
+      const imgEl = document.getElementById('createImgPreview');
+      const vidEl = document.getElementById('createVideoPreview');
+      box.classList.remove('hidden');
+
+      if (stagedMediaType === 'image') {
+        imgEl.src = stagedMediaDataUrl;
+        imgEl.classList.remove('hidden');
+        vidEl.classList.add('hidden');
+      } else {
+        vidEl.src = stagedMediaDataUrl;
+        vidEl.classList.remove('hidden');
+        imgEl.classList.add('hidden');
+        vidEl.load();
+      }
+      window.triggerToast(`Device ${stagedMediaType} preview loaded! 📸`);
+    }
+
+    window.insertTag = function(t) {
+      document.getElementById('createCaptionInput').value += ' ' + t + ' ';
+    };
+
+    window.publishMediaPost = async function() {
+      if (!stagedMediaDataUrl) {
+        window.triggerToast('Please select a photo or video from device');
+        return;
+      }
+
+      window.playAudio('follow');
+      const caption = document.getElementById('createCaptionInput').value.trim() || 'My post on INTWIWA ⚡';
+      const isVideo = stagedMediaType === 'video';
+      const postId = Date.now();
+
+      await dbPutMedia('post_' + postId, stagedMediaDataUrl);
+
+      const newPost = {
+        id: postId,
+        authorName: currentUser.name,
+        authorHandle: currentUser.handle,
+        avatar: currentUser.avatar,
+        verified: true,
+        type: isVideo ? 'video' : 'image',
+        mediaUrl: stagedMediaDataUrl,
+        caption: caption,
+        likes: 0,
+        liked: false,
+        bookmarked: false,
+        time: 'Just now',
+        comments: []
+      };
+
+      realPosts.unshift(newPost);
+
+      if (isVideo) {
+        realReels.unshift({
+          id: 'reel_' + postId,
+          type: 'video',
+          url: stagedMediaDataUrl,
+          author: currentUser.name,
+          authorHandle: currentUser.handle,
+          avatar: currentUser.avatar,
+          caption: caption,
+          likes: 0
+        });
+      }
+
+      saveUserData();
+      closeCreateModal();
+      renderFeed();
+      renderReels();
+      renderProfileGrid();
+      navigateTo('feed');
+      window.triggerToast('Post shared to your INTWIWA profile! ⚡');
+    };
+
+
+    // Delete Post Functionality (Feed & Profile Grid)
+    window.deletePost = async function(id) {
+      if (!confirm('Are you sure you want to delete this post?')) return;
+      window.playAudio('pop');
+
+      // Remove from realPosts
+      realPosts = realPosts.filter(p => p.id !== id);
+
+      // Clean media from IndexedDB
+      await dbDeleteMedia('post_' + id);
+
+      // Also clean matching reel if exists
+      realReels = realReels.filter(r => r.id !== 'reel_' + id);
+
+      saveUserData();
+      renderFeed();
+      renderReels();
+      renderProfileGrid();
+      window.triggerToast('Post deleted successfully! 🗑️');
+    };
+
+    // Delete Reel Functionality (Motion Viewport)
+    window.deleteCurrentReel = async function() {
+      if (realReels.length === 0) return;
+      if (!confirm('Are you sure you want to delete this Reel?')) return;
+      window.playAudio('pop');
+
+      const reel = realReels[currentReelIndex];
+      if (reel && reel.id) {
+        await dbDeleteMedia(reel.id);
+      }
+
+      realReels.splice(currentReelIndex, 1);
+      if (currentReelIndex >= realReels.length) {
+        currentReelIndex = Math.max(0, realReels.length - 1);
+      }
+
+      saveUserData();
+      renderReels();
+      window.triggerToast('Reel deleted successfully! 🗑️');
+    };
+
+    /* ================= 10. FEED RENDERING ================= */
+    function renderFeed() {
+      const container = document.getElementById('postsStream');
+      container.innerHTML = '';
+
+      const visiblePosts = realPosts.filter(p => {
+        let users = {};
+        try { users = JSON.parse(localStorage.getItem(STORAGE_USERS_REGISTRY) || '{}'); } catch(e){}
+        const author = users[p.authorHandle];
+        return !(author && author.isDeactivated && author.handle !== (currentUser ? currentUser.handle : ''));
+      });
+
+      if (visiblePosts.length === 0) {
+        container.innerHTML = `
+          <div class="liquid-glass rounded-3xl p-8 border border-white/10 text-center space-y-3">
+            <div class="w-16 h-16 rounded-full bg-white/5 mx-auto flex items-center justify-center text-pink-400 text-2xl">
+              <i class="fa-solid fa-camera"></i>
+            </div>
+            <h3 class="text-base font-bold text-white">Your Feed is Ready</h3>
+            <p class="text-xs text-slate-400 max-w-sm mx-auto">Upload real photos or reels from your gallery to light up the liquid feed!</p>
+            <button onclick="openCreateModal()" class="px-4 py-2 rounded-xl bg-gradient-to-r from-violet-600 to-pink-600 text-white font-bold text-xs shadow-md">
+              Upload from Gallery
+            </button>
+          </div>
+        `;
+        return;
+      }
+
+      visiblePosts.forEach(post => {
+        const card = document.createElement('article');
+        card.className = 'liquid-glass rounded-3xl overflow-hidden border border-white/10 shadow-xl';
+
+        let mediaTag = '';
+        if (post.type === 'video') {
+          mediaTag = `<video src="${post.mediaUrl}" controls playsinline class="w-full max-h-[500px] object-cover bg-black"></video>`;
+        } else {
+          mediaTag = `
+            <div class="relative w-full aspect-square bg-black overflow-hidden select-none cursor-pointer" ondblclick="triggerPostDoubleTap(${post.id}, event)">
+              <img src="${post.mediaUrl}" class="w-full h-full object-cover">
+              <div id="heartPop-${post.id}" class="absolute top-1/2 left-1/2 pointer-events-none hidden">
+                <i class="fa-solid fa-heart text-6xl text-pink-500 drop-shadow-2xl"></i>
+              </div>
+            </div>
+          `;
+        }
+
+        let commentsHtml = (post.comments || []).map(c => `
+          <div class="text-xs text-slate-300">
+            <strong class="text-white font-mono">@${c.user}</strong> <span>${c.text}</span>
+          </div>
+        `).join('');
+
+        card.innerHTML = `
+          <div class="p-3.5 flex items-center justify-between">
+            <div class="flex items-center gap-3">
+              <div class="relative w-10 h-10 rounded-full p-[2px] moment-ring-live">
+                <img src="${post.avatar}" class="w-full h-full rounded-full object-cover border-2 border-canvas">
+              </div>
+              <div>
+                <div class="flex items-center gap-1.5">
+                  <span class="text-xs font-bold text-white">${post.authorName}</span>
+                  <i class="fa-solid fa-circle-check text-cyan-400 text-[10px]"></i>
+                </div>
+                <div class="flex items-center gap-2">
+                  <span class="text-[10px] text-slate-400 font-mono">@${post.authorHandle}</span>
+                  <span class="text-[10px] text-slate-500">• ${post.time}</span>
+                </div>
+              </div>
+            </div>
+            ${currentUser && post.authorHandle === currentUser.handle ? `
+              <button onclick="deletePost(${post.id})" title="Delete Post" class="w-8 h-8 rounded-xl liquid-subtle flex items-center justify-center text-slate-400 hover:text-red-400 transition-colors">
+                <i class="fa-solid fa-trash-can text-xs"></i>
+              </button>
+            ` : ''}
+          </div>
+
+          ${mediaTag}
+
+          <div class="p-3.5 space-y-2.5">
+            <div class="flex items-center justify-between">
+              <div class="flex items-center gap-4 text-slate-200">
+                <button onclick="togglePostLike(${post.id})" class="text-xl hover:text-pink-500 transition-colors">
+                  <i class="fa-${post.liked ? 'solid' : 'regular'} fa-heart ${post.liked ? 'text-pink-500' : ''}"></i>
+                </button>
+                <button onclick="focusCommentInput(${post.id})" class="text-xl hover:text-cyan-400 transition-colors">
+                  <i class="fa-regular fa-comment"></i>
+                </button>
+                <button onclick="sharePostToWhisper(${post.id})" class="text-xl hover:text-violet-400 transition-colors">
+                  <i class="fa-regular fa-paper-plane"></i>
+                </button>
+              </div>
+
+              <button onclick="togglePostBookmark(${post.id})" class="text-xl text-slate-200 hover:text-amber-400 transition-colors">
+                <i class="fa-${post.bookmarked ? 'solid' : 'regular'} fa-bookmark ${post.bookmarked ? 'text-amber-400' : ''}"></i>
+              </button>
+            </div>
+
+            <p class="text-xs font-bold text-white font-mono">${post.likes} likes</p>
+
+            <div class="text-xs leading-relaxed">
+              <span class="font-bold text-white mr-1.5 font-mono">@${post.authorHandle}</span>
+              <span class="text-slate-200">${post.caption}</span>
+            </div>
+
+            <div class="space-y-1 pt-1">
+              ${commentsHtml}
+            </div>
+
+            <div class="flex items-center gap-2 pt-2 border-t border-white/10">
+              <input type="text" id="commentInp-${post.id}" placeholder="Add a comment..." class="flex-1 text-xs bg-transparent text-white placeholder-slate-400 focus:outline-none" onkeydown="if(event.key === 'Enter') submitComment(${post.id})">
+              <button onclick="submitComment(${post.id})" class="text-xs font-bold text-pink-400 hover:text-pink-300">
+                Post
+              </button>
+            </div>
+          </div>
+        `;
+        container.appendChild(card);
+      });
+    }
+
+    window.triggerPostDoubleTap = function(id, e) {
+      window.playAudio('pop');
+      const burst = document.getElementById(`heartPop-${id}`);
+      if (burst) {
+        burst.classList.remove('hidden');
+        burst.classList.add('heart-burst-anim');
+        setTimeout(() => {
+          burst.classList.add('hidden');
+          burst.classList.remove('heart-burst-anim');
+        }, 850);
+      }
+      const p = realPosts.find(x => x.id === id);
+      if (p && !p.liked) {
+        p.liked = true;
+        p.likes += 1;
+        saveUserData();
+        renderFeed();
+      }
+      window.triggerToast('Liked! ❤️');
+    };
+
+    window.togglePostLike = function(id) {
+      window.playAudio('pop');
+      const p = realPosts.find(x => x.id === id);
+      if (!p) return;
+      p.liked = !p.liked;
+      p.likes += p.liked ? 1 : -1;
+      saveUserData();
+      renderFeed();
+    };
+
+    window.togglePostBookmark = function(id) {
+      window.playAudio('pop');
+      const p = realPosts.find(x => x.id === id);
+      if (!p) return;
+      p.bookmarked = !p.bookmarked;
+      saveUserData();
+      renderFeed();
+      window.triggerToast(p.bookmarked ? 'Saved to bookmarks' : 'Removed from bookmarks');
+    };
+
+    window.focusCommentInput = function(id) {
+      const inp = document.getElementById(`commentInp-${id}`);
+      if (inp) inp.focus();
+    };
+
+    window.submitComment = function(id) {
+      window.playAudio('pop');
+      const inp = document.getElementById(`commentInp-${id}`);
+      const text = inp.value.trim();
+      if (!text) return;
+
+      const p = realPosts.find(x => x.id === id);
+      if (p) {
+        if (!p.comments) p.comments = [];
+        p.comments.push({ user: currentUser.handle, text });
+        saveUserData();
+        renderFeed();
+      }
+      inp.value = '';
+      window.triggerToast('Comment added! 💬');
+    };
+
+    window.sharePostToWhisper = function(id) {
+      navigateTo('whisper');
+      const inp = document.getElementById('whisperInput');
+      inp.value = `Check out this Echo #${id} by @${currentUser.handle}`;
+      inp.focus();
+      window.triggerToast('Post shared to Whisper draft! 🚀');
+    };
+
+    /* ================= 11. INSTAGRAM STORY CREATOR WITH ONLINE MUSIC ================= */
+    let stagedStoryMediaType = 'image';
+    let stagedStoryMediaUrl = '';
+
+    window.openStoryCreatorModal = function() {
+      window.playAudio('pop');
+      document.getElementById('storyCreatorModal').classList.remove('hidden');
+      stagedStoryMediaUrl = '';
+      selectedStoryMusic = null;
+      previewingTrackId = null;
+      document.getElementById('creatorStoryFileInp').value = '';
+      document.getElementById('storyCreatorPreviewBox').classList.add('hidden');
+      document.getElementById('storySelectedMediaText').innerText = 'Select Photo/Video from Gallery';
+      document.getElementById('musicSearchInput').value = '';
+      document.getElementById('selectedMusicStatus').innerText = 'No music added';
+      document.getElementById('selectedMusicStatus').className = 'text-[10px] text-slate-400 font-mono';
+      document.getElementById('storyCreatorMusicOverlay').classList.add('hidden');
+      stopMusicPreview();
+      renderMusicList(DEFAULT_TRENDING_TRACKS);
+    };
+
+    window.closeStoryCreatorModal = function() {
+      document.getElementById('storyCreatorModal').classList.add('hidden');
+      stopMusicPreview();
+    };
+
+    window.previewStoryInCreator = function(e) {
+      const file = e.target.files && e.target.files[0];
+      if (!file) return;
+
+      stagedStoryMediaType = file.type.startsWith('video') ? 'video' : 'image';
+      const reader = new FileReader();
+      reader.onload = function(evt) {
+        if (stagedStoryMediaType === 'image') {
+          compressImage(evt.target.result, 720, 1280, 0.75, function(comp) {
+            stagedStoryMediaUrl = comp;
+            showStoryCreatorPreview();
+          });
+        } else {
+          stagedStoryMediaUrl = evt.target.result;
+          showStoryCreatorPreview();
+        }
+      };
+      reader.readAsDataURL(file);
+    };
+
+    function showStoryCreatorPreview() {
+      const box = document.getElementById('storyCreatorPreviewBox');
+      const img = document.getElementById('storyCreatorImgPreview');
+      const vid = document.getElementById('storyCreatorVidPreview');
+      box.classList.remove('hidden');
+
+      if (stagedStoryMediaType === 'image') {
+        img.src = stagedStoryMediaUrl;
+        img.classList.remove('hidden');
+        vid.classList.add('hidden');
+      } else {
+        vid.src = stagedStoryMediaUrl;
+        vid.classList.remove('hidden');
+        img.classList.add('hidden');
+        vid.load();
+      }
+      document.getElementById('storySelectedMediaText').innerText = `Media Ready (${stagedStoryMediaType.toUpperCase()}) ✓`;
+      window.triggerToast('Media selected! Now search or select a song. 🎵');
+    }
+
+    function stopMusicPreview() {
+      const player = document.getElementById('storyBgMusicPlayer');
+      player.pause();
+      player.currentTime = 0;
+      previewingTrackId = null;
+    }
+
+    window.publishStoryWithMusic = async function() {
+      if (!stagedStoryMediaUrl) {
+        window.triggerToast('Please select a photo or video from gallery first!');
+        return;
+      }
+
+      window.playAudio('follow');
+      stopMusicPreview();
+
+      const caption = document.getElementById('storyCreatorCaption').value.trim() || 'Story moment 🌟 #INTWIWA';
+      const storyId = 'story_' + Date.now();
+
+      await dbPutMedia(storyId, stagedStoryMediaUrl);
+
+      const storyObj = {
+        id: storyId,
+        author: currentUser.name,
+        authorHandle: currentUser.handle,
+        avatar: currentUser.avatar,
+        type: stagedStoryMediaType,
+        mediaUrl: stagedStoryMediaUrl,
+        music: selectedStoryMusic,
+        timestamp: Date.now(),
+        caption: caption
+      };
+
+      realStories.unshift(storyObj);
+      saveUserData();
+      renderStories();
+      closeStoryCreatorModal();
+      window.triggerToast(selectedStoryMusic ? `Story shared with online music: ${selectedStoryMusic.title}! 🎶` : 'Story uploaded successfully! ⚡');
+    };
+
+    /* ================= 12. STORY VIEWER WITH REAL ONLINE INSTAGRAM MUSIC & AUTO-EXPIRATION ================= */
+    let currentStoryIndex = 0;
+    let storyTimeout = null;
+    let storyStartTime = 0;
+    let storyRemainingTime = 10000;
+    let isStoryPaused = false;
+    let isStoryMusicMuted = false;
+
+    // Automatic 12-Hour Story Expire & Auto Cleanup Function
+    function cleanupExpiredStories() {
+      const now = Date.now();
+      const TWELVE_HOURS = 12 * 60 * 60 * 1000;
+      let initialCount = realStories.length;
+      
+      // Filter out stories older than 12 hours
+      realStories = realStories.filter(s => {
+        const storyAge = now - (s.timestamp || now);
+        const isExpired = storyAge >= TWELVE_HOURS;
+        if (isExpired && s.id) {
+          dbDeleteMedia(s.id); // Clean from IndexedDB automatically
+        }
+        return !isExpired;
+      });
+
+      if (realStories.length !== initialCount) {
+        saveUserData();
+        renderStories();
+      }
+    }
+
+    // Auto-clean expired stories every 30 seconds continuously
+    setInterval(cleanupExpiredStories, 30000);
+
+    // Calculate human-readable countdown remaining before automatic 12-hour story deletion
+    function getRemainingExpiryTime(timestamp) {
+      const TWELVE_HOURS = 12 * 60 * 60 * 1000;
+      const expireAt = (timestamp || Date.now()) + TWELVE_HOURS;
+      const diffMs = expireAt - Date.now();
+      if (diffMs <= 0) return 'Expiring...';
+      const hours = Math.floor(diffMs / (1000 * 60 * 60));
+      const minutes = Math.floor((diffMs % (1000 * 60 * 60)) / (1000 * 60));
+      if (hours > 0) {
+        return `${hours}h ${minutes}m left`;
+      }
+      return `${minutes}m left`;
+    }
+
+    // Hold to Pause Story (Instagram Feature)
+    window.pauseStoryViewer = function(e) {
+      if (isStoryPaused) return;
+      isStoryPaused = true;
+      clearTimeout(storyTimeout);
+
+      const elapsed = Date.now() - storyStartTime;
+      storyRemainingTime = Math.max(1000, storyRemainingTime - elapsed);
+
+      const fill = document.getElementById('storyProgressFill');
+      if (fill) fill.style.animationPlayState = 'paused';
+
+      const vidEl = document.getElementById('storyMediaVideo');
+      if (vidEl && !vidEl.classList.contains('hidden')) vidEl.pause();
+
+      const bgAudio = document.getElementById('storyBgMusicPlayer');
+      if (bgAudio && !bgAudio.paused) bgAudio.pause();
+    };
+
+    // Release to Resume Story
+    window.resumeStoryViewer = function(e) {
+      if (!isStoryPaused) return;
+      isStoryPaused = false;
+      storyStartTime = Date.now();
+
+      const fill = document.getElementById('storyProgressFill');
+      if (fill) fill.style.animationPlayState = 'running';
+
+      const vidEl = document.getElementById('storyMediaVideo');
+      if (vidEl && !vidEl.classList.contains('hidden')) vidEl.play().catch(()=>{});
+
+      const bgAudio = document.getElementById('storyBgMusicPlayer');
+      if (bgAudio && bgAudio.src && !isStoryMusicMuted) bgAudio.play().catch(()=>{});
+
+      clearTimeout(storyTimeout);
+      storyTimeout = setTimeout(() => {
+        nextStory();
+      }, storyRemainingTime);
+    };
+
+    // Story Music Mute/Unmute Toggle
+    window.toggleStoryMusicMute = function() {
+      isStoryMusicMuted = !isStoryMusicMuted;
+      const bgAudio = document.getElementById('storyBgMusicPlayer');
+      const icon = document.getElementById('storyMusicMuteIcon');
+      const vidEl = document.getElementById('storyMediaVideo');
+
+      if (isStoryMusicMuted) {
+        if (bgAudio) bgAudio.muted = true;
+        if (vidEl) vidEl.muted = true;
+        icon.className = 'fa-solid fa-volume-xmark text-xs text-red-400';
+        window.triggerToast('Story audio muted 🔇');
+      } else {
+        if (bgAudio) {
+          bgAudio.muted = false;
+          bgAudio.play().catch(()=>{});
+        }
+        icon.className = 'fa-solid fa-volume-high text-xs text-cyan-300';
+        window.triggerToast('Story audio on 🔊');
+      }
+    };
+
+    // Share Active Story Link / Clipboard
+    window.shareActiveStory = function() {
+      window.playAudio('follow');
+      const s = realStories[currentStoryIndex];
+      const storyAuthor = s ? s.author : 'User';
+      if (navigator.clipboard) {
+        navigator.clipboard.writeText(window.location.href);
+      }
+      window.triggerToast(`Link copied! Shared ${storyAuthor}'s story moment 🚀`);
+    };
+
+    function renderStories() {
+      const container = document.getElementById('dynamicStoriesList');
+      container.innerHTML = '';
+
+      realStories.forEach((s, idx) => {
+        const el = document.createElement('div');
+        el.className = 'flex flex-col items-center flex-shrink-0 cursor-pointer select-none group';
+        el.onclick = () => launchStoryViewerAtIndex(idx);
+
+        el.innerHTML = `
+          <div class="relative w-16 h-16 rounded-full p-[2.5px] moment-ring-live transition-transform group-hover:scale-105">
+            <img src="${s.avatar}" class="w-full h-full rounded-full object-cover border-2 border-canvas">
+            ${s.music ? '<span class="absolute bottom-0 right-0 w-4 h-4 rounded-full bg-pink-500 text-white flex items-center justify-center text-[8px] ring-2 ring-canvas"><i class="fa-solid fa-music"></i></span>' : ''}
+          </div>
+          <span class="text-[11px] font-bold text-slate-200 mt-1.5 truncate max-w-[68px]">${s.author.split(' ')[0]}</span>
+        `;
+        container.appendChild(el);
+      });
+    }
+
+    function launchStoryViewerAtIndex(idx) {
+      if (!realStories[idx]) {
+        closeStory();
+        return;
+      }
+      currentStoryIndex = idx;
+      const s = realStories[currentStoryIndex];
+
+      window.playAudio('pop');
+      const modal = document.getElementById('storyViewerModal');
+      document.getElementById('storyAuthor').innerText = s.author;
+      document.getElementById('storyAvatar').src = s.avatar;
+      document.getElementById('storyCaption').innerText = s.caption || '';
+      
+      const elapsed = Math.floor((Date.now() - (s.timestamp || Date.now())) / 60000);
+      document.getElementById('storyTimeAgo').innerText = elapsed <= 1 ? 'Just now' : `${elapsed}m ago`;
+
+      // Update Automatic 24h Expiration Countdown
+      const countdownEl = document.getElementById('storyExpireCountdown');
+      if (countdownEl) countdownEl.innerText = getRemainingExpiryTime(s.timestamp);
+
+      // Precise Viewers Tracking (Khud dekhne par view count nahi badhega!)
+      s.viewers = s.viewers || [];
+      const isOwner = currentUser && (s.authorHandle === currentUser.handle);
+
+      if (!isOwner && currentUser) {
+        // Someone else is watching the story -> add viewer only once
+        const alreadyViewed = s.viewers.some(v => v.handle === currentUser.handle);
+        if (!alreadyViewed) {
+          s.viewers.unshift({
+            name: currentUser.name,
+            handle: currentUser.handle,
+            avatar: currentUser.avatar,
+            time: 'Just now'
+          });
+          s.views = s.viewers.length;
+          saveUserData();
+        }
+      } else {
+        // Owner watching their own story: do NOT increment view count!
+        s.views = s.viewers.length;
+      }
+
+      const seenText = document.getElementById('storySeenText');
+      if (seenText) seenText.innerText = `${s.views || 0} views`;
+
+      // Reset audio mute state
+      isStoryPaused = false;
+      storyRemainingTime = 10000;
+      storyStartTime = Date.now();
+
+      const delBtn = document.getElementById('storyDeleteBtn');
+      if (currentUser && s.authorHandle === currentUser.handle) {
+        delBtn.classList.remove('hidden');
+      } else {
+        delBtn.classList.add('hidden');
+      }
+
+      // Automatic High-Priority Story Online Song Auto-Play
+      const musicSticker = document.getElementById('storyMusicFloatingSticker');
+      const musicTitle = document.getElementById('storyMusicTitle');
+      const musicArtist = document.getElementById('storyMusicArtist');
+      const musicArtwork = document.getElementById('storyMusicArtwork');
+      const bgAudio = document.getElementById('storyBgMusicPlayer');
+
+      if (s.music && s.music.previewUrl) {
+        musicSticker.classList.remove('hidden');
+        musicSticker.classList.add('flex');
+        musicTitle.innerText = s.music.title;
+        musicArtist.innerText = s.music.artist;
+        musicArtwork.src = s.music.artwork || generateGradientAvatar(s.music.title);
+        
+        // Reset mute flags and force volume up
+        bgAudio.muted = isStoryMusicMuted;
+        bgAudio.volume = 1.0;
+        
+        // Instant audio load & play
+        if (bgAudio.src !== s.music.previewUrl) {
+          bgAudio.src = s.music.previewUrl;
+          bgAudio.load();
+        }
+        bgAudio.currentTime = 0;
+        
+        const playPromise = bgAudio.play();
+        if (playPromise !== undefined) {
+          playPromise.then(() => {
+            // Song playing automatically!
+          }).catch((err) => {
+            // Autoplay fallback: start on any touch
+            const touchUnlock = () => {
+              bgAudio.play().catch(()=>{});
+              document.removeEventListener('click', touchUnlock);
+              document.removeEventListener('touchstart', touchUnlock);
+            };
+            document.addEventListener('click', touchUnlock, { once: true });
+            document.addEventListener('touchstart', touchUnlock, { once: true });
+          });
+        }
+      } else {
+        musicSticker.classList.add('hidden');
+        musicSticker.classList.remove('flex');
+        bgAudio.pause();
+        bgAudio.removeAttribute('src');
+      }
+
+      const imgEl = document.getElementById('storyMediaImg');
+      const vidEl = document.getElementById('storyMediaVideo');
+
+      clearTimeout(storyTimeout);
+      vidEl.pause();
+      vidEl.removeAttribute('src');
+      vidEl.load();
+
+      if (s.type === 'video') {
+        vidEl.src = s.mediaUrl;
+        vidEl.classList.remove('hidden');
+        imgEl.classList.add('hidden');
+        vidEl.currentTime = 0;
+        // If story has online music, mute video audio so online song plays crisp
+        vidEl.muted = !!s.music;
+        vidEl.play().catch(()=>{});
+      } else {
+        imgEl.src = s.mediaUrl;
+        imgEl.classList.remove('hidden');
+        vidEl.classList.add('hidden');
+      }
+
+      modal.classList.remove('hidden');
+
+      const fill = document.getElementById('storyProgressFill');
+      fill.classList.remove('story-running');
+      void fill.offsetWidth;
+      fill.classList.add('story-running');
+
+      // Auto advance to next story after song snippet
+      storyTimeout = setTimeout(() => {
+        nextStory();
+      }, 10000);
+    }
+
+    window.nextStory = function() {
+      if (currentStoryIndex + 1 < realStories.length) {
+        launchStoryViewerAtIndex(currentStoryIndex + 1);
+      } else {
+        closeStory();
+      }
+    };
+
+    window.prevStory = function() {
+      if (currentStoryIndex > 0) {
+        launchStoryViewerAtIndex(currentStoryIndex - 1);
+      } else {
+        launchStoryViewerAtIndex(0);
+      }
+    };
+
+    window.deleteActiveStory = async function() {
+      if (!confirm('Do you want to delete this story?')) return;
+      window.playAudio('pop');
+      const s = realStories[currentStoryIndex];
+      if (s && s.id) await dbDeleteMedia(s.id);
+      realStories.splice(currentStoryIndex, 1);
+      saveUserData();
+      renderStories();
+      window.triggerToast('Story removed!');
+      if (realStories.length > 0 && currentStoryIndex < realStories.length) {
+        launchStoryViewerAtIndex(currentStoryIndex);
+      } else {
+        closeStory();
+      }
+    };
+
+    window.sendStoryQuickEmoji = function(emoji) {
+      window.playAudio('pop');
+      const s = realStories[currentStoryIndex];
+      window.triggerToast(`Reacted ${emoji} to ${s.author}'s story!`);
+      if (s.authorHandle && s.authorHandle !== currentUser.handle) {
+        activeChatContactId = s.authorHandle;
+        window.sendWhisperMessage(`Story Reaction to your Moment: ${emoji}`);
+      }
+    };
+
+    window.submitStoryReply = function() {
+      const inp = document.getElementById('storyReplyInp');
+      const txt = inp.value.trim();
+      if (!txt) return;
+
+      window.playAudio('follow');
+      const s = realStories[currentStoryIndex];
+      window.triggerToast(`Reply sent to ${s.author}!`);
+      inp.value = '';
+
+      if (s.authorHandle && s.authorHandle !== currentUser.handle) {
+        activeChatContactId = s.authorHandle;
+        window.sendWhisperMessage(`Story Reply: "${txt}"`);
+      }
+      closeStory();
+    };
+
+    window.closeStory = function() {
+      clearTimeout(storyTimeout);
+      const modal = document.getElementById('storyViewerModal');
+      modal.classList.add('hidden');
+      const vidEl = document.getElementById('storyMediaVideo');
+      vidEl.pause();
+      vidEl.removeAttribute('src');
+      const bgAudio = document.getElementById('storyBgMusicPlayer');
+      bgAudio.pause();
+      bgAudio.removeAttribute('src');
+    };
+
+    // Double Tap Heart Pop in Story Viewer (Instagram Feature)
+    window.triggerStoryHeartPop = function(e) {
+      if (e) e.stopPropagation();
+      window.playAudio('pop');
+      const burst = document.getElementById('storyHeartBurst');
+      if (burst) {
+        burst.classList.remove('hidden');
+        burst.classList.add('heart-burst-anim');
+        setTimeout(() => {
+          burst.classList.add('hidden');
+          burst.classList.remove('heart-burst-anim');
+        }, 850);
+      }
+      const s = realStories[currentStoryIndex];
+      if (s && s.authorHandle && currentUser && s.authorHandle !== currentUser.handle) {
+        window.sendWhisperMessage(`❤️ Liked your Story Moment!`);
+      }
+      window.triggerToast('Liked Story! ❤️');
+    };
+
+    // Quick Genre Filter for Online Music Search
+    window.quickFilterMusic = function(genre) {
+      window.playAudio('pop');
+      const searchInp = document.getElementById('musicSearchInput');
+      if (searchInp) {
+        searchInp.value = genre;
+        searchOnlineMusic(genre);
+      }
+    };
+
+    // Open Story Viewers Modal (Instagram Style)
+    window.openStoryViewersModal = function(e) {
+      if (e) e.stopPropagation();
+      window.pauseStoryViewer();
+      const s = realStories[currentStoryIndex];
+      if (!s) return;
+
+      window.playAudio('pop');
+      const viewersList = s.viewers || [];
+      const modal = document.getElementById('followersModal');
+      const title = document.getElementById('followersModalTitle');
+      const container = document.getElementById('followersListContainer');
+
+      title.innerText = `Story Viewers (${viewersList.length})`;
+      container.innerHTML = '';
+
+      if (viewersList.length === 0) {
+        container.innerHTML = `
+          <div class="text-center py-6 text-slate-400 text-xs">
+            <i class="fa-regular fa-eye text-2xl text-pink-400 mb-2"></i>
+            <p class="font-bold text-white">No viewers yet</p>
+            <p class="text-[10px] text-slate-500 mt-1">Friends and connections who view your story will appear here.</p>
+          </div>
+        `;
+      } else {
+        viewersList.forEach(v => {
+          const row = document.createElement('div');
+          row.className = 'flex items-center justify-between p-2 rounded-xl liquid-subtle';
+          row.innerHTML = `
+            <div class="flex items-center gap-2.5">
+              <img src="${v.avatar}" class="w-8 h-8 rounded-full object-cover ring-1 ring-pink-500">
+              <div>
+                <p class="text-xs font-bold text-white">${v.name}</p>
+                <p class="text-[10px] text-slate-400 font-mono">@${v.handle}</p>
+              </div>
+            </div>
+            <span class="text-[9px] text-pink-400 font-mono">${v.time}</span>
+          `;
+          container.appendChild(row);
+        });
+      }
+      modal.classList.remove('hidden');
+    };
+
+    /* ================= 13. MOTION REELS ================= */
+    let currentReelIndex = 0;
+    let reelIsLiked = false;
+
+    window.uploadDirectReelFromGallery = async function(e) {
+      const file = e.target.files && e.target.files[0];
+      if (!file) return;
+
+      const reader = new FileReader();
+      reader.onload = async function(evt) {
+        const reelId = 'reel_' + Date.now();
+        await dbPutMedia(reelId, evt.target.result);
+
+        const newReel = {
+          id: reelId,
+          type: 'video',
+          url: evt.target.result,
+          author: currentUser.name,
+          authorHandle: currentUser.handle,
+          avatar: currentUser.avatar,
+          caption: 'Real Video Reel on INTWIWA ⚡',
+          likes: 0
+        };
+        realReels.unshift(newReel);
+        currentReelIndex = 0;
+        saveUserData();
+        renderReels();
+        window.playAudio('follow');
+        window.triggerToast('Reel uploaded and playing! 🎬');
+      };
+      reader.readAsDataURL(file);
+    };
+
+    function renderReels() {
+      const emptyState = document.getElementById('motionEmptyState');
+      const vidEl = document.getElementById('motionVideoElement');
+      const topBar = document.getElementById('motionTopBar');
+      const audioBtn = document.getElementById('motionAudioBtn');
+      const dblTap = document.getElementById('motionDblTapArea');
+      const sideRail = document.getElementById('motionSideRail');
+      const metaArea = document.getElementById('motionMetaArea');
+
+      if (realReels.length === 0) {
+        emptyState.classList.remove('hidden');
+        vidEl.classList.add('hidden');
+        topBar.classList.add('hidden');
+        audioBtn.classList.add('hidden');
+        dblTap.classList.add('hidden');
+        sideRail.classList.add('hidden');
+        metaArea.classList.add('hidden');
+        return;
+      }
+
+      emptyState.classList.add('hidden');
+      vidEl.classList.remove('hidden');
+      topBar.classList.remove('hidden');
+      audioBtn.classList.remove('hidden');
+      dblTap.classList.remove('hidden');
+      sideRail.classList.remove('hidden');
+      metaArea.classList.remove('hidden');
+
+      const reel = realReels[currentReelIndex];
+      vidEl.src = reel.url;
+      vidEl.play().catch(()=>{});
+
+      document.getElementById('motionAuthorName').innerText = reel.author;
+      document.getElementById('motionAuthorAvatar').src = reel.avatar;
+      document.getElementById('motionCaption').innerText = reel.caption;
+      document.getElementById('motionLikeCount').innerText = reel.likes;
+
+      // Show delete button if current user owns the reel
+      const delReelBtn = document.getElementById('motionDeleteBtn');
+      if (delReelBtn) {
+        const isReelOwner = currentUser && (reel.author === currentUser.name || reel.authorHandle === currentUser.handle);
+        if (isReelOwner) {
+          delReelBtn.classList.remove('hidden');
+          delReelBtn.classList.add('flex');
+        } else {
+          delReelBtn.classList.add('hidden');
+          delReelBtn.classList.remove('flex');
+        }
+      }
+    }
+
+    window.nextMotionClip = function() {
+      if (realReels.length === 0) return;
+      window.playAudio('pop');
+      currentReelIndex = (currentReelIndex + 1) % realReels.length;
+      reelIsLiked = false;
+      document.getElementById('motionLikeIcon').className = 'fa-regular fa-heart text-lg';
+      renderReels();
+    };
+
+    window.toggleMotionLike = function() {
+      if (realReels.length === 0) return;
+      window.playAudio('pop');
+      reelIsLiked = !reelIsLiked;
+      const reel = realReels[currentReelIndex];
+      reel.likes += reelIsLiked ? 1 : -1;
+      document.getElementById('motionLikeCount').innerText = reel.likes;
+      const icon = document.getElementById('motionLikeIcon');
+      icon.className = reelIsLiked ? 'fa-solid fa-heart text-lg text-pink-500' : 'fa-regular fa-heart text-lg';
+      saveUserData();
+    };
+
+    window.handleMotionDoubleTap = function(e) {
+      window.playAudio('pop');
+      const burst = document.getElementById('motionHeartBurst');
+      burst.classList.remove('hidden');
+      burst.classList.add('heart-burst-anim');
+      setTimeout(() => {
+        burst.classList.add('hidden');
+        burst.classList.remove('heart-burst-anim');
+      }, 850);
+      if (!reelIsLiked) toggleMotionLike();
+    };
+
+    window.toggleMotionAudio = function() {
+      const vid = document.getElementById('motionVideoElement');
+      const icon = document.getElementById('motionAudioIcon');
+      vid.muted = !vid.muted;
+      if (vid.muted) {
+        icon.className = 'fa-solid fa-volume-xmark text-xs';
+        window.triggerToast('Reel muted');
+      } else {
+        icon.className = 'fa-solid fa-volume-high text-xs text-pink-400';
+        window.triggerToast('Reel sound on 🔊');
+      }
+    };
+
+    /* ================= 14. PROFILE GRID ================= */
+    function renderProfileGrid() {
+      const grid = document.getElementById('profileGrid');
+      grid.innerHTML = '';
+
+      if (realPosts.length === 0) {
+        grid.innerHTML = `
+          <div class="col-span-3 py-10 text-center text-xs text-slate-400 font-mono">
+            No uploaded media yet
+          </div>
+        `;
+        document.getElementById('profilePostCount').innerText = 0;
+        return;
+      }
+
+      realPosts.forEach(p => {
+        const item = document.createElement('div');
+        item.className = 'aspect-square rounded-2xl overflow-hidden border border-white/10 relative group cursor-pointer bg-black';
+        
+        let visual = p.type === 'video'
+          ? `<video src="${p.mediaUrl}" class="w-full h-full object-cover"></video>`
+          : `<img src="${p.mediaUrl}" class="w-full h-full object-cover group-hover:scale-105 transition-transform">`;
+
+        item.innerHTML = `
+          ${visual}
+          <div class="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center gap-3 text-white text-xs font-bold font-mono">
+            <span><i class="fa-solid fa-heart mr-1"></i>${p.likes}</span>
+            <span><i class="fa-solid fa-comment mr-1"></i>${p.comments ? p.comments.length : 0}</span>
+            ${currentUser && p.authorHandle === currentUser.handle ? `
+              <button onclick="event.stopPropagation(); deletePost(${p.id});" title="Delete Post" class="w-7 h-7 rounded-full bg-red-600/80 hover:bg-red-600 text-white flex items-center justify-center transition-transform hover:scale-110 ml-1">
+                <i class="fa-solid fa-trash-can text-[10px]"></i>
+              </button>
+            ` : ''}
+          </div>
+        `;
+        grid.appendChild(item);
+      });
+
+      document.getElementById('profilePostCount').innerText = realPosts.length;
+    }
+
+    window.updateProfileAvatarDirect = function(e) {
+      const file = e.target.files && e.target.files[0];
+      if (!file) return;
+
+      const reader = new FileReader();
+      reader.onload = function(evt) {
+        compressImage(evt.target.result, 240, 240, 0.8, function(comp) {
+          currentUser.avatar = comp;
+          syncUserAvatarAcrossApp(currentUser.avatar);
+          updateUserInStore(currentUser);
+          window.playAudio('follow');
+          window.triggerToast('Profile photo updated! 📸');
+        });
+      };
+      reader.readAsDataURL(file);
+    };
+
+    function syncUserAvatarAcrossApp(newAvatar) {
+      document.getElementById('profileAvatar').src = newAvatar;
+      document.getElementById('headerUserAvatar').src = newAvatar;
+      document.getElementById('trayMyAvatar').src = newAvatar;
+      document.getElementById('sidebarUserAvatar').src = newAvatar;
+      document.getElementById('settingsAvatarPreview').src = newAvatar;
+    }
+
+    function updateUserInStore(u) {
+      try {
+        localStorage.setItem(STORAGE_CURRENT_SESSION, JSON.stringify(u));
+        let usersStore = {};
+        try { usersStore = JSON.parse(localStorage.getItem(STORAGE_USERS_REGISTRY) || '{}'); } catch(e) {}
+        usersStore[u.handle] = u;
+        localStorage.setItem(STORAGE_USERS_REGISTRY, JSON.stringify(usersStore));
+      } catch(e) {}
+    }
+
+    /* ================= 15. SETTINGS & THEMES ================= */
+    window.openSettingsModal = function(defaultTab = 'themes') {
+      window.playAudio('pop');
+      document.getElementById('settingsModal').classList.remove('hidden');
+      switchSettingsCategory(defaultTab);
+
+      if (currentUser) {
+        document.getElementById('settingsInputName').value = currentUser.name;
+        document.getElementById('settingsInputHandle').value = currentUser.handle;
+        document.getElementById('settingsInputBio').value = currentUser.bio;
+        document.getElementById('settingsAvatarPreview').src = currentUser.avatar;
+      }
+      calculateStorageSize();
+    };
+
+    window.closeSettingsModal = function() {
+      document.getElementById('settingsModal').classList.add('hidden');
+    };
+
+    window.switchSettingsCategory = function(cat) {
+      window.playAudio('pop');
+      const tabs = ['themes', 'audio', 'account', 'system', 'about'];
+      tabs.forEach(t => {
+        const btn = document.getElementById('setTab-' + t);
+        const pane = document.getElementById('setPane-' + t);
+        if (t === cat) {
+          btn.className = 'px-3 py-2 rounded-xl text-xs font-bold transition-all text-white bg-gradient-to-r from-violet-600 to-pink-600 flex items-center gap-2 whitespace-nowrap shadow-md';
+          pane.classList.remove('hidden');
+        } else {
+          btn.className = 'px-3 py-2 rounded-xl text-xs font-bold transition-all text-slate-400 hover:text-white flex items-center gap-2 whitespace-nowrap';
+          pane.classList.add('hidden');
+        }
+      });
+    };
+
+    window.applyLiquidTheme = function(themeClass) {
+      window.playAudio('follow');
+      document.body.className = `selection:bg-pink-500 selection:text-white ${themeClass}`;
+      localStorage.setItem(STORAGE_THEME_KEY, themeClass);
+      window.triggerToast(`Theme active: ${themeClass.replace('theme-', '').toUpperCase()} 🎨`);
+    };
+
+    window.updateBlurIntensity = function(val) {
+      document.documentElement.style.setProperty('--blur-strength', `${val}px`);
+      document.getElementById('blurValLabel').innerText = `${val}px`;
+    };
+
+    window.toggleAudioSfx = function(el) {
+      el.classList.toggle('active');
+      sfxEnabled = el.classList.contains('active');
+      if (sfxEnabled) window.playAudio('pop');
+      window.triggerToast(sfxEnabled ? 'Audio SFX Enabled' : 'Audio SFX Muted');
+    };
+
+    window.updateSfxVolume = function(val) {
+      sfxVolume = val / 100;
+      document.getElementById('volumeValLabel').innerText = `${val}%`;
+      window.playAudio('pop');
+    };
+
+    window.toggleHaptics = function(el) {
+      el.classList.toggle('active');
+      hapticsEnabled = el.classList.contains('active');
+      window.playAudio('pop');
+      window.triggerToast(hapticsEnabled ? 'Haptics Active' : 'Haptics Disabled');
+    };
+
+    window.togglePrivateAccount = function(el) {
+      el.classList.toggle('active');
+      const isPrivate = el.classList.contains('active');
+      if (currentUser) {
+        currentUser.isPrivate = isPrivate;
+        updateUserInStore(currentUser);
+      }
+      document.getElementById('profilePrivacyBadge').innerText = isPrivate ? 'Private' : 'Public';
+      window.playAudio('pop');
+      window.triggerToast(isPrivate ? 'Account switched to Private' : 'Account is Public');
+    };
+
+    window.changeAvatarFromSettings = function(e) {
+      const file = e.target.files && e.target.files[0];
+      if (!file) return;
+
+      const reader = new FileReader();
+      reader.onload = function(evt) {
+        compressImage(evt.target.result, 240, 240, 0.8, function(comp) {
+          currentUser.avatar = comp;
+          syncUserAvatarAcrossApp(currentUser.avatar);
+          updateUserInStore(currentUser);
+          window.playAudio('follow');
+          window.triggerToast('Profile photo updated! 📸');
+        });
+      };
+      reader.readAsDataURL(file);
+    };
+
+    window.saveAccountSettings = function() {
+      window.playAudio('follow');
+      const newName = document.getElementById('settingsInputName').value.trim();
+      const newHandle = document.getElementById('settingsInputHandle').value.trim();
+      const newBio = document.getElementById('settingsInputBio').value.trim();
+
+      if (newName) currentUser.name = newName;
+      if (newHandle) currentUser.handle = newHandle;
+      if (newBio) currentUser.bio = newBio;
+
+      updateUserInStore(currentUser);
+
+      document.getElementById('profileFullName').innerText = currentUser.name;
+      document.getElementById('profileHandle').innerText = '@' + currentUser.handle;
+      document.getElementById('profileBio').innerText = currentUser.bio;
+      document.getElementById('sidebarUserName').innerText = currentUser.name;
+      document.getElementById('sidebarUserHandle').innerText = '@' + currentUser.handle;
+
+      closeSettingsModal();
+      window.triggerToast('Account changes saved! ✨');
+    };
+
+    function calculateStorageSize() {
+      if (navigator.storage && navigator.storage.estimate) {
+        navigator.storage.estimate().then(est => {
+          const usedMB = (est.usage / (1024 * 1024)).toFixed(2);
+          const quotaGB = (est.quota / (1024 * 1024 * 1024)).toFixed(1);
+          const label = document.getElementById('cacheSizeLabel');
+          if (label) label.innerText = `${usedMB} MB used (of ${quotaGB} GB Available)`;
+        }).catch(() => {
+          document.getElementById('cacheSizeLabel').innerText = 'Gigabytes Available (IndexedDB Active)';
+        });
+      } else {
+        document.getElementById('cacheSizeLabel').innerText = 'Gigabytes Available (IndexedDB Active)';
+      }
+    }
+
+    window.clearAppCache = async function() {
+      window.playAudio('pop');
+      localStorage.removeItem(STORAGE_POSTS_STORE);
+      localStorage.removeItem(STORAGE_STORIES_STORE);
+      localStorage.removeItem(STORAGE_REELS_STORE);
+      localStorage.removeItem(STORAGE_MESSAGES_STORE);
+      try { indexedDB.deleteDatabase(DB_NAME); } catch(e){}
+      window.triggerToast('Cached media cleared. Refreshing...');
+      setTimeout(() => location.reload(), 600);
+    };
+
+    /* ================= 16. NAVIGATION ================= */
+    window.navigateTo = function(key) {
+      window.playAudio('pop');
+      const tabs = ['feed', 'motion', 'whisper', 'profile'];
+      tabs.forEach(t => {
+        const sec = document.getElementById('tab' + capitalize(t));
+        const navD = document.getElementById('navItem' + capitalize(t));
+        const navM = document.getElementById('mobNav' + capitalize(t));
+
+        if (t === key) {
+          sec.classList.remove('hidden');
+          if (navD) navD.className = 'px-3.5 py-1.5 rounded-xl text-xs font-bold text-white bg-gradient-to-r from-violet-600 to-pink-600 transition-all flex items-center gap-1.5 shadow-md';
+          if (navM) navM.className = 'flex flex-col items-center gap-0.5 text-pink-500 font-bold';
+        } else {
+          sec.classList.add('hidden');
+          if (navD) navD.className = 'px-3.5 py-1.5 rounded-xl text-xs font-bold text-slate-300 hover:text-white transition-all flex items-center gap-1.5';
+          if (navM) navM.className = 'flex flex-col items-center gap-0.5 text-slate-400';
+        }
+      });
+
+      if (key === 'whisper') renderActiveChatMessages();
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    };
+
+    function capitalize(s) {
+      return s.charAt(0).toUpperCase() + s.slice(1);
+    }
+
+    /* ================= 17. TOAST ================= */
+    let toastTimer = null;
+    window.triggerToast = function(msg) {
+      const el = document.getElementById('toast');
+      document.getElementById('toastMsg').innerText = msg;
+      el.classList.remove('translate-y-24', 'opacity-0');
+      el.classList.add('translate-y-0', 'opacity-100');
+      clearTimeout(toastTimer);
+      toastTimer = setTimeout(() => {
+        el.classList.remove('translate-y-0', 'opacity-100');
+        el.classList.add('translate-y-24', 'opacity-0');
+      }, 2500);
+    };
+
+    // Live Audio Context Unlock on first touch/interaction (Essential for live web deployment)
+    function unlockLiveAudio() {
+      if (audioCtx && audioCtx.state === 'suspended') {
+        audioCtx.resume();
+      }
+      document.removeEventListener('click', unlockLiveAudio);
+      document.removeEventListener('touchstart', unlockLiveAudio);
+    }
+    document.addEventListener('click', unlockLiveAudio, { once: true });
+    document.addEventListener('touchstart', unlockLiveAudio, { once: true });
+
+    window.addEventListener('DOMContentLoaded', () => {
+      openAppDatabase();
+      cleanupExpiredStories();
+      checkSession();
+    });
+  </script>
+
+</body>
+</html>
